@@ -1769,9 +1769,11 @@ $(document).ready(function () {
 <h2>R</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2V0LnNlZWQoMTIzKVxubSA8LSBycG9pcyhuID0gMTAwMDAsIGxhbWJkYSA9IDAuNSlcbnRhYmxlKG0pXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2V0LnNlZWQoMTIzKVxubiA8LSAxMDAwMFxubGFtYmRhIDwtIDAuNVxubSA8LSBycG9pcyhuID0gbiwgbGFtYmRhID0gbGFtYmRhKVxudGFibGUobSlcbmBgYCJ9 -->
 <pre class="r"><code>set.seed(123)
-m &lt;- rpois(n = 10000, lambda = 0.5)
+n &lt;- 10000
+lambda &lt;- 0.5
+m &lt;- rpois(n = n, lambda = lambda)
 table(m)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoibVxuICAgMCAgICAxICAgIDIgICAgMyAgICA0ICAgIDUgXG42MDk2IDMwNTYgIDcwMyAgMTI3ICAgMTcgICAgMSBcbiJ9 -->
@@ -1786,12 +1788,14 @@ table(m)</code></pre>
 <h2>Python</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgcHl0aG9uXG5pbXBvcnQgbnVtcHkgYXMgbnAgXG5pbXBvcnQgc2NpcHkgYXMgc3BcbmltcG9ydCBwYW5kYXMgYXMgcGFcbm5wLnJhbmRvbS5zZWVkKDEyMylcbnMgPSBzcC5yYW5kb20ucG9pc3NvbihsYW0gPSAwLjUsIHNpemUgPSAxMDAwMClcbnByaW50KHBhLlNlcmllcyhzKS52YWx1ZV9jb3VudHMoKSlcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgcHl0aG9uXG5pbXBvcnQgbnVtcHkgYXMgbnAgXG5pbXBvcnQgc2NpcHkgYXMgc3BcbmltcG9ydCBwYW5kYXMgYXMgcGFcbm5wLnJhbmRvbS5zZWVkKDEyMylcbm4gPSAxMDAwMFxubGFtID0gMC41XG5zID0gc3AucmFuZG9tLnBvaXNzb24obGFtID0gbGFtLCBzaXplID0gbilcbnByaW50KHBhLlNlcmllcyhzKS52YWx1ZV9jb3VudHMoKSlcbmBgYCJ9 -->
 <pre class="python"><code>import numpy as np 
 import scipy as sp
 import pandas as pa
 np.random.seed(123)
-s = sp.random.poisson(lam = 0.5, size = 10000)
+n = 10000
+lam = 0.5
+s = sp.random.poisson(lam = lam, size = n)
 print(pa.Series(s).value_counts())</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiMCAgICA1OTk3XG4xICAgIDMxNDhcbjIgICAgIDcxN1xuMyAgICAgMTE3XG40ICAgICAgMjBcbjUgICAgICAgMVxuZHR5cGU6IGludDY0XG4ifQ== -->
@@ -1808,14 +1812,17 @@ dtype: int64</code></pre>
 </div>
 <div id="julia" class="section level2">
 <h2>Julia</h2>
+<p>Path to Julia @ macOS</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBganVsaWFcbnVzaW5nIERpc3RyaWJ1dGlvbnMgIyMgZm9yIGRpc3RyaWJ1dGlvbnNcbnVzaW5nIFJhbmRvbVxudXNpbmcgRnJlcVRhYmxlc1xuUmFuZG9tLnNlZWQhKDEyMzQpO1xubSA9IHJhbmQoUG9pc3NvbigwLjUpLCAxMDAwMCk7XG5zaG93KGZyZXF0YWJsZShtKSlcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBganVsaWFcbnVzaW5nIERpc3RyaWJ1dGlvbnMgIyMgZm9yIGRpc3RyaWJ1dGlvbnNcbnVzaW5nIFJhbmRvbVxudXNpbmcgRnJlcVRhYmxlc1xuUmFuZG9tLnNlZWQhKDEyMzQpO1xubiA9IDEwMDAwXG5sYW1iZGEgPSAwLjVcbm0gPSByYW5kKFBvaXNzb24obGFtYmRhKSwgbik7XG5zaG93KGZyZXF0YWJsZShtKSlcbmBgYCJ9 -->
 <pre class="julia"><code>using Distributions ## for distributions
 using Random
 using FreqTables
 Random.seed!(1234);
-m = rand(Poisson(0.5), 10000);
+n = 10000
+lambda = 0.5
+m = rand(Poisson(lambda), n);
 show(freqtable(m))</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiNi1lbGVtZW50IE5hbWVkIEFycmF5e0ludDY0LDF9XG5EaW0xICDilIIgXG7ilIDilIDilIDilIDilIDilIDilLzilIDilIDilIDilIDilIBcbjAgICAgIOKUgiA2MDU1XG4xICAgICDilIIgMzAyOVxuMiAgICAg4pSCICA3NzRcbjMgICAgIOKUgiAgMTI0XG40ICAgICDilIIgICAxNlxuNSAgICAg4pSCICAgIDJcbiJ9 -->
@@ -1835,7 +1842,7 @@ Dim1  │
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKIyBHZW5lcmF0ZSBQb2lzc29uIGRhdGEgaW4gdGhyZWUgbGFuZ3VhZ2VzIAoKQ2F1dGlvbjogSW4gZ2VuZXJhbCBpdCBpcyByYXRoZXIgaW1wb3NzaWJsZSB0byBnZXQgdGhlIHNhbWUgdmFsdWVzIG9mIHBzZXVkb3JhbmRvbSB2YXJpYWJsZXMgZXZlbiB3aGVuIHNldHRpbmcgdGhlIHNhbWUgc2VlZCBhbmQgRVZFTiB0aGUgc2FtZSBtZXRob2QgKGFsbCBwYWNrYWdlcyB1c2VzIE1lcnNlbm5lIFR3aXN0ZXIgbWV0aG9kKS4KCgojIyBSCgpgYGB7cn0Kc2V0LnNlZWQoMTIzKQptIDwtIHJwb2lzKG4gPSAxMDAwMCwgbGFtYmRhID0gMC41KQp0YWJsZShtKQpgYGAKCiMjIFB5dGhvbgoKYGBge3B5dGhvbiwgZW5naW5lLnBhdGggPSAifi9hbmFjb25kYTMvYmluL3B5dGhvbiJ9CmltcG9ydCBudW1weSBhcyBucCAKaW1wb3J0IHNjaXB5IGFzIHNwCmltcG9ydCBwYW5kYXMgYXMgcGEKbnAucmFuZG9tLnNlZWQoMTIzKQpzID0gc3AucmFuZG9tLnBvaXNzb24obGFtID0gMC41LCBzaXplID0gMTAwMDApCnByaW50KHBhLlNlcmllcyhzKS52YWx1ZV9jb3VudHMoKSkKYGBgCgoKCiMjIEp1bGlhCgpgYGB7anVsaWEsIGVuZ2luZS5wYXRoID0gIi9BcHBsaWNhdGlvbnMvSnVsaWEtMS4wLmFwcC9Db250ZW50cy9SZXNvdXJjZXMvanVsaWEvYmluL2p1bGlhIn0KdXNpbmcgRGlzdHJpYnV0aW9ucyAjIyBmb3IgZGlzdHJpYnV0aW9ucwp1c2luZyBSYW5kb20KdXNpbmcgRnJlcVRhYmxlcwpSYW5kb20uc2VlZCEoMTIzNCk7Cm0gPSByYW5kKFBvaXNzb24oMC41KSwgMTAwMDApOwpzaG93KGZyZXF0YWJsZShtKSkKYGBgCgo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKIyBHZW5lcmF0ZSBQb2lzc29uIGRhdGEgaW4gdGhyZWUgbGFuZ3VhZ2VzIAoKQ2F1dGlvbjogSW4gZ2VuZXJhbCBpdCBpcyByYXRoZXIgaW1wb3NzaWJsZSB0byBnZXQgdGhlIHNhbWUgdmFsdWVzIG9mIHBzZXVkb3JhbmRvbSB2YXJpYWJsZXMgZXZlbiB3aGVuIHNldHRpbmcgdGhlIHNhbWUgc2VlZCBhbmQgRVZFTiB0aGUgc2FtZSBtZXRob2QgKGFsbCBwYWNrYWdlcyB1c2VzIE1lcnNlbm5lIFR3aXN0ZXIgbWV0aG9kKS4KCiMjIFIKCmBgYHtyfQpzZXQuc2VlZCgxMjMpCm4gPC0gMTAwMDAKbGFtYmRhIDwtIDAuNQptIDwtIHJwb2lzKG4gPSBuLCBsYW1iZGEgPSBsYW1iZGEpCnRhYmxlKG0pCmBgYAoKIyMgUHl0aG9uCgpgYGB7cHl0aG9uLCBlbmdpbmUucGF0aCA9ICJ+L2FuYWNvbmRhMy9iaW4vcHl0aG9uIn0KaW1wb3J0IG51bXB5IGFzIG5wIAppbXBvcnQgc2NpcHkgYXMgc3AKaW1wb3J0IHBhbmRhcyBhcyBwYQpucC5yYW5kb20uc2VlZCgxMjMpCm4gPSAxMDAwMApsYW0gPSAwLjUKcyA9IHNwLnJhbmRvbS5wb2lzc29uKGxhbSA9IGxhbSwgc2l6ZSA9IG4pCnByaW50KHBhLlNlcmllcyhzKS52YWx1ZV9jb3VudHMoKSkKYGBgCgoKCiMjIEp1bGlhCgpQYXRoIHRvIEp1bGlhIEAgbWFjT1MgCgpgYGB7anVsaWEsIGVuZ2luZS5wYXRoID0gIi9BcHBsaWNhdGlvbnMvSnVsaWEtMS4wLmFwcC9Db250ZW50cy9SZXNvdXJjZXMvanVsaWEvYmluL2p1bGlhIn0KdXNpbmcgRGlzdHJpYnV0aW9ucyAjIyBmb3IgZGlzdHJpYnV0aW9ucwp1c2luZyBSYW5kb20KdXNpbmcgRnJlcVRhYmxlcwpSYW5kb20uc2VlZCEoMTIzNCk7Cm4gPSAxMDAwMApsYW1iZGEgPSAwLjUKbSA9IHJhbmQoUG9pc3NvbihsYW1iZGEpLCBuKTsKc2hvdyhmcmVxdGFibGUobSkpCmBgYAoK</div>
 
 
 

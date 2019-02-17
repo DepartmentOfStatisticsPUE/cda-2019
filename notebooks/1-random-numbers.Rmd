@@ -7,12 +7,13 @@ output: html_notebook
 
 Caution: In general it is rather impossible to get the same values of pseudorandom variables even when setting the same seed and EVEN the same method (all packages uses Mersenne Twister method).
 
-
 ## R
 
 ```{r}
 set.seed(123)
-m <- rpois(n = 10000, lambda = 0.5)
+n <- 10000
+lambda <- 0.5
+m <- rpois(n = n, lambda = lambda)
 table(m)
 ```
 
@@ -23,7 +24,9 @@ import numpy as np
 import scipy as sp
 import pandas as pa
 np.random.seed(123)
-s = sp.random.poisson(lam = 0.5, size = 10000)
+n = 10000
+lam = 0.5
+s = sp.random.poisson(lam = lam, size = n)
 print(pa.Series(s).value_counts())
 ```
 
@@ -31,12 +34,16 @@ print(pa.Series(s).value_counts())
 
 ## Julia
 
+Path to Julia @ macOS 
+
 ```{julia, engine.path = "/Applications/Julia-1.0.app/Contents/Resources/julia/bin/julia"}
 using Distributions ## for distributions
 using Random
 using FreqTables
 Random.seed!(1234);
-m = rand(Poisson(0.5), 10000);
+n = 10000
+lambda = 0.5
+m = rand(Poisson(lambda), n);
 show(freqtable(m))
 ```
 
