@@ -19,18 +19,39 @@ table(m)
 
 ## Python
 
+Path to Anaconda with Python 3.7.1
+
+Difference between modules https://stackoverflow.com/questions/4001577/difference-between-random-draws-from-scipy-stats-rvs-and-numpy-random
+
 ```{python, engine.path = "~/anaconda3/bin/python"}
 import numpy as np 
 import scipy as sp
+import scipy.stats as stats
 import pandas as pa
-np.random.seed(123)
 n = 10000
 lam = 0.5
+
+## using scipy random
+np.random.seed(123)
 s = sp.random.poisson(lam = lam, size = n)
+print("Random using scipy.random")
 print(pa.Series(s).value_counts())
+
+## using scipy.stats
+np.random.seed(123)
+s1 = stats.poisson.rvs(mu = lam, size = n)
+print("\n\nRandom using scipy.stats")
+print(pa.Series(s1).value_counts())
+
+
+## using numpy
+np.random.seed(123)
+print("\n\nRandom using numpy.random")
+s2 = np.random.poisson(lam = lam, size = n)
+print(pa.Series(s2).value_counts())
+
+
 ```
-
-
 
 ## Julia
 
