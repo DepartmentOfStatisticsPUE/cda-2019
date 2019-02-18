@@ -171,7 +171,7 @@ cut(1:10, breaks = c(0,5,10), right = T)
 
 # Python
 
-TBA
+Categorical data can be handled by pandas (https://pandas.pydata.org/pandas-docs/stable/user_guide/categorical.html).
 
 # Julia
 
