@@ -1,0 +1,166 @@
+---
+title: "Handling categorical data in R"
+output: html_notebook
+---
+
+
+# R
+
+## Packages
+
+```{r}
+library(tidyverse)
+library(forcats)
+```
+
+## factors / characters
+
+We use `base::factor` function to create factor 
+
+```{r}
+data <- 1:10
+data_f <- as.factor(data)
+data_f
+```
+
+Using `base::levels` we get levels
+
+```{r}
+levels(data_f)
+```
+
+Now, create a factor with levels and labels defined
+
+```{r}
+f1 <- factor(x = c(1,2,3,1,2,3,-9), 
+             levels = c(1,2,3,-9, 0),
+             labels = c("Yes", "No", "Don't know", "N/A", "NULL"),
+             ordered = FALSE)
+f1
+```
+
+Note that `as.numeric` replaces original data!!! (no -9 values)
+
+```{r}
+as.numeric(f1)
+```
+
+Function `as.character` converts replaces numbers with labels.
+
+```{r}
+as.character(f1)
+```
+
+Using table
+
+```{r}
+table(f1)
+```
+
+To drop levels with 0 observations (not recommended for initial analysis) we can use `table(., exclude = "level")`
+
+```{r}
+table(f1, exclude = "NULL")
+```
+
+or `base::droplevels` function
+
+```{r}
+table(droplevels(f1))
+```
+
+or `xtabs(., drop.unused.levels = TRUE)`
+```{r}
+xtabs(~f1, drop.unused.levels = TRUE)
+```
+
+We can change the reference class (i.e. first level)  with `relevel` function.
+
+```{r}
+relevel(f1, ref = "No")
+```
+
+In R we can create an ordered factor (for ordered categorical data). 
+
+```{r}
+f2 <- factor(x = mtcars$cyl,
+             levels = c(4, 6, 8),
+             labels = c("Small", "Medium", "Big"),
+             ordered = TRUE)
+
+f2
+```
+
+Note `<` symbols in `levels`.
+
+
+## other packages
+
+### haven
+
+```{r}
+x <- labelled(x = c(1, 2, 1, 2, 10, 9), labels = c(Unknown = 9, Refused = 10))
+x
+```
+
+```{r}
+as.numeric(x)
+```
+
+```{r}
+as_factor(x)
+```
+
+### forcats
+
+Main functions
+
++ `fct_reorder()`: Reordering a factor by another variable.
++ `fct_infreq()`: Reordering a factor by the frequency of values.
++ `fct_relevel()`: Changing the order of a factor by hand.
++ `fct_lump()`: Collapsing the least/most frequent values of a factor into “other”.
+
+Other functions -- https://forcats.tidyverse.org/reference/index.html
+
+
+```{r}
+fct_inorder(f = f2, ordered = F) ## in orde of appearance
+```
+
+```{r}
+fct_infreq(f = f2, ordered = F) ## by frequency
+```
+
+```{r}
+fct_count(f2) ## frequency table (result: data.frame)
+```
+
+```{r}
+fct_lump(f2, n = 1, other_level = "other levels") ## aggregates based frequency
+```
+
+```{r}
+fct_collapse(f2,
+             other  = c("Big", "Medium"))
+
+```
+
+About missing levels
+
+```{r}
+f1 <- factor(c("a", "a", NA, NA, "a", "b", NA, "c", "a", "c", "b"))
+table(f1)
+
+f2 <- fct_explicit_na(f1, na_level = "Missing")
+table(f2)
+```
+
+
+### Further reading
+
+-- haven::labelled
+-- dplyr::recode
+-- expss -- https://cran.r-project.org/web/packages/expss/vignettes/labels-support.html
+
+
+
