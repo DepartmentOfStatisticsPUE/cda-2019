@@ -1,6 +1,9 @@
 ---
 title: "Handling categorical data in R"
-output: html_notebook
+output: 
+  html_notebook: 
+    number_sections: yes
+    toc: yes
 ---
 
 
@@ -155,12 +158,37 @@ f2 <- fct_explicit_na(f1, na_level = "Missing")
 table(f2)
 ```
 
+### Other useful functions
+
+
+```{r}
+cut(1:10, breaks = c(0,5,10), right = T)
+```
 
 ### Further reading
 
--- haven::labelled
--- dplyr::recode
 -- expss -- https://cran.r-project.org/web/packages/expss/vignettes/labels-support.html
+
+# Python
+
+TBA
+
+# Julia
+
+Julia contains CategoricalArrays package that enables working with factors
+
+```{julia, engine.path = "/Applications/Julia-1.0.app/Contents/Resources/julia/bin/julia"}
+using CategoricalArrays
+x = CategoricalArray(["Old", "Young", "Middle", "Young"], ordered=true)
+## or using  x = categorical(["Old", "Young", "Middle", "Young"], ordered=true)
+print(x)
+print(levels(x))
+```
+
+Other useful functions can be found http://juliadata.github.io/CategoricalArrays.jl/stable/using.html
+
+
+http://juliadata.github.io/CategoricalArrays.jl/stable/using.html
 
 
 
