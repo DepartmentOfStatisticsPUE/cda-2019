@@ -179,16 +179,15 @@ Julia contains CategoricalArrays package that enables working with factors
 
 ```{julia, engine.path = "/Applications/Julia-1.0.app/Contents/Resources/julia/bin/julia"}
 using CategoricalArrays
+using FreqTables
 x = CategoricalArray(["Old", "Young", "Middle", "Young"], ordered=true)
 ## or using  x = categorical(["Old", "Young", "Middle", "Young"], ordered=true)
 print(x)
 print(levels(x))
+show(freqtable(x))
 ```
 
 Other useful functions can be found http://juliadata.github.io/CategoricalArrays.jl/stable/using.html
-
-
-http://juliadata.github.io/CategoricalArrays.jl/stable/using.html
 
 
 
