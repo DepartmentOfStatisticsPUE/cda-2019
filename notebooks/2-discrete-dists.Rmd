@@ -1,0 +1,26 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+# Distributions
+
+## The Bernoulli distribution
+
+## The binomial distribution
+
+## The geometric distribution
+
+
+## The negative binomial distribution or Pascal distribution
+
+
+$$
+{\displaystyle f(k;r,p)\equiv \Pr(X=k)={\binom {r+k-1}{k}}p^{k}(1-p)^{r}}
+$$
+
+where $r$ is the number of failures, $k$ is the number of successes, and $p$ is the probability of success
+
+## The Poisson distribution
+
