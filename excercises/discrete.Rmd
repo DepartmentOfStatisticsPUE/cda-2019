@@ -10,13 +10,12 @@ output:
 
 ## Ex 1
 
-Koszykarz podczas treningu oddaje 10 rzutów za 3 punkty. Prawdopodobieństwo trafienia w~pojedynczym rzucie wynosi 0,4. Niech zmienna losowa $X$ przyjmuje wartości
-równe liczbie celnych rzutów.
+During trening basketball player throws 10 times for 3 points. Probability of success in single shot is 0.4. Let $X$ be random variable denoting number of accurate throw.
 
-+ Znajdź rozkład zmiennej losowej $X$.
-+ Sporządź wykres rozkładu prawdopodobieństwa zmiennej losowej $X$.
-+ Oblicz prawdopodobieństwo, że koszykarz trafi dokładnie 6 razy za 3 punkty.
-+ Oblicz prawdopodobieństwo, że koszykarz odda co najwyżej 3 celne rzuty za 3 punkty.
++ Find the distribution of $X$.
++ Create a plot for the distribution of  $X$.
++ Find probability that the player throws exactly 6 times
++ Find probability that the player throws at most 3 times
 
 ### Solutions -- R
 
@@ -33,7 +32,7 @@ dbinom(x = 6, n, p)
 pbinom(3,n,p)
 ```
 
-### Solutions -- python
+### Solutions -- Python
 
 ```{python, engine.path = "~/anaconda3/bin/python"}
 import numpy as np 
@@ -145,8 +144,7 @@ W~pewnym towarzystwie ubezpieczeniowym 5\% wszystkich zgłaszanych szkód stanow
 
 ## Ex 1
 
-W~pewnym salonie Opla sprzedaje się w~ciągu miesiąca średnio 5 samochodów tej marki. Jakie jest prawdopodobieństwo, że w~miesiącu sprzedane będą co najwyżej 2 auta
- 
+A car salesman sales on average 5 cars. What is the probability that this dealer will sale at most 2 cars?
 
 ### Solutions -- R
 
