@@ -1,0 +1,217 @@
+---
+title: "Excercises for Bernouli, Binomial and Poisson distribution"
+author: "Marcin Szymkowiak and Maciej Beręsewicz"
+output: 
+  html_notebook: 
+    toc: yes
+---
+
+# Bernoulli / Binomial distribution
+
+## Ex 1
+
+Koszykarz podczas treningu oddaje 10 rzutów za 3 punkty. Prawdopodobieństwo trafienia w~pojedynczym rzucie wynosi 0,4. Niech zmienna losowa $X$ przyjmuje wartości
+równe liczbie celnych rzutów.
+
++ Znajdź rozkład zmiennej losowej $X$.
++ Sporządź wykres rozkładu prawdopodobieństwa zmiennej losowej $X$.
++ Oblicz prawdopodobieństwo, że koszykarz trafi dokładnie 6 razy za 3 punkty.
++ Oblicz prawdopodobieństwo, że koszykarz odda co najwyżej 3 celne rzuty za 3 punkty.
+
+
+```{r}
+p <- 0.4
+n <- 10
+## pt 1 
+dbinom(x = 0:n, n, prob = p)  ## pdf
+## pt 2
+barplot(dbinom(x = 0:n, n, prob = p))
+## pt 3
+dbinom(x = 6, n, p)
+## pt 4
+pbinom(3,n,p)
+```
+
+```{python, engine.path = "~/anaconda3/bin/python"}
+import numpy as np 
+import scipy.stats as stats
+import matplotlib.pyplot as plot
+n, p = 10, 0.4 ## n=10, p=0.4
+# pt 1
+a = stats.binom.pmf(k = np.arange(0,n+1), n=n, p=p)
+print(a)
+# pt 2
+plot.bar(x = np.arange(0,n+1), height = a)
+# plot.show() -- to see the plot
+# pt 3 
+c = stats.binom.pmf(k = 6, n=n, p=p)
+print(c)
+# pt 4
+d = stats.binom.cdf(k = 3, n=n, p=p)
+print(d)
+
+```
+
+```{julia, engine.path = "/Applications/Julia-1.0.app/Contents/Resources/julia/bin/julia"}
+using Distributions ## for distributions
+n, p = 10, 0.4;
+# pt  1
+a = pdf.(Binomial(n, p), 0:n) ## we need to use pdf. instead of pdf because 0:n is vector
+print(a)
+# pt 2
+
+# pt 3
+c = pdf(Binomial(n, p), 6)
+print(c)
+# pt 4
+c = cdf(Binomial(n, p), 3) 
+print(c)
+```
+
+
+## Ex 2
+
+Strzelec oddaje 5 strzałów do tarczy. Prawdopodobieństwo trafienia w~pojedynczym strzale wynosi 0,8. Niech zmienna losowa $X$ przyjmuje wartości równe liczbie celnych strzałów.
+
+
++ Znajdź rozkład zmiennej losowej $X$.
++ Sporządź wykres rozkładu prawdopodobieństwa zmiennej losowej $X$.
++ Oblicz prawdopodobieństwo, że strzelec trafi dokładnie 4 razy w~tarczę.
++ Oblicz prawdopodobieństwo, że strzelec trafi w~tarczę co najwyżej 3 razy.
++ Oblicz prawdopodobieństwo, że strzelec trafi w~tarczę co najmniej 2 razy.
+
+## Ex 3
+
+Rodzina pragnie mieć 3 dzieci. Zakładając niezależność zdarzeń oraz przyjmując, że prawdopodobieństwo urodzenia się dziewczynki
+wynosi 0,483 wyznacz rozkład prawdopodobieństwa zmiennej losowej zdefiniowanej jako liczba chłopców wśród 3 urodzonych w tej rodzinie dzieci. Oblicz wartość oczekiwaną oraz wariancję tej zmiennej losowej. 
+
+## Ex 4
+
+Załóżmy, że pewna zmienna losowa $X$ ma rozkład dwumianowy z~prawdopodobieństwem sukcesu $p=0.6$. Sporządź wykres rozkładu prawdopodobieństwa zmiennej losowej $X$ w~zależności od liczby doświadczeń $n$. Przyjmij następujące wartości: $n=5,10,15,20$. 
+
+## Ex 5
+
+W~urnie znajduje się pięć kul białych i~dwie czarne. Losujemy ze zwracaniem trzy razy po jednej kuli. Podać rozkład prawdopodobieństwa
+liczby wylosowanych kul białych i~obliczyć parametry tego rozkładu. 
+
+## Ex 6
+
+W~firmie produkującej okna pracownik obsługuje 5 maszyn wytwarzających pewien element. Prawdopodobieństwo, że w~ciągu dnia maszyna nie będzie wymagać naprawy wynosi 0,9. Maszyny pracują niezależnie od siebie.
+
++ Wyznaczyć rozkład prawdopodobieństwa liczby maszyn, które w~ciągu dnia ich pracy wymagać będą naprawy.
++ Sporządź wykres rozkładu prawdopodobieństwa tej zmiennej.
++ Obliczyć prawdopodobieństwo, że dokładnie 2 maszyny w~ciągu dnia wymagać będą naprawy.
++ Obliczyć prawdopodobieństwo, że co najwyżej 2 maszyny w~ciągu dnia wymagać będą naprawy.
++ Obliczyć prawdopodobieństwo, że mniej niż 2 maszyny w~ciągu dnia wymagać będą naprawy.
+
+## Ex 7
+
+W~pewnej dużej firmie w~dziale księgowości pracuje 5 osób. Prawdopodobieństwo nieprzyjścia do pracy na skutek choroby każdej z~nich wynosi 0.1 Obliczyć prawdopodobieństwo tego że:
+
++ wszystkie osoby przyjdą do pracy.
++ trzy osoby nie przyjdą do pracy.
++ więcej niż dwie osoby nie przyjdą do pracy.
+
+## Ex 8
+
+W~partii 100 żarówek 10 jest wadliwych. Kontroler jakości pobiera w~sposób niezależny $n=8$ żarówek.
+
++ Znaleźć rozkład zmiennej losowej $X$ przyjmującej wartości równe liczbie wylosowanych wadliwych żarówek.
++ Obliczyć $P(2<X\leq5)$.
++ Obliczyć $P(X<4)$.
++ Sporządź wykres rozkładu prawdopodobieństwa tej zmiennej.
+
+## Ex 9
+
+Wiadomo, że dla pewnej zmiennej losowej $X$
+
+$$
+P\left(X=k\right)={6 \choose k}\cdot p^{k}\cdot \left(1-p\right)^{6-k},\quad k=0,1,\ldots,6,\quad p=0.2.
+$$
+
+Przedstawić rozkład tej zmiennej graficznie, obliczyć $P\left(X\geq3\right)$ i~$P\left(X=2\right)$. Obliczyć wartość oczekiwaną, wariancję oraz odchylenie standardowe zmiennej losowej $X$. 
+
+## Ex 10
+
+W~pewnym towarzystwie ubezpieczeniowym 5\% wszystkich zgłaszanych szkód stanowią wypadki samochodowe. Jakie jest prawdopodobieństwo, że wśród zgłoszonych 15 szkód liczba wypadków samochodowych będzie większa niż 3.
+
+
+# Poisson distribution
+
+## Ex 1
+
+W~pewnym salonie Opla sprzedaje się w~ciągu miesiąca średnio 5 samochodów tej marki. Jakie jest prawdopodobieństwo, że w~miesiącu sprzedane będą co najwyżej
+
+
+## Ex 2
+
+Liczbę dni opuszczonych przez studentów w listopadzie w~wylosowanej próbie 250 studentów charakteryzuje poniższy szereg rozdzielczy:
+
+\begin{center}
+\begin{tabular}{|c|c|} \hline
+\textbf{Liczba} &\multicolumn{1}{c|}{\textbf{Liczba}}\\
+\textbf{opuszczonych dni}&\multicolumn{1}{c|}{\textbf{studentów}}\\
+$x_{i}$ &\multicolumn{1}{c|}{$n_{i}$}\\\hline
+0 & \ 30 \\
+1 & 110 \\
+2 &  \ 50 \\
+3 &  \ 40 \\
+4 &  \ 15 \\
+5 &   \ \ 5  \\ \hline
+\textbf{Razem}&\textbf{250}\\\hline
+\end{tabular}
+\end{center}
+
+
++ Zakładając, że liczba dni opuszczonych na uczelni w~ciągu miesiąca podlega rozkładowi Poissona, ustal liczebności teoretyczne.
++ Oblicz prawdopodobieństwo, że studenci opuszczają minimum dwa dni, a~maksimum 4 dni zajęć.
+
+## Ex 3
+
+Pewien młody matematyk piszący swoje artykuły w~programie LaTeX  stwierdził, że popełnia średnio 4 literówki na jedną stronę. Wybieramy losowo jedną z~wielu stron napisanych przez tego matematyka. Jakie jest prawdopodobieństwo, że znajdziemy na niej co najwyżej 3 błędy.  
+
+
+## Ex 4
+
+Zmienna losowa $X$ ma rozkład Poissona z~wartością oczekiwaną równą 3. Wyznaczyć $P\left(X \leq 6\right)$ oraz $P\left(X \geq 3\right)$. 
+
+## Ex 5
+
+Dla pewnej zmiennej losowej $X$ o~rozkładzie Poissona zachodzi warunek $P\left(X=0\right)=0.2$. Znaleźć parametry rozkładu tej zmiennej.
+
+## Ex 6
+
+mienna losowa $X$ ma rozkład określony według następującej funkcji:
+
+$$
+P\left(X=k\right)=\frac{e^{-4}\cdot 4^{k}}{k!}, \quad k=0,1,\ldots
+$$
+
+
+Wyznaczyć wartość oczekiwaną i~odchylenie standardowe tak zdefiniowanej zmiennej losowej oraz wyznaczyć prawdopodobieństwo, że zmienna losowa:
+
++ przyjmie wartość równą 1;
++ przyjmie wartość nie większą niż 3;
++ przyjmie wartość powyżej 5.
+
+## Ex 7
+
+Liczba wypadków samochodowych w~ciągu dnia w~pewnym mieście ma rozkład Poissona o~wartości oczekiwanej wynoszącej $\lambda=2$. Znaleźć prawdopodobieństwo, że w~ciągu dnia w~ty mieście będą miały miejsce co najwyżej 4 wypadki samochodowe.
+
+## Ex 8
+
+Zmienna losowa $X$ ma rozkład Poissona, przy czym $\lambda=4$. Obliczyć:
+
++ $P\left(X<3\right)$.
++ $P\left(X>5\right)$.
++ $P\left(X=2\right)$.
+
+## Ex 9
+
+W~skład pewnej skomplikowanej aparatury wchodzi 150 elementów określonego rodzaju. Prawdopodobieństwo uszkodzenia w~ciągu roku każdego z~tych elementów jest równe 0,004 i ~nie zależy od stanu pozostałych elementów. Obliczyć prawdopodobieństwo uszkodzenia w~ciągu roku nie mniej niż dwóch elementów.  
+
+## Ex 10
+
+Załóżmy, że pewna zmienna losowa $X$ ma rozkład Poissona z~parametrem $\lambda$. Sporządź wykres rozkładu prawdopodobieństwa zmiennej losowej $X$ w~zależności od wartości parametru $\lambda$. Przyjmij $\lambda=2,5,8,10$.
+
+

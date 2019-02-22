@@ -43,3 +43,4 @@ pis = [pi1 ; pi2 ; pi3] ## use vcat
 res  = rand(Multinomial(n, pis))
 print(res)
 print([n₁; n₂; n₃])
+   
