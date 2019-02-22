@@ -145,8 +145,33 @@ W~pewnym towarzystwie ubezpieczeniowym 5\% wszystkich zgłaszanych szkód stanow
 
 ## Ex 1
 
-W~pewnym salonie Opla sprzedaje się w~ciągu miesiąca średnio 5 samochodów tej marki. Jakie jest prawdopodobieństwo, że w~miesiącu sprzedane będą co najwyżej
+W~pewnym salonie Opla sprzedaje się w~ciągu miesiąca średnio 5 samochodów tej marki. Jakie jest prawdopodobieństwo, że w~miesiącu sprzedane będą co najwyżej 2 auta
+ 
 
+### Solutions -- R
+
+```{r}
+lambda = 5
+ppois(q = 2, lambda = 5)
+```
+
+### Solutions -- Python
+
+```{python, engine.path = "~/anaconda3/bin/python"}
+import scipy.stats as stats
+lam = 5
+res = stats.poisson.cdf(2, lam)
+print(res)
+```
+
+### Solutions -- Julia
+
+```{julia, engine.path = "/Applications/Julia-1.0.app/Contents/Resources/julia/bin/julia"}
+using Distributions
+lambda = 5
+a = cdf(Poisson(lambda), 2)
+print(a)
+```
 
 ## Ex 2
 
