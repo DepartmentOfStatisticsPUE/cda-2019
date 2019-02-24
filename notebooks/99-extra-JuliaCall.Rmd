@@ -1,0 +1,33 @@
+---
+title: "Short notebook on using Julia in R Notebook"
+output: html_notebook
+---
+
+Install and run JuliaCall library (see more on https://non-contradiction.github.io/JuliaCall/)
+
+```{r}
+library(JuliaCall)
+```
+
+Setup Julia and provide appropriate directory
+
+```{r}
+julia_setup(JULIA_HOME = "/Applications/Julia-1.0.app/Contents/Resources/julia/bin/")
+```
+
+Run Julia scripts using `julia_*` functions. These functions will allow to use results from Julia in R. 
+
+
+```{r}
+julia_library("Distributions")
+julia_command("lambda = 5;")
+julia_command("a = cdf(Poisson(lambda), 2);")
+julia_eval("a")
+```
+
+```{r}
+julia_command("randoms = rand(Poisson(lambda), 10000);")
+res <- julia_eval("randoms")
+table(res)
+```
+

@@ -6,11 +6,16 @@ output:
     toc: yes
 ---
 
+```{r setup, include=FALSE}
+library(JuliaCall)
+julia_setup(JULIA_HOME = "/Applications/Julia-1.0.app/Contents/Resources/julia/bin/")
+```
+
 # Bernoulli / Binomial distribution
 
 ## Ex 1
 
-During trening basketball player throws 10 times for 3 points. Probability of success in single shot is 0.4. Let $X$ be random variable denoting number of accurate throw.
+During trening basketball player throws 10 times for 3 points. Probability of success in a single shot is 0.4. Let $X$ be random variable denoting number of accurate throw.
 
 + Find the distribution of $X$.
 + Create a plot for the distribution of  $X$.
@@ -75,8 +80,7 @@ print(c)
 
 ## Ex 2
 
-
-Strzelec oddaje 5 strzałów do tarczy. Prawdopodobieństwo trafienia w~pojedynczym strzale wynosi 0,8. Niech zmienna losowa $X$ przyjmuje wartości równe liczbie celnych strzałów.
+Shooter fires 5 shots at the target. Probability of hit in a single shot equals 0.8. Let $X$ be the random variable denotes numer of hits (successes), then
 
 
 + Find the distribution of random variable $X$.
