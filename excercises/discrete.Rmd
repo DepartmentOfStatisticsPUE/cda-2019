@@ -29,7 +29,7 @@ barplot(dbinom(x = 0:n, n, prob = p))
 ## pt 3
 dbinom(x = 6, n, p)
 ## pt 4
-pbinom(3,n,p)
+pbinom(3,n,p) 
 ```
 
 ### Solutions -- Python
@@ -75,23 +75,50 @@ print(c)
 
 ## Ex 2
 
+
 Strzelec oddaje 5 strzałów do tarczy. Prawdopodobieństwo trafienia w~pojedynczym strzale wynosi 0,8. Niech zmienna losowa $X$ przyjmuje wartości równe liczbie celnych strzałów.
 
 
-+ Znajdź rozkład zmiennej losowej $X$.
-+ Sporządź wykres rozkładu prawdopodobieństwa zmiennej losowej $X$.
-+ Oblicz prawdopodobieństwo, że strzelec trafi dokładnie 4 razy w~tarczę.
-+ Oblicz prawdopodobieństwo, że strzelec trafi w~tarczę co najwyżej 3 razy.
-+ Oblicz prawdopodobieństwo, że strzelec trafi w~tarczę co najmniej 2 razy.
++ Find the distribution of random variable $X$.
++ Create a plot of the distribution of $X$.
++ Find the probability that archerer will hit exactly 4 times
++ Find the probability that archerer will hit exactly at most 3 times
++ Find the probability that archerer will hit exactly at least 2 times
 
 ## Ex 3
 
-Rodzina pragnie mieć 3 dzieci. Zakładając niezależność zdarzeń oraz przyjmując, że prawdopodobieństwo urodzenia się dziewczynki
-wynosi 0,483 wyznacz rozkład prawdopodobieństwa zmiennej losowej zdefiniowanej jako liczba chłopców wśród 3 urodzonych w tej rodzinie dzieci. Oblicz wartość oczekiwaną oraz wariancję tej zmiennej losowej. 
+Some family plans to have 3 children. Assuming that there is no correlation between birth of girl and boy, probability of having a girl equals 0.483. Find the distribution of random variable defined as number of boys in 3 children in this family. Calculate expected value and variance.
+
 
 ## Ex 4
 
-Załóżmy, że pewna zmienna losowa $X$ ma rozkład dwumianowy z~prawdopodobieństwem sukcesu $p=0.6$. Sporządź wykres rozkładu prawdopodobieństwa zmiennej losowej $X$ w~zależności od liczby doświadczeń $n$. Przyjmij następujące wartości: $n=5,10,15,20$. 
+Assume that, random variable $X$ follows binomial distribution with probability of success $p=0.6$. Create a plot assuming that number of trials $n$ equals to $5,10,15,20$.
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+
+expand.grid(0:20, c(5,10,15,20)) %>%
+  #filter(Var1 <= Var2) %>%
+  mutate(pdf = dbinom(x = Var1, size = Var2, p = 0.6),
+         Var2 = factor(Var2)) %>%
+  ggplot(data = .,
+         aes(x = Var1, 
+             y = pdf,
+             color = Var2,
+             group = Var2)) +
+  geom_line() +
+  geom_point() +
+  #geom_col() +
+  theme_bw() + 
+  labs(x = "Number of successes",
+       y = "Probability") +
+  scale_color_brewer(name  = "Number of trials",
+                     type = "qual",
+                     palette = "Set1")
+  
+```
+
 
 ## Ex 5
 

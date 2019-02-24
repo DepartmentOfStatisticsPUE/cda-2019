@@ -24,3 +24,11 @@ where $r$ is the number of failures, $k$ is the number of successes, and $p$ is 
 
 ## The Poisson distribution
 
+# Software
+
+Language & R & Python & Julia \\
+Package/module & -- & scipy.stats & Distributions \\
+Density & d<name>() & <name>.pmf() & pdf(<name>)\\
+Cumulative & p<name>() & <name>.cdf() & cdf(<name>) \\
+Quantile & q<name>() & <name>.ppf() & quantile(<name>) \\
+Random & r<name>() & <name>.rvs() & rand(<name>) 

@@ -7,7 +7,31 @@ output: html_notebook
 
 Caution: In general it is rather impossible to get the same values of pseudorandom variables even when setting the same seed and EVEN the same method (all packages uses Mersenne Twister method).
 
+## General note
+
+All random generators use Mersenne-Twister method however specifying the same seed does not allow to reproduce results between languages. 
+
 ## R
+
+Setup the random number generator
+
++ base::RNGkind -- function to choose random number generator (default is "Mersenne-Twister").
+
+
+Generate random variables from given distrubtion.
+
+
+```{r}
+set.seed(123)
+n <- 10000
+p <- 0.8
+m <- rbinom(n = n, size = 1, prob = p)
+table(m)
+
+m <- rbinom(n = n, size = 10, prob = p)
+table(m)
+```
+
 
 ```{r}
 set.seed(123)

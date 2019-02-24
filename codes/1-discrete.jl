@@ -13,6 +13,7 @@ cdf.(Binomial(n,p),(0:10))
 ## poisson
 # Zadanie 11. W pewnym salonie Opla sprzedaje się w ciągu miesiąca średnio 5 samochodów tej marki. Jakie jest prawdopodobieństwo, że w miesiącu sprzedane będą co najwyżej 2 auta.
 λ=5
+
 pdf(Poisson(λ),2)
 
 ## wektorowo
@@ -43,4 +44,3 @@ pis = [pi1 ; pi2 ; pi3] ## use vcat
 res  = rand(Multinomial(n, pis))
 print(res)
 print([n₁; n₂; n₃])
-   

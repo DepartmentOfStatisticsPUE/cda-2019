@@ -1765,8 +1765,42 @@ $(document).ready(function () {
 <div id="generate-poisson-data-in-three-languages" class="section level1">
 <h1>Generate Poisson data in three languages</h1>
 <p>Caution: In general it is rather impossible to get the same values of pseudorandom variables even when setting the same seed and EVEN the same method (all packages uses Mersenne Twister method).</p>
+<div id="general-note" class="section level2">
+<h2>General note</h2>
+<p>All random generators use Mersenne-Twister method however specifying the same seed does not allow to reproduce results between languages.</p>
+</div>
 <div id="r" class="section level2">
 <h2>R</h2>
+<p>Setup the random number generator</p>
+<ul>
+<li>base::RNGkind – function to choose random number generator (default is “Mersenne-Twister”).</li>
+</ul>
+<p>Generate random variables from given distrubtion.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2V0LnNlZWQoMTIzKVxubiA8LSAxMDAwMFxucCA8LSAwLjhcbm0gPC0gcmJpbm9tKG4gPSBuLCBzaXplID0gMSwgcHJvYiA9IHApXG50YWJsZShtKVxuYGBgIn0= -->
+<pre class="r"><code>set.seed(123)
+n &lt;- 10000
+p &lt;- 0.8
+m &lt;- rbinom(n = n, size = 1, prob = p)
+table(m)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoibVxuICAgMCAgICAxIFxuMTk0OSA4MDUxIFxuIn0= -->
+<pre><code>m
+   0    1 
+1949 8051 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubSA8LSByYmlub20obiA9IG4sIHNpemUgPSAxMCwgcHJvYiA9IHApXG50YWJsZShtKVxuYGBgIn0= -->
+<pre class="r"><code>m &lt;- rbinom(n = n, size = 10, prob = p)
+table(m)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoibVxuICAgMiAgICAzICAgIDQgICAgNSAgICA2ICAgIDcgICAgOCAgICA5ICAgMTAgXG4gICAxICAgIDQgICA0MSAgMjg2ICA4MTEgMjA1NiAzMDE0IDI2OTkgMTA4OCBcbiJ9 -->
+<pre><code>m
+   2    3    4    5    6    7    8    9   10 
+   1    4   41  286  811 2056 3014 2699 1088 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2V0LnNlZWQoMTIzKVxubiA8LSAxMDAwMFxubGFtYmRhIDwtIDAuNVxubSA8LSBycG9pcyhuID0gbiwgbGFtYmRhID0gbGFtYmRhKVxudGFibGUobSlcbmBgYCJ9 -->
@@ -1776,11 +1810,6 @@ lambda &lt;- 0.5
 m &lt;- rpois(n = n, lambda = lambda)
 table(m)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoibVxuICAgMCAgICAxICAgIDIgICAgMyAgICA0ICAgIDUgXG42MDk2IDMwNTYgIDcwMyAgMTI3ICAgMTcgICAgMSBcbiJ9 -->
-<pre><code>m
-   0    1    2    3    4    5 
-6096 3056  703  127   17    1 </code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
@@ -1796,11 +1825,11 @@ table(m)</code></pre>
 </ul>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgcHl0aG9uXG5pbXBvcnQgbnVtcHkgYXMgbnAgXG5pbXBvcnQgc2NpcHkgYXMgc3BcbmltcG9ydCBzY2lweS5zdGF0cyBhcyBzdGF0c1xuaW1wb3J0IHBhbmRhcyBhcyBwYVxubiA9IDEwMDAwXG5sYW0gPSAwLjVcblxuIyMgdXNpbmcgc2NpcHkgcmFuZG9tXG5ucC5yYW5kb20uc2VlZCgxMjMpXG5zID0gc3AucmFuZG9tLnBvaXNzb24obGFtID0gbGFtLCBzaXplID0gbilcbnByaW50KFwiUmFuZG9tIHVzaW5nIHNjaXB5LnJhbmRvbVwiKVxucHJpbnQocGEuU2VyaWVzKHMpLnZhbHVlX2NvdW50cygpKVxuXG4jIyB1c2luZyBzY2lweS5zdGF0c1xubnAucmFuZG9tLnNlZWQoMTIzKVxuczEgPSBzdGF0cy5wb2lzc29uLnJ2cyhtdSA9IGxhbSwgc2l6ZSA9IG4pXG5wcmludChcIlxcblxcblJhbmRvbSB1c2luZyBzY2lweS5zdGF0c1wiKVxucHJpbnQocGEuU2VyaWVzKHMxKS52YWx1ZV9jb3VudHMoKSlcblxuXG4jIyB1c2luZyBudW1weVxubnAucmFuZG9tLnNlZWQoMTIzKVxucHJpbnQoXCJcXG5cXG5SYW5kb20gdXNpbmcgbnVtcHkucmFuZG9tXCIpXG5zMiA9IG5wLnJhbmRvbS5wb2lzc29uKGxhbSA9IGxhbSwgc2l6ZSA9IG4pXG5wcmludChwYS5TZXJpZXMoczIpLnZhbHVlX2NvdW50cygpKVxuXG5cbmBgYCJ9 -->
-<pre class="python"><code>import numpy as np 
-import scipy as sp
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgcHl0aG9uXG5pbXBvcnQgbnVtcHkgYXMgbnAgIyMgbnVtZXJpY2FsIFxuaW1wb3J0IHNjaXB5IGFzIHNwICMjIHNjaWVudGlmaWMgXG5pbXBvcnQgc2NpcHkuc3RhdHMgYXMgc3RhdHNcbmltcG9ydCBwYW5kYXMgYXMgcGEgIyMgZGF0YSBwcm9jZXNzaW5nXG5uID0gMTAwMDBcbmxhbSA9IDAuNVxuXG4jIyB1c2luZyBzY2lweSByYW5kb21cbm5wLnJhbmRvbS5zZWVkKDEyMylcbnMgPSBzcC5yYW5kb20ucG9pc3NvbihsYW0gPSBsYW0sIHNpemUgPSBuKVxucHJpbnQoXCJSYW5kb20gdXNpbmcgc2NpcHkucmFuZG9tXCIpXG5wcmludChwYS5TZXJpZXMocykudmFsdWVfY291bnRzKCkpXG5cbiMjIHVzaW5nIHNjaXB5LnN0YXRzXG5ucC5yYW5kb20uc2VlZCgxMjMpXG5zMSA9IHN0YXRzLnBvaXNzb24ucnZzKG11ID0gbGFtLCBzaXplID0gbilcbnByaW50KFwiXFxuXFxuUmFuZG9tIHVzaW5nIHNjaXB5LnN0YXRzXCIpXG5wcmludChwYS5TZXJpZXMoczEpLnZhbHVlX2NvdW50cygpKVxuXG5cbiMjIHVzaW5nIG51bXB5XG5ucC5yYW5kb20uc2VlZCgxMjMpXG5wcmludChcIlxcblxcblJhbmRvbSB1c2luZyBudW1weS5yYW5kb21cIilcbnMyID0gbnAucmFuZG9tLnBvaXNzb24obGFtID0gbGFtLCBzaXplID0gbilcbnByaW50KHBhLlNlcmllcyhzMikudmFsdWVfY291bnRzKCkpXG5cblxuYGBgIn0= -->
+<pre class="python"><code>import numpy as np ## numerical 
+import scipy as sp ## scientific 
 import scipy.stats as stats
-import pandas as pa
+import pandas as pa ## data processing
 n = 10000
 lam = 0.5
 
@@ -1889,7 +1918,7 @@ Dim1  │
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKIyBHZW5lcmF0ZSBQb2lzc29uIGRhdGEgaW4gdGhyZWUgbGFuZ3VhZ2VzIAoKQ2F1dGlvbjogSW4gZ2VuZXJhbCBpdCBpcyByYXRoZXIgaW1wb3NzaWJsZSB0byBnZXQgdGhlIHNhbWUgdmFsdWVzIG9mIHBzZXVkb3JhbmRvbSB2YXJpYWJsZXMgZXZlbiB3aGVuIHNldHRpbmcgdGhlIHNhbWUgc2VlZCBhbmQgRVZFTiB0aGUgc2FtZSBtZXRob2QgKGFsbCBwYWNrYWdlcyB1c2VzIE1lcnNlbm5lIFR3aXN0ZXIgbWV0aG9kKS4KCiMjIFIKCmBgYHtyfQpzZXQuc2VlZCgxMjMpCm4gPC0gMTAwMDAKbGFtYmRhIDwtIDAuNQptIDwtIHJwb2lzKG4gPSBuLCBsYW1iZGEgPSBsYW1iZGEpCnRhYmxlKG0pCmBgYAoKIyMgUHl0aG9uCgpQYXRoIHRvIEFuYWNvbmRhIHdpdGggUHl0aG9uIDMuNy4xCgpEaWZmZXJlbmNlIGJldHdlZW4gbW9kdWxlcyBodHRwczovL3N0YWNrb3ZlcmZsb3cuY29tL3F1ZXN0aW9ucy80MDAxNTc3L2RpZmZlcmVuY2UtYmV0d2Vlbi1yYW5kb20tZHJhd3MtZnJvbS1zY2lweS1zdGF0cy1ydnMtYW5kLW51bXB5LXJhbmRvbQoKV2UgdXNlIHRoZSBmb2xsb3dpbmcgcGFja2FnZXMKCi0gbnVtcHkgLS0gaHR0cDovL3d3dy5udW1weS5vcmcvCi0gc2NpcHkgLS0gaHR0cHM6Ly93d3cuc2NpcHkub3JnLwotIHBhbmRhcyAtLSBodHRwOi8vcGFuZGFzLnB5ZGF0YS5vcmcvCgpgYGB7cHl0aG9uLCBlbmdpbmUucGF0aCA9ICJ+L2FuYWNvbmRhMy9iaW4vcHl0aG9uIn0KaW1wb3J0IG51bXB5IGFzIG5wICMjIG51bWVyaWNhbCAKaW1wb3J0IHNjaXB5IGFzIHNwICMjIHNjaWVudGlmaWMgCmltcG9ydCBzY2lweS5zdGF0cyBhcyBzdGF0cwppbXBvcnQgcGFuZGFzIGFzIHBhICMjIGRhdGEgcHJvY2Vzc2luZwpuID0gMTAwMDAKbGFtID0gMC41CgojIyB1c2luZyBzY2lweSByYW5kb20KbnAucmFuZG9tLnNlZWQoMTIzKQpzID0gc3AucmFuZG9tLnBvaXNzb24obGFtID0gbGFtLCBzaXplID0gbikKcHJpbnQoIlJhbmRvbSB1c2luZyBzY2lweS5yYW5kb20iKQpwcmludChwYS5TZXJpZXMocykudmFsdWVfY291bnRzKCkpCgojIyB1c2luZyBzY2lweS5zdGF0cwpucC5yYW5kb20uc2VlZCgxMjMpCnMxID0gc3RhdHMucG9pc3Nvbi5ydnMobXUgPSBsYW0sIHNpemUgPSBuKQpwcmludCgiXG5cblJhbmRvbSB1c2luZyBzY2lweS5zdGF0cyIpCnByaW50KHBhLlNlcmllcyhzMSkudmFsdWVfY291bnRzKCkpCgoKIyMgdXNpbmcgbnVtcHkKbnAucmFuZG9tLnNlZWQoMTIzKQpwcmludCgiXG5cblJhbmRvbSB1c2luZyBudW1weS5yYW5kb20iKQpzMiA9IG5wLnJhbmRvbS5wb2lzc29uKGxhbSA9IGxhbSwgc2l6ZSA9IG4pCnByaW50KHBhLlNlcmllcyhzMikudmFsdWVfY291bnRzKCkpCgoKYGBgCgojIyBKdWxpYQoKUGF0aCB0byBKdWxpYSBAIG1hY09TIAoKYGBge2p1bGlhLCBlbmdpbmUucGF0aCA9ICIvQXBwbGljYXRpb25zL0p1bGlhLTEuMC5hcHAvQ29udGVudHMvUmVzb3VyY2VzL2p1bGlhL2Jpbi9qdWxpYSJ9CnVzaW5nIERpc3RyaWJ1dGlvbnMgIyMgZm9yIGRpc3RyaWJ1dGlvbnMKdXNpbmcgUmFuZG9tCnVzaW5nIEZyZXFUYWJsZXMKUmFuZG9tLnNlZWQhKDEyMzQpOwpuID0gMTAwMDAKbGFtYmRhID0gMC41Cm0gPSByYW5kKFBvaXNzb24obGFtYmRhKSwgbik7CnNob3coZnJlcXRhYmxlKG0pKQpgYGAKCg==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKIyBHZW5lcmF0ZSBQb2lzc29uIGRhdGEgaW4gdGhyZWUgbGFuZ3VhZ2VzIAoKQ2F1dGlvbjogSW4gZ2VuZXJhbCBpdCBpcyByYXRoZXIgaW1wb3NzaWJsZSB0byBnZXQgdGhlIHNhbWUgdmFsdWVzIG9mIHBzZXVkb3JhbmRvbSB2YXJpYWJsZXMgZXZlbiB3aGVuIHNldHRpbmcgdGhlIHNhbWUgc2VlZCBhbmQgRVZFTiB0aGUgc2FtZSBtZXRob2QgKGFsbCBwYWNrYWdlcyB1c2VzIE1lcnNlbm5lIFR3aXN0ZXIgbWV0aG9kKS4KCiMjIEdlbmVyYWwgbm90ZQoKQWxsIHJhbmRvbSBnZW5lcmF0b3JzIHVzZSBNZXJzZW5uZS1Ud2lzdGVyIG1ldGhvZCBob3dldmVyIHNwZWNpZnlpbmcgdGhlIHNhbWUgc2VlZCBkb2VzIG5vdCBhbGxvdyB0byByZXByb2R1Y2UgcmVzdWx0cyBiZXR3ZWVuIGxhbmd1YWdlcy4gCgojIyBSCgpTZXR1cCB0aGUgcmFuZG9tIG51bWJlciBnZW5lcmF0b3IKCisgYmFzZTo6Uk5Ha2luZCAtLSBmdW5jdGlvbiB0byBjaG9vc2UgcmFuZG9tIG51bWJlciBnZW5lcmF0b3IgKGRlZmF1bHQgaXMgIk1lcnNlbm5lLVR3aXN0ZXIiKS4KCgpHZW5lcmF0ZSByYW5kb20gdmFyaWFibGVzIGZyb20gZ2l2ZW4gZGlzdHJ1YnRpb24uCgoKYGBge3J9CnNldC5zZWVkKDEyMykKbiA8LSAxMDAwMApwIDwtIDAuOAptIDwtIHJiaW5vbShuID0gbiwgc2l6ZSA9IDEsIHByb2IgPSBwKQp0YWJsZShtKQoKbSA8LSByYmlub20obiA9IG4sIHNpemUgPSAxMCwgcHJvYiA9IHApCnRhYmxlKG0pCmBgYAoKCmBgYHtyfQpzZXQuc2VlZCgxMjMpCm4gPC0gMTAwMDAKbGFtYmRhIDwtIDAuNQptIDwtIHJwb2lzKG4gPSBuLCBsYW1iZGEgPSBsYW1iZGEpCnRhYmxlKG0pCmBgYAoKIyMgUHl0aG9uCgpQYXRoIHRvIEFuYWNvbmRhIHdpdGggUHl0aG9uIDMuNy4xCgpEaWZmZXJlbmNlIGJldHdlZW4gbW9kdWxlcyBodHRwczovL3N0YWNrb3ZlcmZsb3cuY29tL3F1ZXN0aW9ucy80MDAxNTc3L2RpZmZlcmVuY2UtYmV0d2Vlbi1yYW5kb20tZHJhd3MtZnJvbS1zY2lweS1zdGF0cy1ydnMtYW5kLW51bXB5LXJhbmRvbQoKV2UgdXNlIHRoZSBmb2xsb3dpbmcgcGFja2FnZXMKCi0gbnVtcHkgLS0gaHR0cDovL3d3dy5udW1weS5vcmcvCi0gc2NpcHkgLS0gaHR0cHM6Ly93d3cuc2NpcHkub3JnLwotIHBhbmRhcyAtLSBodHRwOi8vcGFuZGFzLnB5ZGF0YS5vcmcvCgpgYGB7cHl0aG9uLCBlbmdpbmUucGF0aCA9ICJ+L2FuYWNvbmRhMy9iaW4vcHl0aG9uIn0KaW1wb3J0IG51bXB5IGFzIG5wICMjIG51bWVyaWNhbCAKaW1wb3J0IHNjaXB5IGFzIHNwICMjIHNjaWVudGlmaWMgCmltcG9ydCBzY2lweS5zdGF0cyBhcyBzdGF0cwppbXBvcnQgcGFuZGFzIGFzIHBhICMjIGRhdGEgcHJvY2Vzc2luZwpuID0gMTAwMDAKbGFtID0gMC41CgojIyB1c2luZyBzY2lweSByYW5kb20KbnAucmFuZG9tLnNlZWQoMTIzKQpzID0gc3AucmFuZG9tLnBvaXNzb24obGFtID0gbGFtLCBzaXplID0gbikKcHJpbnQoIlJhbmRvbSB1c2luZyBzY2lweS5yYW5kb20iKQpwcmludChwYS5TZXJpZXMocykudmFsdWVfY291bnRzKCkpCgojIyB1c2luZyBzY2lweS5zdGF0cwpucC5yYW5kb20uc2VlZCgxMjMpCnMxID0gc3RhdHMucG9pc3Nvbi5ydnMobXUgPSBsYW0sIHNpemUgPSBuKQpwcmludCgiXG5cblJhbmRvbSB1c2luZyBzY2lweS5zdGF0cyIpCnByaW50KHBhLlNlcmllcyhzMSkudmFsdWVfY291bnRzKCkpCgoKIyMgdXNpbmcgbnVtcHkKbnAucmFuZG9tLnNlZWQoMTIzKQpwcmludCgiXG5cblJhbmRvbSB1c2luZyBudW1weS5yYW5kb20iKQpzMiA9IG5wLnJhbmRvbS5wb2lzc29uKGxhbSA9IGxhbSwgc2l6ZSA9IG4pCnByaW50KHBhLlNlcmllcyhzMikudmFsdWVfY291bnRzKCkpCgoKYGBgCgojIyBKdWxpYQoKUGF0aCB0byBKdWxpYSBAIG1hY09TIAoKYGBge2p1bGlhLCBlbmdpbmUucGF0aCA9ICIvQXBwbGljYXRpb25zL0p1bGlhLTEuMC5hcHAvQ29udGVudHMvUmVzb3VyY2VzL2p1bGlhL2Jpbi9qdWxpYSJ9CnVzaW5nIERpc3RyaWJ1dGlvbnMgIyMgZm9yIGRpc3RyaWJ1dGlvbnMKdXNpbmcgUmFuZG9tCnVzaW5nIEZyZXFUYWJsZXMKUmFuZG9tLnNlZWQhKDEyMzQpOwpuID0gMTAwMDAKbGFtYmRhID0gMC41Cm0gPSByYW5kKFBvaXNzb24obGFtYmRhKSwgbik7CnNob3coZnJlcXRhYmxlKG0pKQpgYGAKCg==</div>
 
 
 
