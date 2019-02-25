@@ -6,11 +6,6 @@ output:
     toc: yes
 ---
 
-```{r setup, include=FALSE}
-library(JuliaCall)
-julia_setup(JULIA_HOME = "/Applications/Julia-1.0.app/Contents/Resources/julia/bin/")
-```
-
 # Bernoulli / Binomial distribution
 
 ## Ex 1
@@ -80,8 +75,7 @@ print(c)
 
 ## Ex 2
 
-Shooter fires 5 shots at the target. Probability of hit in a single shot equals 0.8. Let $X$ be the random variable denotes numer of hits (successes), then
-
+Shooter fires 5 times at the target. Probability of hit in a single shot equals 0.8. Let $X$ be the random variable denotes numer of hits (successes), then
 
 + Find the distribution of random variable $X$.
 + Create a plot of the distribution of $X$.
@@ -92,7 +86,6 @@ Shooter fires 5 shots at the target. Probability of hit in a single shot equals 
 ## Ex 3
 
 Some family plans to have 3 children. Assuming that there is no correlation between birth of girl and boy, probability of having a girl equals 0.483. Find the distribution of random variable defined as number of boys in 3 children in this family. Calculate expected value and variance.
-
 
 ## Ex 4
 
@@ -126,50 +119,51 @@ expand.grid(0:20, c(5,10,15,20)) %>%
 
 ## Ex 5
 
-W~urnie znajduje się pięć kul białych i~dwie czarne. Losujemy ze zwracaniem trzy razy po jednej kuli. Podać rozkład prawdopodobieństwa
-liczby wylosowanych kul białych i~obliczyć parametry tego rozkładu. 
+There are five white balls and two black balls. We draw with returning three times a ball. Give the probability distribution
+the number of drawn white balls and calculate the parameters of this distribution.
 
 ## Ex 6
 
-W~firmie produkującej okna pracownik obsługuje 5 maszyn wytwarzających pewien element. Prawdopodobieństwo, że w~ciągu dnia maszyna nie będzie wymagać naprawy wynosi 0,9. Maszyny pracują niezależnie od siebie.
+In the window manufacturing company, the employee supports 5 machines that produce a certain element. The probability that the machine will not require repair during the day is 0.9. Machines work independently of each other.
 
-+ Wyznaczyć rozkład prawdopodobieństwa liczby maszyn, które w~ciągu dnia ich pracy wymagać będą naprawy.
-+ Sporządź wykres rozkładu prawdopodobieństwa tej zmiennej.
-+ Obliczyć prawdopodobieństwo, że dokładnie 2 maszyny w~ciągu dnia wymagać będą naprawy.
-+ Obliczyć prawdopodobieństwo, że co najwyżej 2 maszyny w~ciągu dnia wymagać będą naprawy.
-+ Obliczyć prawdopodobieństwo, że mniej niż 2 maszyny w~ciągu dnia wymagać będą naprawy.
++ Calculate the probability distribution of the number of machines that will require repairs during their working day.
++ Make a graph of the probability distribution of this variable.
++ Calculate the probability that exactly 2 machines will require repairs during the day.
++ Calculate the probability that at most 2 machines will require repair during the day.
++ Calculate the probability that less than 2 machines will require repairs during the day.
+
 
 ## Ex 7
 
-W~pewnej dużej firmie w~dziale księgowości pracuje 5 osób. Prawdopodobieństwo nieprzyjścia do pracy na skutek choroby każdej z~nich wynosi 0.1 Obliczyć prawdopodobieństwo tego że:
+In a large company, 5 people work in the accounting department. The probability of failure to work due to the disease of each of them is 0.1. Calculate the probability that:
 
-+ wszystkie osoby przyjdą do pracy.
-+ trzy osoby nie przyjdą do pracy.
-+ więcej niż dwie osoby nie przyjdą do pracy.
++ all people will come to work.
++ three people will not come to work.
++ more than two people will not come to work.
 
 ## Ex 8
 
-W~partii 100 żarówek 10 jest wadliwych. Kontroler jakości pobiera w~sposób niezależny $n=8$ żarówek.
+In ~a lot of 100 bulbs 10 are defective. The quality controller gets in an independent way $n = 8$ light bulbs.
 
-+ Znaleźć rozkład zmiennej losowej $X$ przyjmującej wartości równe liczbie wylosowanych wadliwych żarówek.
-+ Obliczyć $P(2<X\leq5)$.
-+ Obliczyć $P(X<4)$.
-+ Sporządź wykres rozkładu prawdopodobieństwa tej zmiennej.
++ Find the distribution of the random variable $X$ taking the value equal to the number of broken defective bulbs drawn.
++ Calculate $P(2 <X \ leq5)$.
++ Calculate $P(X <4)$.
++ Make a graph of the probability distribution of this variable.
 
 ## Ex 9
 
-Wiadomo, że dla pewnej zmiennej losowej $X$
+It is known that for a certain random variable $X$
 
 $$
 P\left(X=k\right)={6 \choose k}\cdot p^{k}\cdot \left(1-p\right)^{6-k},\quad k=0,1,\ldots,6,\quad p=0.2.
 $$
 
-Przedstawić rozkład tej zmiennej graficznie, obliczyć $P\left(X\geq3\right)$ i~$P\left(X=2\right)$. Obliczyć wartość oczekiwaną, wariancję oraz odchylenie standardowe zmiennej losowej $X$. 
+Present the distribution of this variable graphically, calculate $P\left(X \geq 3\ right)$ and $P\left(X = 2 \right)$. Calculate the expected value, variance and standard deviation of the random variable $X$.
+
 
 ## Ex 10
 
-W~pewnym towarzystwie ubezpieczeniowym 5\% wszystkich zgłaszanych szkód stanowią wypadki samochodowe. Jakie jest prawdopodobieństwo, że wśród zgłoszonych 15 szkód liczba wypadków samochodowych będzie większa niż 3.
-
+In a certain insurance company, 5% of all reported damages are car accidents. What is the probability that among the reported 15 damages, the number of car accidents will be greater than 3.
 
 # Poisson distribution
 
@@ -204,73 +198,52 @@ print(a)
 
 ## Ex 2
 
-Liczbę dni opuszczonych przez studentów w listopadzie w~wylosowanej próbie 250 studentów charakteryzuje poniższy szereg rozdzielczy:
+A young mathematician writing his articles in the LaTeX program stated that he commits an average of 4 typos per page. We randomly select one of the many pages written by this mathematician. What is the probability that we will find at most 3 errors on it.
 
-\begin{center}
-\begin{tabular}{|c|c|} \hline
-\textbf{Liczba} &\multicolumn{1}{c|}{\textbf{Liczba}}\\
-\textbf{opuszczonych dni}&\multicolumn{1}{c|}{\textbf{studentów}}\\
-$x_{i}$ &\multicolumn{1}{c|}{$n_{i}$}\\\hline
-0 & \ 30 \\
-1 & 110 \\
-2 &  \ 50 \\
-3 &  \ 40 \\
-4 &  \ 15 \\
-5 &   \ \ 5  \\ \hline
-\textbf{Razem}&\textbf{250}\\\hline
-\end{tabular}
-\end{center}
-
-
-+ Zakładając, że liczba dni opuszczonych na uczelni w~ciągu miesiąca podlega rozkładowi Poissona, ustal liczebności teoretyczne.
-+ Oblicz prawdopodobieństwo, że studenci opuszczają minimum dwa dni, a~maksimum 4 dni zajęć.
 
 ## Ex 3
 
-Pewien młody matematyk piszący swoje artykuły w~programie LaTeX  stwierdził, że popełnia średnio 4 literówki na jedną stronę. Wybieramy losowo jedną z~wielu stron napisanych przez tego matematyka. Jakie jest prawdopodobieństwo, że znajdziemy na niej co najwyżej 3 błędy.  
-
+The random variable $X$ has a Poisson distribution with ~ expected value of 3. Determine $P\left(X\leq 6 \right)$ and $P\left(X \geq 3 \right)$.
 
 ## Ex 4
 
-Zmienna losowa $X$ ma rozkład Poissona z~wartością oczekiwaną równą 3. Wyznaczyć $P\left(X \leq 6\right)$ oraz $P\left(X \geq 3\right)$. 
+For a certain random variable $X$ with Poisson distribution, there is a condition $P\left(X = 0 \right)= 0.2$. Find the distribution parameters of this variable.
 
 ## Ex 5
 
-Dla pewnej zmiennej losowej $X$ o~rozkładzie Poissona zachodzi warunek $P\left(X=0\right)=0.2$. Znaleźć parametry rozkładu tej zmiennej.
-
-## Ex 6
-
-mienna losowa $X$ ma rozkład określony według następującej funkcji:
+The random variable $X$ has a distribution specified by the following function:
 
 $$
 P\left(X=k\right)=\frac{e^{-4}\cdot 4^{k}}{k!}, \quad k=0,1,\ldots
 $$
 
 
-Wyznaczyć wartość oczekiwaną i~odchylenie standardowe tak zdefiniowanej zmiennej losowej oraz wyznaczyć prawdopodobieństwo, że zmienna losowa:
+Determine the expected value and the standard deviation of the defined random variable and determine the probability that the random variable:
 
-+ przyjmie wartość równą 1;
-+ przyjmie wartość nie większą niż 3;
-+ przyjmie wartość powyżej 5.
++ will take the value equal to 1;
++ will take no more than 3;
++ will take a value above 5.
+
+
+## Ex 6
+
+The number of car accidents during the day in a certain city has a Poisson distribution with an expected value of $\lambda=2$. Find the probability that no more than 4 car accidents will take place during the day in the city.
+
 
 ## Ex 7
 
-Liczba wypadków samochodowych w~ciągu dnia w~pewnym mieście ma rozkład Poissona o~wartości oczekiwanej wynoszącej $\lambda=2$. Znaleźć prawdopodobieństwo, że w~ciągu dnia w~ty mieście będą miały miejsce co najwyżej 4 wypadki samochodowe.
-
-## Ex 8
-
-Zmienna losowa $X$ ma rozkład Poissona, przy czym $\lambda=4$. Obliczyć:
+Random variable $X$ follows Poisson distribution with $\lambda=4$. Calculate:
 
 + $P\left(X<3\right)$.
 + $P\left(X>5\right)$.
 + $P\left(X=2\right)$.
 
+## Ex 8
+
+The composition of a complicated apparatus includes 150 elements of a specific type. The probability of damage during the year of each of these elements is equal to 0.004 and does not depend on the condition of other elements. Calculate the probability of damage during the year not less than two elements.
+
 ## Ex 9
 
-W~skład pewnej skomplikowanej aparatury wchodzi 150 elementów określonego rodzaju. Prawdopodobieństwo uszkodzenia w~ciągu roku każdego z~tych elementów jest równe 0,004 i ~nie zależy od stanu pozostałych elementów. Obliczyć prawdopodobieństwo uszkodzenia w~ciągu roku nie mniej niż dwóch elementów.  
-
-## Ex 10
-
-Załóżmy, że pewna zmienna losowa $X$ ma rozkład Poissona z~parametrem $\lambda$. Sporządź wykres rozkładu prawdopodobieństwa zmiennej losowej $X$ w~zależności od wartości parametru $\lambda$. Przyjmij $\lambda=2,5,8,10$.
+Suppose that a random variable $X$ has a Poisson distribution with ~ parameter $\lambda$. Make a graph of the probability distribution of the random variable $X$ in depending on the value of the parameter $\lambda$. Choose $\lambda = 2,5,8,10$.
 
 

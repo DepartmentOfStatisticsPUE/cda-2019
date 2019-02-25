@@ -1794,13 +1794,10 @@ $(document).ready(function () {
 <li><a href="#ex-7-1">Ex 7</a></li>
 <li><a href="#ex-8-1">Ex 8</a></li>
 <li><a href="#ex-9-1">Ex 9</a></li>
-<li><a href="#ex-10-1">Ex 10</a></li>
 </ul></li>
 </ul>
 </div>
 
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
 <!-- rnb-text-begin -->
 <div id="bernoulli-binomial-distribution" class="section level1">
 <h1>Bernoulli / Binomial distribution</h1>
@@ -1823,9 +1820,9 @@ n &lt;- 10
 ## pt 1 
 dbinom(x = 0:n, n, prob = p)  ## pdf</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSAwLjAwNjA0NjYxNzYgMC4wNDAzMTA3ODQwIDAuMTIwOTMyMzUyMCAwLjIxNDk5MDg0ODAgMC4yNTA4MjI2NTYwIDAuMjAwNjU4MTI0OCAwLjExMTQ3NjczNjBcbiBbOF0gMC4wNDI0NjczMjgwIDAuMDEwNjE2ODMyMCAwLjAwMTU3Mjg2NDAgMC4wMDAxMDQ4NTc2XG4ifQ== -->
-<pre><code> [1] 0.0060466176 0.0403107840 0.1209323520 0.2149908480 0.2508226560 0.2006581248 0.1114767360
- [8] 0.0424673280 0.0106168320 0.0015728640 0.0001048576</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSAwLjAwNjA0NjYxNzYgMC4wNDAzMTA3ODQwIDAuMTIwOTMyMzUyMCAwLjIxNDk5MDg0ODAgMC4yNTA4MjI2NTYwIDAuMjAwNjU4MTI0OCAwLjExMTQ3NjczNjAgMC4wNDI0NjczMjgwIDAuMDEwNjE2ODMyMFxuWzEwXSAwLjAwMTU3Mjg2NDAgMC4wMDAxMDQ4NTc2XG4ifQ== -->
+<pre><code> [1] 0.0060466176 0.0403107840 0.1209323520 0.2149908480 0.2508226560 0.2006581248 0.1114767360 0.0424673280 0.0106168320
+[10] 0.0015728640 0.0001048576</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyMgcHQgMlxuYmFycGxvdChkYmlub20oeCA9IDA6biwgbiwgcHJvYiA9IHApKVxuYGBgIn0= -->
 <pre class="r"><code>## pt 2
@@ -1912,7 +1909,7 @@ print(c)</code></pre>
 </div>
 <div id="ex-2" class="section level2">
 <h2>Ex 2</h2>
-<p>Shooter fires 5 shots at the target. Probability of hit in a single shot equals 0.8. Let <span class="math inline">\(X\)</span> be the random variable denotes numer of hits (successes), then</p>
+<p>Shooter fires 5 times at the target. Probability of hit in a single shot equals 0.8. Let <span class="math inline">\(X\)</span> be the random variable denotes numer of hits (successes), then</p>
 <ul>
 <li>Find the distribution of random variable <span class="math inline">\(X\)</span>.</li>
 <li>Create a plot of the distribution of <span class="math inline">\(X\)</span>.</li>
@@ -1930,22 +1927,10 @@ print(c)</code></pre>
 <p>Assume that, random variable <span class="math inline">\(X\)</span> follows binomial distribution with probability of success <span class="math inline">\(p=0.6\)</span>. Create a plot assuming that number of trials <span class="math inline">\(n\)</span> equals to <span class="math inline">\(5,10,15,20\)</span>.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShnZ3Bsb3QyKVxubGlicmFyeSh0aWR5dmVyc2UpXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShnZ3Bsb3QyKVxubGlicmFyeSh0aWR5dmVyc2UpXG5leHBhbmQuZ3JpZCgwOjIwLCBjKDUsMTAsMTUsMjApKSAlPiVcbiAgI2ZpbHRlcihWYXIxIDw9IFZhcjIpICU+JVxuICBtdXRhdGUocGRmID0gZGJpbm9tKHggPSBWYXIxLCBzaXplID0gVmFyMiwgcCA9IDAuNiksXG4gICAgICAgICBWYXIyID0gZmFjdG9yKFZhcjIpKSAlPiVcbiAgZ2dwbG90KGRhdGEgPSAuLFxuICAgICAgICAgYWVzKHggPSBWYXIxLCBcbiAgICAgICAgICAgICB5ID0gcGRmLFxuICAgICAgICAgICAgIGNvbG9yID0gVmFyMixcbiAgICAgICAgICAgICBncm91cCA9IFZhcjIpKSArXG4gIGdlb21fbGluZSgpICtcbiAgZ2VvbV9wb2ludCgpICtcbiAgI2dlb21fY29sKCkgK1xuICB0aGVtZV9idygpICsgXG4gIGxhYnMoeCA9IFwiTnVtYmVyIG9mIHN1Y2Nlc3Nlc1wiLFxuICAgICAgIHkgPSBcIlByb2JhYmlsaXR5XCIpICtcbiAgc2NhbGVfY29sb3JfYnJld2VyKG5hbWUgID0gXCJOdW1iZXIgb2YgdHJpYWxzXCIsXG4gICAgICAgICAgICAgICAgICAgICB0eXBlID0gXCJxdWFsXCIsXG4gICAgICAgICAgICAgICAgICAgICBwYWxldHRlID0gXCJTZXQxXCIpXG5gYGAifQ== -->
 <pre class="r"><code>library(ggplot2)
-library(tidyverse)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXHUwMDFiWzMwbeKUgOKUgCBcdTAwMWJbMW1BdHRhY2hpbmcgcGFja2FnZXNcdTAwMWJbMjJtIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgCB0aWR5dmVyc2UgMS4yLjEg4pSA4pSAXHUwMDFiWzM5bVxuXHUwMDFiWzMwbVx1MDAxYlszMm3inJRcdTAwMWJbMzBtIFx1MDAxYlszNG10aWJibGUgXHUwMDFiWzMwbSAyLjAuMSAgICAgXHUwMDFiWzMybeKclFx1MDAxYlszMG0gXHUwMDFiWzM0bXB1cnJyICBcdTAwMWJbMzBtIDAuMy4wXG5cdTAwMWJbMzJt4pyUXHUwMDFiWzMwbSBcdTAwMWJbMzRtdGlkeXIgIFx1MDAxYlszMG0gMC44LjIgICAgIFx1MDAxYlszMm3inJRcdTAwMWJbMzBtIFx1MDAxYlszNG1kcGx5ciAgXHUwMDFiWzMwbSAwLjcuOFxuXHUwMDFiWzMybeKclFx1MDAxYlszMG0gXHUwMDFiWzM0bXJlYWRyICBcdTAwMWJbMzBtIDEuMy4xICAgICBcdTAwMWJbMzJt4pyUXHUwMDFiWzMwbSBcdTAwMWJbMzRtc3RyaW5nclx1MDAxYlszMG0gMS40LjBcblx1MDAxYlszMm3inJRcdTAwMWJbMzBtIFx1MDAxYlszNG10aWJibGUgXHUwMDFiWzMwbSAyLjAuMSAgICAgXHUwMDFiWzMybeKclFx1MDAxYlszMG0gXHUwMDFiWzM0bWZvcmNhdHNcdTAwMWJbMzBtIDAuMy4wXHUwMDFiWzM5bVxuXHUwMDFiWzMwbeKUgOKUgCBcdTAwMWJbMW1Db25mbGljdHNcdTAwMWJbMjJtIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgCB0aWR5dmVyc2VfY29uZmxpY3RzKCkg4pSA4pSAXG5cdTAwMWJbMzFt4pyWXHUwMDFiWzMwbSBcdTAwMWJbMzRtZHBseXJcdTAwMWJbMzBtOjpcdTAwMWJbMzJtZmlsdGVyKClcdTAwMWJbMzBtIG1hc2tzIFx1MDAxYlszNG1zdGF0c1x1MDAxYlszMG06OmZpbHRlcigpXG5cdTAwMWJbMzFt4pyWXHUwMDFiWzMwbSBcdTAwMWJbMzRtZHBseXJcdTAwMWJbMzBtOjpcdTAwMWJbMzJtbGFnKClcdTAwMWJbMzBtICAgIG1hc2tzIFx1MDAxYlszNG1zdGF0c1x1MDAxYlszMG06OmxhZygpXHUwMDFiWzM5bVxuIn0= -->
-<pre><code>[30m── [1mAttaching packages[22m ──────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──[39m
-[30m[32m✔[30m [34mtibble [30m 2.0.1     [32m✔[30m [34mpurrr  [30m 0.3.0
-[32m✔[30m [34mtidyr  [30m 0.8.2     [32m✔[30m [34mdplyr  [30m 0.7.8
-[32m✔[30m [34mreadr  [30m 1.3.1     [32m✔[30m [34mstringr[30m 1.4.0
-[32m✔[30m [34mtibble [30m 2.0.1     [32m✔[30m [34mforcats[30m 0.3.0[39m
-[30m── [1mConflicts[22m ─────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-[31m✖[30m [34mdplyr[30m::[32mfilter()[30m masks [34mstats[30m::filter()
-[31m✖[30m [34mdplyr[30m::[32mlag()[30m    masks [34mstats[30m::lag()[39m</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZXhwYW5kLmdyaWQoMDoyMCwgYyg1LDEwLDE1LDIwKSkgJT4lXG4gICNmaWx0ZXIoVmFyMSA8PSBWYXIyKSAlPiVcbiAgbXV0YXRlKHBkZiA9IGRiaW5vbSh4ID0gVmFyMSwgc2l6ZSA9IFZhcjIsIHAgPSAwLjYpLFxuICAgICAgICAgVmFyMiA9IGZhY3RvcihWYXIyKSkgJT4lXG4gIGdncGxvdChkYXRhID0gLixcbiAgICAgICAgIGFlcyh4ID0gVmFyMSwgXG4gICAgICAgICAgICAgeSA9IHBkZixcbiAgICAgICAgICAgICBjb2xvciA9IFZhcjIsXG4gICAgICAgICAgICAgZ3JvdXAgPSBWYXIyKSkgK1xuICBnZW9tX2xpbmUoKSArXG4gIGdlb21fcG9pbnQoKSArXG4gICNnZW9tX2NvbCgpICtcbiAgdGhlbWVfYncoKSArIFxuICBsYWJzKHggPSBcIk51bWJlciBvZiBzdWNjZXNzZXNcIixcbiAgICAgICB5ID0gXCJQcm9iYWJpbGl0eVwiKSArXG4gIHNjYWxlX2NvbG9yX2JyZXdlcihuYW1lICA9IFwiTnVtYmVyIG9mIHRyaWFsc1wiLFxuICAgICAgICAgICAgICAgICAgICAgdHlwZSA9IFwicXVhbFwiLFxuICAgICAgICAgICAgICAgICAgICAgcGFsZXR0ZSA9IFwiU2V0MVwiKVxuYGBgIn0= -->
-<pre class="r"><code>expand.grid(0:20, c(5,10,15,20)) %&gt;%
+library(tidyverse)
+expand.grid(0:20, c(5,10,15,20)) %&gt;%
   #filter(Var1 &lt;= Var2) %&gt;%
   mutate(pdf = dbinom(x = Var1, size = Var2, p = 0.6),
          Var2 = factor(Var2)) %&gt;%
@@ -1975,49 +1960,49 @@ library(tidyverse)</code></pre>
 </div>
 <div id="ex-5" class="section level2">
 <h2>Ex 5</h2>
-<p>W~urnie znajduje się pięć kul białych i~dwie czarne. Losujemy ze zwracaniem trzy razy po jednej kuli. Podać rozkład prawdopodobieństwa liczby wylosowanych kul białych i~obliczyć parametry tego rozkładu.</p>
+<p>There are five white balls and two black balls. We draw with returning three times a ball. Give the probability distribution the number of drawn white balls and calculate the parameters of this distribution.</p>
 </div>
 <div id="ex-6" class="section level2">
 <h2>Ex 6</h2>
-<p>W~firmie produkującej okna pracownik obsługuje 5 maszyn wytwarzających pewien element. Prawdopodobieństwo, że w~ciągu dnia maszyna nie będzie wymagać naprawy wynosi 0,9. Maszyny pracują niezależnie od siebie.</p>
+<p>In the window manufacturing company, the employee supports 5 machines that produce a certain element. The probability that the machine will not require repair during the day is 0.9. Machines work independently of each other.</p>
 <ul>
-<li>Wyznaczyć rozkład prawdopodobieństwa liczby maszyn, które w~ciągu dnia ich pracy wymagać będą naprawy.</li>
-<li>Sporządź wykres rozkładu prawdopodobieństwa tej zmiennej.</li>
-<li>Obliczyć prawdopodobieństwo, że dokładnie 2 maszyny w~ciągu dnia wymagać będą naprawy.</li>
-<li>Obliczyć prawdopodobieństwo, że co najwyżej 2 maszyny w~ciągu dnia wymagać będą naprawy.</li>
-<li>Obliczyć prawdopodobieństwo, że mniej niż 2 maszyny w~ciągu dnia wymagać będą naprawy.</li>
+<li>Calculate the probability distribution of the number of machines that will require repairs during their working day.</li>
+<li>Make a graph of the probability distribution of this variable.</li>
+<li>Calculate the probability that exactly 2 machines will require repairs during the day.</li>
+<li>Calculate the probability that at most 2 machines will require repair during the day.</li>
+<li>Calculate the probability that less than 2 machines will require repairs during the day.</li>
 </ul>
 </div>
 <div id="ex-7" class="section level2">
 <h2>Ex 7</h2>
-<p>W~pewnej dużej firmie w~dziale księgowości pracuje 5 osób. Prawdopodobieństwo nieprzyjścia do pracy na skutek choroby każdej z~nich wynosi 0.1 Obliczyć prawdopodobieństwo tego że:</p>
+<p>In a large company, 5 people work in the accounting department. The probability of failure to work due to the disease of each of them is 0.1. Calculate the probability that:</p>
 <ul>
-<li>wszystkie osoby przyjdą do pracy.</li>
-<li>trzy osoby nie przyjdą do pracy.</li>
-<li>więcej niż dwie osoby nie przyjdą do pracy.</li>
+<li>all people will come to work.</li>
+<li>three people will not come to work.</li>
+<li>more than two people will not come to work.</li>
 </ul>
 </div>
 <div id="ex-8" class="section level2">
 <h2>Ex 8</h2>
-<p>W~partii 100 żarówek 10 jest wadliwych. Kontroler jakości pobiera w~sposób niezależny <span class="math inline">\(n=8\)</span> żarówek.</p>
+<p>In ~a lot of 100 bulbs 10 are defective. The quality controller gets in an independent way <span class="math inline">\(n = 8\)</span> light bulbs.</p>
 <ul>
-<li>Znaleźć rozkład zmiennej losowej <span class="math inline">\(X\)</span> przyjmującej wartości równe liczbie wylosowanych wadliwych żarówek.</li>
-<li>Obliczyć <span class="math inline">\(P(2&lt;X\leq5)\)</span>.</li>
-<li>Obliczyć <span class="math inline">\(P(X&lt;4)\)</span>.</li>
-<li>Sporządź wykres rozkładu prawdopodobieństwa tej zmiennej.</li>
+<li>Find the distribution of the random variable <span class="math inline">\(X\)</span> taking the value equal to the number of broken defective bulbs drawn.</li>
+<li>Calculate <span class="math inline">\(P(2 &lt;X \ leq5)\)</span>.</li>
+<li>Calculate <span class="math inline">\(P(X &lt;4)\)</span>.</li>
+<li>Make a graph of the probability distribution of this variable.</li>
 </ul>
 </div>
 <div id="ex-9" class="section level2">
 <h2>Ex 9</h2>
-<p>Wiadomo, że dla pewnej zmiennej losowej <span class="math inline">\(X\)</span></p>
+<p>It is known that for a certain random variable <span class="math inline">\(X\)</span></p>
 <p><span class="math display">\[
 P\left(X=k\right)={6 \choose k}\cdot p^{k}\cdot \left(1-p\right)^{6-k},\quad k=0,1,\ldots,6,\quad p=0.2.
 \]</span></p>
-<p>Przedstawić rozkład tej zmiennej graficznie, obliczyć <span class="math inline">\(P\left(X\geq3\right)\)</span> i~<span class="math inline">\(P\left(X=2\right)\)</span>. Obliczyć wartość oczekiwaną, wariancję oraz odchylenie standardowe zmiennej losowej <span class="math inline">\(X\)</span>.</p>
+<p>Present the distribution of this variable graphically, calculate <span class="math inline">\(P\left(X \geq 3\ right)\)</span> and <span class="math inline">\(P\left(X = 2 \right)\)</span>. Calculate the expected value, variance and standard deviation of the random variable <span class="math inline">\(X\)</span>.</p>
 </div>
 <div id="ex-10" class="section level2">
 <h2>Ex 10</h2>
-<p>W~pewnym towarzystwie ubezpieczeniowym 5% wszystkich zgłaszanych szkód stanowią wypadki samochodowe. Jakie jest prawdopodobieństwo, że wśród zgłoszonych 15 szkód liczba wypadków samochodowych będzie większa niż 3.</p>
+<p>In a certain insurance company, 5% of all reported damages are car accidents. What is the probability that among the reported 15 damages, the number of car accidents will be greater than 3.</p>
 </div>
 </div>
 <div id="poisson-distribution" class="section level1">
@@ -2074,63 +2059,54 @@ print(a)</code></pre>
 </div>
 <div id="ex-2-1" class="section level2">
 <h2>Ex 2</h2>
-<p>Liczbę dni opuszczonych przez studentów w listopadzie w~wylosowanej próbie 250 studentów charakteryzuje poniższy szereg rozdzielczy:</p>
-
-<ul>
-<li>Zakładając, że liczba dni opuszczonych na uczelni w~ciągu miesiąca podlega rozkładowi Poissona, ustal liczebności teoretyczne.</li>
-<li>Oblicz prawdopodobieństwo, że studenci opuszczają minimum dwa dni, a~maksimum 4 dni zajęć.</li>
-</ul>
+<p>A young mathematician writing his articles in the LaTeX program stated that he commits an average of 4 typos per page. We randomly select one of the many pages written by this mathematician. What is the probability that we will find at most 3 errors on it.</p>
 </div>
 <div id="ex-3-1" class="section level2">
 <h2>Ex 3</h2>
-<p>Pewien młody matematyk piszący swoje artykuły w~programie LaTeX stwierdził, że popełnia średnio 4 literówki na jedną stronę. Wybieramy losowo jedną z~wielu stron napisanych przez tego matematyka. Jakie jest prawdopodobieństwo, że znajdziemy na niej co najwyżej 3 błędy.</p>
+<p>The random variable <span class="math inline">\(X\)</span> has a Poisson distribution with ~ expected value of 3. Determine <span class="math inline">\(P\left(X\leq 6 \right)\)</span> and <span class="math inline">\(P\left(X \geq 3 \right)\)</span>.</p>
 </div>
 <div id="ex-4-1" class="section level2">
 <h2>Ex 4</h2>
-<p>Zmienna losowa <span class="math inline">\(X\)</span> ma rozkład Poissona z~wartością oczekiwaną równą 3. Wyznaczyć <span class="math inline">\(P\left(X \leq 6\right)\)</span> oraz <span class="math inline">\(P\left(X \geq 3\right)\)</span>.</p>
+<p>For a certain random variable <span class="math inline">\(X\)</span> with Poisson distribution, there is a condition <span class="math inline">\(P\left(X = 0 \right)= 0.2\)</span>. Find the distribution parameters of this variable.</p>
 </div>
 <div id="ex-5-1" class="section level2">
 <h2>Ex 5</h2>
-<p>Dla pewnej zmiennej losowej <span class="math inline">\(X\)</span> o~rozkładzie Poissona zachodzi warunek <span class="math inline">\(P\left(X=0\right)=0.2\)</span>. Znaleźć parametry rozkładu tej zmiennej.</p>
-</div>
-<div id="ex-6-1" class="section level2">
-<h2>Ex 6</h2>
-<p>mienna losowa <span class="math inline">\(X\)</span> ma rozkład określony według następującej funkcji:</p>
+<p>The random variable <span class="math inline">\(X\)</span> has a distribution specified by the following function:</p>
 <p><span class="math display">\[
 P\left(X=k\right)=\frac{e^{-4}\cdot 4^{k}}{k!}, \quad k=0,1,\ldots
 \]</span></p>
-<p>Wyznaczyć wartość oczekiwaną i~odchylenie standardowe tak zdefiniowanej zmiennej losowej oraz wyznaczyć prawdopodobieństwo, że zmienna losowa:</p>
+<p>Determine the expected value and the standard deviation of the defined random variable and determine the probability that the random variable:</p>
 <ul>
-<li>przyjmie wartość równą 1;</li>
-<li>przyjmie wartość nie większą niż 3;</li>
-<li>przyjmie wartość powyżej 5.</li>
+<li>will take the value equal to 1;</li>
+<li>will take no more than 3;</li>
+<li>will take a value above 5.</li>
 </ul>
+</div>
+<div id="ex-6-1" class="section level2">
+<h2>Ex 6</h2>
+<p>The number of car accidents during the day in a certain city has a Poisson distribution with an expected value of <span class="math inline">\(\lambda=2\)</span>. Find the probability that no more than 4 car accidents will take place during the day in the city.</p>
 </div>
 <div id="ex-7-1" class="section level2">
 <h2>Ex 7</h2>
-<p>Liczba wypadków samochodowych w~ciągu dnia w~pewnym mieście ma rozkład Poissona o~wartości oczekiwanej wynoszącej <span class="math inline">\(\lambda=2\)</span>. Znaleźć prawdopodobieństwo, że w~ciągu dnia w~ty mieście będą miały miejsce co najwyżej 4 wypadki samochodowe.</p>
-</div>
-<div id="ex-8-1" class="section level2">
-<h2>Ex 8</h2>
-<p>Zmienna losowa <span class="math inline">\(X\)</span> ma rozkład Poissona, przy czym <span class="math inline">\(\lambda=4\)</span>. Obliczyć:</p>
+<p>Random variable <span class="math inline">\(X\)</span> follows Poisson distribution with <span class="math inline">\(\lambda=4\)</span>. Calculate:</p>
 <ul>
 <li><span class="math inline">\(P\left(X&lt;3\right)\)</span>.</li>
 <li><span class="math inline">\(P\left(X&gt;5\right)\)</span>.</li>
 <li><span class="math inline">\(P\left(X=2\right)\)</span>.</li>
 </ul>
 </div>
+<div id="ex-8-1" class="section level2">
+<h2>Ex 8</h2>
+<p>The composition of a complicated apparatus includes 150 elements of a specific type. The probability of damage during the year of each of these elements is equal to 0.004 and does not depend on the condition of other elements. Calculate the probability of damage during the year not less than two elements.</p>
+</div>
 <div id="ex-9-1" class="section level2">
 <h2>Ex 9</h2>
-<p>W~skład pewnej skomplikowanej aparatury wchodzi 150 elementów określonego rodzaju. Prawdopodobieństwo uszkodzenia w~ciągu roku każdego z~tych elementów jest równe 0,004 i ~nie zależy od stanu pozostałych elementów. Obliczyć prawdopodobieństwo uszkodzenia w~ciągu roku nie mniej niż dwóch elementów.</p>
-</div>
-<div id="ex-10-1" class="section level2">
-<h2>Ex 10</h2>
-<p>Załóżmy, że pewna zmienna losowa <span class="math inline">\(X\)</span> ma rozkład Poissona z~parametrem <span class="math inline">\(\lambda\)</span>. Sporządź wykres rozkładu prawdopodobieństwa zmiennej losowej <span class="math inline">\(X\)</span> w~zależności od wartości parametru <span class="math inline">\(\lambda\)</span>. Przyjmij <span class="math inline">\(\lambda=2,5,8,10\)</span>.</p>
+<p>Suppose that a random variable <span class="math inline">\(X\)</span> has a Poisson distribution with ~ parameter <span class="math inline">\(\lambda\)</span>. Make a graph of the probability distribution of the random variable <span class="math inline">\(X\)</span> in depending on the value of the parameter <span class="math inline">\(\lambda\)</span>. Choose <span class="math inline">\(\lambda = 2,5,8,10\)</span>.</p>
 <!-- rnb-text-end -->
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiRXhjZXJjaXNlcyBmb3IgQmVybm91bGksIEJpbm9taWFsIGFuZCBQb2lzc29uIGRpc3RyaWJ1dGlvbiIKYXV0aG9yOiAiTWFyY2luIFN6eW1rb3dpYWsgYW5kIE1hY2llaiBCZXLEmXNld2ljeiIKb3V0cHV0OiAKICBodG1sX25vdGVib29rOiAKICAgIHRvYzogeWVzCi0tLQoKYGBge3Igc2V0dXAsIGluY2x1ZGU9RkFMU0V9CmxpYnJhcnkoSnVsaWFDYWxsKQpqdWxpYV9zZXR1cChKVUxJQV9IT01FID0gIi9BcHBsaWNhdGlvbnMvSnVsaWEtMS4wLmFwcC9Db250ZW50cy9SZXNvdXJjZXMvanVsaWEvYmluLyIpCmBgYAoKIyBCZXJub3VsbGkgLyBCaW5vbWlhbCBkaXN0cmlidXRpb24KCiMjIEV4IDEKCkR1cmluZyB0cmVuaW5nIGJhc2tldGJhbGwgcGxheWVyIHRocm93cyAxMCB0aW1lcyBmb3IgMyBwb2ludHMuIFByb2JhYmlsaXR5IG9mIHN1Y2Nlc3MgaW4gYSBzaW5nbGUgc2hvdCBpcyAwLjQuIExldCAkWCQgYmUgcmFuZG9tIHZhcmlhYmxlIGRlbm90aW5nIG51bWJlciBvZiBhY2N1cmF0ZSB0aHJvdy4KCisgRmluZCB0aGUgZGlzdHJpYnV0aW9uIG9mICRYJC4KKyBDcmVhdGUgYSBwbG90IGZvciB0aGUgZGlzdHJpYnV0aW9uIG9mICAkWCQuCisgRmluZCBwcm9iYWJpbGl0eSB0aGF0IHRoZSBwbGF5ZXIgdGhyb3dzIGV4YWN0bHkgNiB0aW1lcworIEZpbmQgcHJvYmFiaWxpdHkgdGhhdCB0aGUgcGxheWVyIHRocm93cyBhdCBtb3N0IDMgdGltZXMKCiMjIyBTb2x1dGlvbnMgLS0gUgoKYGBge3J9CnAgPC0gMC40Cm4gPC0gMTAKIyMgcHQgMSAKZGJpbm9tKHggPSAwOm4sIG4sIHByb2IgPSBwKSAgIyMgcGRmCiMjIHB0IDIKYmFycGxvdChkYmlub20oeCA9IDA6biwgbiwgcHJvYiA9IHApKQojIyBwdCAzCmRiaW5vbSh4ID0gNiwgbiwgcCkKIyMgcHQgNApwYmlub20oMyxuLHApIApgYGAKCiMjIyBTb2x1dGlvbnMgLS0gUHl0aG9uCgpgYGB7cHl0aG9uLCBlbmdpbmUucGF0aCA9ICJ+L2FuYWNvbmRhMy9iaW4vcHl0aG9uIn0KaW1wb3J0IG51bXB5IGFzIG5wIAppbXBvcnQgc2NpcHkuc3RhdHMgYXMgc3RhdHMKaW1wb3J0IG1hdHBsb3RsaWIucHlwbG90IGFzIHBsb3QKbiwgcCA9IDEwLCAwLjQgIyMgbj0xMCwgcD0wLjQKIyBwdCAxCmEgPSBzdGF0cy5iaW5vbS5wbWYoayA9IG5wLmFyYW5nZSgwLG4rMSksIG49biwgcD1wKQpwcmludChhKQojIHB0IDIKcGxvdC5iYXIoeCA9IG5wLmFyYW5nZSgwLG4rMSksIGhlaWdodCA9IGEpCiMgcGxvdC5zaG93KCkgLS0gdG8gc2VlIHRoZSBwbG90CiMgcHQgMyAKYyA9IHN0YXRzLmJpbm9tLnBtZihrID0gNiwgbj1uLCBwPXApCnByaW50KGMpCiMgcHQgNApkID0gc3RhdHMuYmlub20uY2RmKGsgPSAzLCBuPW4sIHA9cCkKcHJpbnQoZCkKCmBgYAoKIyMjIFNvbHV0aW9ucyAtLSBKdWxpYQoKYGBge2p1bGlhLCBlbmdpbmUucGF0aCA9ICIvQXBwbGljYXRpb25zL0p1bGlhLTEuMC5hcHAvQ29udGVudHMvUmVzb3VyY2VzL2p1bGlhL2Jpbi9qdWxpYSJ9CnVzaW5nIERpc3RyaWJ1dGlvbnMgIyMgZm9yIGRpc3RyaWJ1dGlvbnMKbiwgcCA9IDEwLCAwLjQ7CiMgcHQgIDEKYSA9IHBkZi4oQmlub21pYWwobiwgcCksIDA6bikgIyMgd2UgbmVlZCB0byB1c2UgcGRmLiBpbnN0ZWFkIG9mIHBkZiBiZWNhdXNlIDA6biBpcyB2ZWN0b3IKcHJpbnQoYSkKIyBwdCAyCgojIHB0IDMKYyA9IHBkZihCaW5vbWlhbChuLCBwKSwgNikKcHJpbnQoYykKIyBwdCA0CmMgPSBjZGYoQmlub21pYWwobiwgcCksIDMpIApwcmludChjKQpgYGAKCgojIyBFeCAyCgpTaG9vdGVyIGZpcmVzIDUgc2hvdHMgYXQgdGhlIHRhcmdldC4gUHJvYmFiaWxpdHkgb2YgaGl0IGluIGEgc2luZ2xlIHNob3QgZXF1YWxzIDAuOC4gTGV0ICRYJCBiZSB0aGUgcmFuZG9tIHZhcmlhYmxlIGRlbm90ZXMgbnVtZXIgb2YgaGl0cyAoc3VjY2Vzc2VzKSwgdGhlbgoKCisgRmluZCB0aGUgZGlzdHJpYnV0aW9uIG9mIHJhbmRvbSB2YXJpYWJsZSAkWCQuCisgQ3JlYXRlIGEgcGxvdCBvZiB0aGUgZGlzdHJpYnV0aW9uIG9mICRYJC4KKyBGaW5kIHRoZSBwcm9iYWJpbGl0eSB0aGF0IGFyY2hlcmVyIHdpbGwgaGl0IGV4YWN0bHkgNCB0aW1lcworIEZpbmQgdGhlIHByb2JhYmlsaXR5IHRoYXQgYXJjaGVyZXIgd2lsbCBoaXQgZXhhY3RseSBhdCBtb3N0IDMgdGltZXMKKyBGaW5kIHRoZSBwcm9iYWJpbGl0eSB0aGF0IGFyY2hlcmVyIHdpbGwgaGl0IGV4YWN0bHkgYXQgbGVhc3QgMiB0aW1lcwoKIyMgRXggMwoKU29tZSBmYW1pbHkgcGxhbnMgdG8gaGF2ZSAzIGNoaWxkcmVuLiBBc3N1bWluZyB0aGF0IHRoZXJlIGlzIG5vIGNvcnJlbGF0aW9uIGJldHdlZW4gYmlydGggb2YgZ2lybCBhbmQgYm95LCBwcm9iYWJpbGl0eSBvZiBoYXZpbmcgYSBnaXJsIGVxdWFscyAwLjQ4My4gRmluZCB0aGUgZGlzdHJpYnV0aW9uIG9mIHJhbmRvbSB2YXJpYWJsZSBkZWZpbmVkIGFzIG51bWJlciBvZiBib3lzIGluIDMgY2hpbGRyZW4gaW4gdGhpcyBmYW1pbHkuIENhbGN1bGF0ZSBleHBlY3RlZCB2YWx1ZSBhbmQgdmFyaWFuY2UuCgoKIyMgRXggNAoKQXNzdW1lIHRoYXQsIHJhbmRvbSB2YXJpYWJsZSAkWCQgZm9sbG93cyBiaW5vbWlhbCBkaXN0cmlidXRpb24gd2l0aCBwcm9iYWJpbGl0eSBvZiBzdWNjZXNzICRwPTAuNiQuIENyZWF0ZSBhIHBsb3QgYXNzdW1pbmcgdGhhdCBudW1iZXIgb2YgdHJpYWxzICRuJCBlcXVhbHMgdG8gJDUsMTAsMTUsMjAkLgoKYGBge3J9CmxpYnJhcnkoZ2dwbG90MikKbGlicmFyeSh0aWR5dmVyc2UpCgpleHBhbmQuZ3JpZCgwOjIwLCBjKDUsMTAsMTUsMjApKSAlPiUKICAjZmlsdGVyKFZhcjEgPD0gVmFyMikgJT4lCiAgbXV0YXRlKHBkZiA9IGRiaW5vbSh4ID0gVmFyMSwgc2l6ZSA9IFZhcjIsIHAgPSAwLjYpLAogICAgICAgICBWYXIyID0gZmFjdG9yKFZhcjIpKSAlPiUKICBnZ3Bsb3QoZGF0YSA9IC4sCiAgICAgICAgIGFlcyh4ID0gVmFyMSwgCiAgICAgICAgICAgICB5ID0gcGRmLAogICAgICAgICAgICAgY29sb3IgPSBWYXIyLAogICAgICAgICAgICAgZ3JvdXAgPSBWYXIyKSkgKwogIGdlb21fbGluZSgpICsKICBnZW9tX3BvaW50KCkgKwogICNnZW9tX2NvbCgpICsKICB0aGVtZV9idygpICsgCiAgbGFicyh4ID0gIk51bWJlciBvZiBzdWNjZXNzZXMiLAogICAgICAgeSA9ICJQcm9iYWJpbGl0eSIpICsKICBzY2FsZV9jb2xvcl9icmV3ZXIobmFtZSAgPSAiTnVtYmVyIG9mIHRyaWFscyIsCiAgICAgICAgICAgICAgICAgICAgIHR5cGUgPSAicXVhbCIsCiAgICAgICAgICAgICAgICAgICAgIHBhbGV0dGUgPSAiU2V0MSIpCiAgCmBgYAoKCiMjIEV4IDUKCld+dXJuaWUgem5hamR1amUgc2nEmSBwacSZxIcga3VsIGJpYcWCeWNoIGl+ZHdpZSBjemFybmUuIExvc3VqZW15IHplIHp3cmFjYW5pZW0gdHJ6eSByYXp5IHBvIGplZG5laiBrdWxpLiBQb2RhxIcgcm96a8WCYWQgcHJhd2RvcG9kb2JpZcWEc3R3YQpsaWN6Ynkgd3lsb3Nvd2FueWNoIGt1bCBiaWHFgnljaCBpfm9ibGljennEhyBwYXJhbWV0cnkgdGVnbyByb3prxYJhZHUuIAoKIyMgRXggNgoKV35maXJtaWUgcHJvZHVrdWrEhWNlaiBva25hIHByYWNvd25payBvYnPFgnVndWplIDUgbWFzenluIHd5dHdhcnphasSFY3ljaCBwZXdpZW4gZWxlbWVudC4gUHJhd2RvcG9kb2JpZcWEc3R3bywgxbxlIHd+Y2nEhWd1IGRuaWEgbWFzenluYSBuaWUgYsSZZHppZSB3eW1hZ2HEhyBuYXByYXd5IHd5bm9zaSAwLDkuIE1hc3p5bnkgcHJhY3VqxIUgbmllemFsZcW8bmllIG9kIHNpZWJpZS4KCisgV3l6bmFjennEhyByb3prxYJhZCBwcmF3ZG9wb2RvYmllxYRzdHdhIGxpY3pieSBtYXN6eW4sIGt0w7NyZSB3fmNpxIVndSBkbmlhIGljaCBwcmFjeSB3eW1hZ2HEhyBixJlkxIUgbmFwcmF3eS4KKyBTcG9yesSFZMW6IHd5a3JlcyByb3prxYJhZHUgcHJhd2RvcG9kb2JpZcWEc3R3YSB0ZWogem1pZW5uZWouCisgT2JsaWN6ecSHIHByYXdkb3BvZG9iaWXFhHN0d28sIMW8ZSBkb2vFgmFkbmllIDIgbWFzenlueSB3fmNpxIVndSBkbmlhIHd5bWFnYcSHIGLEmWTEhSBuYXByYXd5LgorIE9ibGljennEhyBwcmF3ZG9wb2RvYmllxYRzdHdvLCDFvGUgY28gbmFqd3nFvGVqIDIgbWFzenlueSB3fmNpxIVndSBkbmlhIHd5bWFnYcSHIGLEmWTEhSBuYXByYXd5LgorIE9ibGljennEhyBwcmF3ZG9wb2RvYmllxYRzdHdvLCDFvGUgbW5pZWogbmnFvCAyIG1hc3p5bnkgd35jacSFZ3UgZG5pYSB3eW1hZ2HEhyBixJlkxIUgbmFwcmF3eS4KCiMjIEV4IDcKCld+cGV3bmVqIGR1xbxlaiBmaXJtaWUgd35kemlhbGUga3NpxJlnb3dvxZtjaSBwcmFjdWplIDUgb3PDs2IuIFByYXdkb3BvZG9iaWXFhHN0d28gbmllcHJ6eWrFm2NpYSBkbyBwcmFjeSBuYSBza3V0ZWsgY2hvcm9ieSBrYcW8ZGVqIHp+bmljaCB3eW5vc2kgMC4xIE9ibGljennEhyBwcmF3ZG9wb2RvYmllxYRzdHdvIHRlZ28gxbxlOgoKKyB3c3p5c3RraWUgb3NvYnkgcHJ6eWpkxIUgZG8gcHJhY3kuCisgdHJ6eSBvc29ieSBuaWUgcHJ6eWpkxIUgZG8gcHJhY3kuCisgd2nEmWNlaiBuacW8IGR3aWUgb3NvYnkgbmllIHByenlqZMSFIGRvIHByYWN5LgoKIyMgRXggOAoKV35wYXJ0aWkgMTAwIMW8YXLDs3dlayAxMCBqZXN0IHdhZGxpd3ljaC4gS29udHJvbGVyIGpha2/Fm2NpIHBvYmllcmEgd35zcG9zw7NiIG5pZXphbGXFvG55ICRuPTgkIMW8YXLDs3dlay4KCisgWm5hbGXFusSHIHJvemvFgmFkIHptaWVubmVqIGxvc293ZWogJFgkIHByenlqbXVqxIVjZWogd2FydG/Fm2NpIHLDs3duZSBsaWN6YmllIHd5bG9zb3dhbnljaCB3YWRsaXd5Y2ggxbxhcsOzd2VrLgorIE9ibGljennEhyAkUCgyPFhcbGVxNSkkLgorIE9ibGljennEhyAkUChYPDQpJC4KKyBTcG9yesSFZMW6IHd5a3JlcyByb3prxYJhZHUgcHJhd2RvcG9kb2JpZcWEc3R3YSB0ZWogem1pZW5uZWouCgojIyBFeCA5CgpXaWFkb21vLCDFvGUgZGxhIHBld25laiB6bWllbm5laiBsb3Nvd2VqICRYJAoKJCQKUFxsZWZ0KFg9a1xyaWdodCk9ezYgXGNob29zZSBrfVxjZG90IHBee2t9XGNkb3QgXGxlZnQoMS1wXHJpZ2h0KV57Ni1rfSxccXVhZCBrPTAsMSxcbGRvdHMsNixccXVhZCBwPTAuMi4KJCQKClByemVkc3Rhd2nEhyByb3prxYJhZCB0ZWogem1pZW5uZWogZ3JhZmljem5pZSwgb2JsaWN6ecSHICRQXGxlZnQoWFxnZXEzXHJpZ2h0KSQgaX4kUFxsZWZ0KFg9MlxyaWdodCkkLiBPYmxpY3p5xIcgd2FydG/Fm8SHIG9jemVraXdhbsSFLCB3YXJpYW5jasSZIG9yYXogb2RjaHlsZW5pZSBzdGFuZGFyZG93ZSB6bWllbm5laiBsb3Nvd2VqICRYJC4gCgojIyBFeCAxMAoKV35wZXdueW0gdG93YXJ6eXN0d2llIHViZXpwaWVjemVuaW93eW0gNVwlIHdzenlzdGtpY2ggemfFgmFzemFueWNoIHN6a8OzZCBzdGFub3dpxIUgd3lwYWRraSBzYW1vY2hvZG93ZS4gSmFraWUgamVzdCBwcmF3ZG9wb2RvYmllxYRzdHdvLCDFvGUgd8WbcsOzZCB6Z8WCb3N6b255Y2ggMTUgc3prw7NkIGxpY3piYSB3eXBhZGvDs3cgc2Ftb2Nob2Rvd3ljaCBixJlkemllIHdpxJlrc3phIG5pxbwgMy4KCgojIFBvaXNzb24gZGlzdHJpYnV0aW9uCgojIyBFeCAxCgpBIGNhciBzYWxlc21hbiBzYWxlcyBvbiBhdmVyYWdlIDUgY2Fycy4gV2hhdCBpcyB0aGUgcHJvYmFiaWxpdHkgdGhhdCB0aGlzIGRlYWxlciB3aWxsIHNhbGUgYXQgbW9zdCAyIGNhcnM/CgojIyMgU29sdXRpb25zIC0tIFIKCmBgYHtyfQpsYW1iZGEgPSA1CnBwb2lzKHEgPSAyLCBsYW1iZGEgPSA1KQpgYGAKCiMjIyBTb2x1dGlvbnMgLS0gUHl0aG9uCgpgYGB7cHl0aG9uLCBlbmdpbmUucGF0aCA9ICJ+L2FuYWNvbmRhMy9iaW4vcHl0aG9uIn0KaW1wb3J0IHNjaXB5LnN0YXRzIGFzIHN0YXRzCmxhbSA9IDUKcmVzID0gc3RhdHMucG9pc3Nvbi5jZGYoMiwgbGFtKQpwcmludChyZXMpCmBgYAoKIyMjIFNvbHV0aW9ucyAtLSBKdWxpYQoKYGBge2p1bGlhLCBlbmdpbmUucGF0aCA9ICIvQXBwbGljYXRpb25zL0p1bGlhLTEuMC5hcHAvQ29udGVudHMvUmVzb3VyY2VzL2p1bGlhL2Jpbi9qdWxpYSJ9CnVzaW5nIERpc3RyaWJ1dGlvbnMKbGFtYmRhID0gNQphID0gY2RmKFBvaXNzb24obGFtYmRhKSwgMikKcHJpbnQoYSkKYGBgCgojIyBFeCAyCgpMaWN6YsSZIGRuaSBvcHVzemN6b255Y2ggcHJ6ZXogc3R1ZGVudMOzdyB3IGxpc3RvcGFkemllIHd+d3lsb3Nvd2FuZWogcHLDs2JpZSAyNTAgc3R1ZGVudMOzdyBjaGFyYWt0ZXJ5enVqZSBwb25pxbxzenkgc3plcmVnIHJvemR6aWVsY3p5OgoKXGJlZ2lue2NlbnRlcn0KXGJlZ2lue3RhYnVsYXJ9e3xjfGN8fSBcaGxpbmUKXHRleHRiZntMaWN6YmF9ICZcbXVsdGljb2x1bW57MX17Y3x9e1x0ZXh0YmZ7TGljemJhfX1cXApcdGV4dGJme29wdXN6Y3pvbnljaCBkbml9JlxtdWx0aWNvbHVtbnsxfXtjfH17XHRleHRiZntzdHVkZW50w7N3fX1cXAokeF97aX0kICZcbXVsdGljb2x1bW57MX17Y3x9eyRuX3tpfSR9XFxcaGxpbmUKMCAmIFwgMzAgXFwKMSAmIDExMCBcXAoyICYgIFwgNTAgXFwKMyAmICBcIDQwIFxcCjQgJiAgXCAxNSBcXAo1ICYgICBcIFwgNSAgXFwgXGhsaW5lClx0ZXh0YmZ7UmF6ZW19Jlx0ZXh0YmZ7MjUwfVxcXGhsaW5lClxlbmR7dGFidWxhcn0KXGVuZHtjZW50ZXJ9CgoKKyBaYWvFgmFkYWrEhWMsIMW8ZSBsaWN6YmEgZG5pIG9wdXN6Y3pvbnljaCBuYSB1Y3plbG5pIHd+Y2nEhWd1IG1pZXNpxIVjYSBwb2RsZWdhIHJvemvFgmFkb3dpIFBvaXNzb25hLCB1c3RhbCBsaWN6ZWJub8WbY2kgdGVvcmV0eWN6bmUuCisgT2JsaWN6IHByYXdkb3BvZG9iaWXFhHN0d28sIMW8ZSBzdHVkZW5jaSBvcHVzemN6YWrEhSBtaW5pbXVtIGR3YSBkbmksIGF+bWFrc2ltdW0gNCBkbmkgemFqxJnEhy4KCiMjIEV4IDMKClBld2llbiBtxYJvZHkgbWF0ZW1hdHlrIHBpc3rEhWN5IHN3b2plIGFydHlrdcWCeSB3fnByb2dyYW1pZSBMYVRlWCAgc3R3aWVyZHppxYIsIMW8ZSBwb3BlxYJuaWEgxZtyZWRuaW8gNCBsaXRlcsOzd2tpIG5hIGplZG7EhSBzdHJvbsSZLiBXeWJpZXJhbXkgbG9zb3dvIGplZG7EhSB6fndpZWx1IHN0cm9uIG5hcGlzYW55Y2ggcHJ6ZXogdGVnbyBtYXRlbWF0eWthLiBKYWtpZSBqZXN0IHByYXdkb3BvZG9iaWXFhHN0d28sIMW8ZSB6bmFqZHppZW15IG5hIG5pZWogY28gbmFqd3nFvGVqIDMgYsWCxJlkeS4gIAoKCiMjIEV4IDQKClptaWVubmEgbG9zb3dhICRYJCBtYSByb3prxYJhZCBQb2lzc29uYSB6fndhcnRvxZtjacSFIG9jemVraXdhbsSFIHLDs3duxIUgMy4gV3l6bmFjennEhyAkUFxsZWZ0KFggXGxlcSA2XHJpZ2h0KSQgb3JheiAkUFxsZWZ0KFggXGdlcSAzXHJpZ2h0KSQuIAoKIyMgRXggNQoKRGxhIHBld25laiB6bWllbm5laiBsb3Nvd2VqICRYJCBvfnJvemvFgmFkemllIFBvaXNzb25hIHphY2hvZHppIHdhcnVuZWsgJFBcbGVmdChYPTBccmlnaHQpPTAuMiQuIFpuYWxlxbrEhyBwYXJhbWV0cnkgcm96a8WCYWR1IHRlaiB6bWllbm5lai4KCiMjIEV4IDYKCm1pZW5uYSBsb3Nvd2EgJFgkIG1hIHJvemvFgmFkIG9rcmXFm2xvbnkgd2VkxYJ1ZyBuYXN0xJlwdWrEhWNlaiBmdW5rY2ppOgoKJCQKUFxsZWZ0KFg9a1xyaWdodCk9XGZyYWN7ZV57LTR9XGNkb3QgNF57a319e2shfSwgXHF1YWQgaz0wLDEsXGxkb3RzCiQkCgoKV3l6bmFjennEhyB3YXJ0b8WbxIcgb2N6ZWtpd2FuxIUgaX5vZGNoeWxlbmllIHN0YW5kYXJkb3dlIHRhayB6ZGVmaW5pb3dhbmVqIHptaWVubmVqIGxvc293ZWogb3JheiB3eXpuYWN6ecSHIHByYXdkb3BvZG9iaWXFhHN0d28sIMW8ZSB6bWllbm5hIGxvc293YToKCisgcHJ6eWptaWUgd2FydG/Fm8SHIHLDs3duxIUgMTsKKyBwcnp5am1pZSB3YXJ0b8WbxIcgbmllIHdpxJlrc3rEhSBuacW8IDM7CisgcHJ6eWptaWUgd2FydG/Fm8SHIHBvd3nFvGVqIDUuCgojIyBFeCA3CgpMaWN6YmEgd3lwYWRrw7N3IHNhbW9jaG9kb3d5Y2ggd35jacSFZ3UgZG5pYSB3fnBld255bSBtaWXFm2NpZSBtYSByb3prxYJhZCBQb2lzc29uYSBvfndhcnRvxZtjaSBvY3pla2l3YW5laiB3eW5vc3rEhWNlaiAkXGxhbWJkYT0yJC4gWm5hbGXFusSHIHByYXdkb3BvZG9iaWXFhHN0d28sIMW8ZSB3fmNpxIVndSBkbmlhIHd+dHkgbWllxZtjaWUgYsSZZMSFIG1pYcWCeSBtaWVqc2NlIGNvIG5hand5xbxlaiA0IHd5cGFka2kgc2Ftb2Nob2Rvd2UuCgojIyBFeCA4CgpabWllbm5hIGxvc293YSAkWCQgbWEgcm96a8WCYWQgUG9pc3NvbmEsIHByenkgY3p5bSAkXGxhbWJkYT00JC4gT2JsaWN6ecSHOgoKKyAkUFxsZWZ0KFg8M1xyaWdodCkkLgorICRQXGxlZnQoWD41XHJpZ2h0KSQuCisgJFBcbGVmdChYPTJccmlnaHQpJC4KCiMjIEV4IDkKCld+c2vFgmFkIHBld25laiBza29tcGxpa293YW5laiBhcGFyYXR1cnkgd2Nob2R6aSAxNTAgZWxlbWVudMOzdyBva3JlxZtsb25lZ28gcm9kemFqdS4gUHJhd2RvcG9kb2JpZcWEc3R3byB1c3prb2R6ZW5pYSB3fmNpxIVndSByb2t1IGthxbxkZWdvIHp+dHljaCBlbGVtZW50w7N3IGplc3QgcsOzd25lIDAsMDA0IGkgfm5pZSB6YWxlxbx5IG9kIHN0YW51IHBvem9zdGHFgnljaCBlbGVtZW50w7N3LiBPYmxpY3p5xIcgcHJhd2RvcG9kb2JpZcWEc3R3byB1c3prb2R6ZW5pYSB3fmNpxIVndSByb2t1IG5pZSBtbmllaiBuacW8IGR3w7NjaCBlbGVtZW50w7N3LiAgCgojIyBFeCAxMAoKWmHFgsOzxbxteSwgxbxlIHBld25hIHptaWVubmEgbG9zb3dhICRYJCBtYSByb3prxYJhZCBQb2lzc29uYSB6fnBhcmFtZXRyZW0gJFxsYW1iZGEkLiBTcG9yesSFZMW6IHd5a3JlcyByb3prxYJhZHUgcHJhd2RvcG9kb2JpZcWEc3R3YSB6bWllbm5laiBsb3Nvd2VqICRYJCB3fnphbGXFvG5vxZtjaSBvZCB3YXJ0b8WbY2kgcGFyYW1ldHJ1ICRcbGFtYmRhJC4gUHJ6eWptaWogJFxsYW1iZGE9Miw1LDgsMTAkLgoKCg==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiRXhjZXJjaXNlcyBmb3IgQmVybm91bGksIEJpbm9taWFsIGFuZCBQb2lzc29uIGRpc3RyaWJ1dGlvbiIKYXV0aG9yOiAiTWFyY2luIFN6eW1rb3dpYWsgYW5kIE1hY2llaiBCZXLEmXNld2ljeiIKb3V0cHV0OiAKICBodG1sX25vdGVib29rOiAKICAgIHRvYzogeWVzCi0tLQoKIyBCZXJub3VsbGkgLyBCaW5vbWlhbCBkaXN0cmlidXRpb24KCiMjIEV4IDEKCkR1cmluZyB0cmVuaW5nIGJhc2tldGJhbGwgcGxheWVyIHRocm93cyAxMCB0aW1lcyBmb3IgMyBwb2ludHMuIFByb2JhYmlsaXR5IG9mIHN1Y2Nlc3MgaW4gYSBzaW5nbGUgc2hvdCBpcyAwLjQuIExldCAkWCQgYmUgcmFuZG9tIHZhcmlhYmxlIGRlbm90aW5nIG51bWJlciBvZiBhY2N1cmF0ZSB0aHJvdy4KCisgRmluZCB0aGUgZGlzdHJpYnV0aW9uIG9mICRYJC4KKyBDcmVhdGUgYSBwbG90IGZvciB0aGUgZGlzdHJpYnV0aW9uIG9mICAkWCQuCisgRmluZCBwcm9iYWJpbGl0eSB0aGF0IHRoZSBwbGF5ZXIgdGhyb3dzIGV4YWN0bHkgNiB0aW1lcworIEZpbmQgcHJvYmFiaWxpdHkgdGhhdCB0aGUgcGxheWVyIHRocm93cyBhdCBtb3N0IDMgdGltZXMKCiMjIyBTb2x1dGlvbnMgLS0gUgoKYGBge3J9CnAgPC0gMC40Cm4gPC0gMTAKIyMgcHQgMSAKZGJpbm9tKHggPSAwOm4sIG4sIHByb2IgPSBwKSAgIyMgcGRmCiMjIHB0IDIKYmFycGxvdChkYmlub20oeCA9IDA6biwgbiwgcHJvYiA9IHApKQojIyBwdCAzCmRiaW5vbSh4ID0gNiwgbiwgcCkKIyMgcHQgNApwYmlub20oMyxuLHApIApgYGAKCiMjIyBTb2x1dGlvbnMgLS0gUHl0aG9uCgpgYGB7cHl0aG9uLCBlbmdpbmUucGF0aCA9ICJ+L2FuYWNvbmRhMy9iaW4vcHl0aG9uIn0KaW1wb3J0IG51bXB5IGFzIG5wIAppbXBvcnQgc2NpcHkuc3RhdHMgYXMgc3RhdHMKaW1wb3J0IG1hdHBsb3RsaWIucHlwbG90IGFzIHBsb3QKbiwgcCA9IDEwLCAwLjQgIyMgbj0xMCwgcD0wLjQKIyBwdCAxCmEgPSBzdGF0cy5iaW5vbS5wbWYoayA9IG5wLmFyYW5nZSgwLG4rMSksIG49biwgcD1wKQpwcmludChhKQojIHB0IDIKcGxvdC5iYXIoeCA9IG5wLmFyYW5nZSgwLG4rMSksIGhlaWdodCA9IGEpCiMgcGxvdC5zaG93KCkgLS0gdG8gc2VlIHRoZSBwbG90CiMgcHQgMyAKYyA9IHN0YXRzLmJpbm9tLnBtZihrID0gNiwgbj1uLCBwPXApCnByaW50KGMpCiMgcHQgNApkID0gc3RhdHMuYmlub20uY2RmKGsgPSAzLCBuPW4sIHA9cCkKcHJpbnQoZCkKCmBgYAoKIyMjIFNvbHV0aW9ucyAtLSBKdWxpYQoKYGBge2p1bGlhLCBlbmdpbmUucGF0aCA9ICIvQXBwbGljYXRpb25zL0p1bGlhLTEuMC5hcHAvQ29udGVudHMvUmVzb3VyY2VzL2p1bGlhL2Jpbi9qdWxpYSJ9CnVzaW5nIERpc3RyaWJ1dGlvbnMgIyMgZm9yIGRpc3RyaWJ1dGlvbnMKbiwgcCA9IDEwLCAwLjQ7CiMgcHQgIDEKYSA9IHBkZi4oQmlub21pYWwobiwgcCksIDA6bikgIyMgd2UgbmVlZCB0byB1c2UgcGRmLiBpbnN0ZWFkIG9mIHBkZiBiZWNhdXNlIDA6biBpcyB2ZWN0b3IKcHJpbnQoYSkKIyBwdCAyCgojIHB0IDMKYyA9IHBkZihCaW5vbWlhbChuLCBwKSwgNikKcHJpbnQoYykKIyBwdCA0CmMgPSBjZGYoQmlub21pYWwobiwgcCksIDMpIApwcmludChjKQpgYGAKCgojIyBFeCAyCgpTaG9vdGVyIGZpcmVzIDUgdGltZXMgYXQgdGhlIHRhcmdldC4gUHJvYmFiaWxpdHkgb2YgaGl0IGluIGEgc2luZ2xlIHNob3QgZXF1YWxzIDAuOC4gTGV0ICRYJCBiZSB0aGUgcmFuZG9tIHZhcmlhYmxlIGRlbm90ZXMgbnVtZXIgb2YgaGl0cyAoc3VjY2Vzc2VzKSwgdGhlbgoKKyBGaW5kIHRoZSBkaXN0cmlidXRpb24gb2YgcmFuZG9tIHZhcmlhYmxlICRYJC4KKyBDcmVhdGUgYSBwbG90IG9mIHRoZSBkaXN0cmlidXRpb24gb2YgJFgkLgorIEZpbmQgdGhlIHByb2JhYmlsaXR5IHRoYXQgYXJjaGVyZXIgd2lsbCBoaXQgZXhhY3RseSA0IHRpbWVzCisgRmluZCB0aGUgcHJvYmFiaWxpdHkgdGhhdCBhcmNoZXJlciB3aWxsIGhpdCBleGFjdGx5IGF0IG1vc3QgMyB0aW1lcworIEZpbmQgdGhlIHByb2JhYmlsaXR5IHRoYXQgYXJjaGVyZXIgd2lsbCBoaXQgZXhhY3RseSBhdCBsZWFzdCAyIHRpbWVzCgojIyBFeCAzCgpTb21lIGZhbWlseSBwbGFucyB0byBoYXZlIDMgY2hpbGRyZW4uIEFzc3VtaW5nIHRoYXQgdGhlcmUgaXMgbm8gY29ycmVsYXRpb24gYmV0d2VlbiBiaXJ0aCBvZiBnaXJsIGFuZCBib3ksIHByb2JhYmlsaXR5IG9mIGhhdmluZyBhIGdpcmwgZXF1YWxzIDAuNDgzLiBGaW5kIHRoZSBkaXN0cmlidXRpb24gb2YgcmFuZG9tIHZhcmlhYmxlIGRlZmluZWQgYXMgbnVtYmVyIG9mIGJveXMgaW4gMyBjaGlsZHJlbiBpbiB0aGlzIGZhbWlseS4gQ2FsY3VsYXRlIGV4cGVjdGVkIHZhbHVlIGFuZCB2YXJpYW5jZS4KCiMjIEV4IDQKCkFzc3VtZSB0aGF0LCByYW5kb20gdmFyaWFibGUgJFgkIGZvbGxvd3MgYmlub21pYWwgZGlzdHJpYnV0aW9uIHdpdGggcHJvYmFiaWxpdHkgb2Ygc3VjY2VzcyAkcD0wLjYkLiBDcmVhdGUgYSBwbG90IGFzc3VtaW5nIHRoYXQgbnVtYmVyIG9mIHRyaWFscyAkbiQgZXF1YWxzIHRvICQ1LDEwLDE1LDIwJC4KCmBgYHtyfQpsaWJyYXJ5KGdncGxvdDIpCmxpYnJhcnkodGlkeXZlcnNlKQoKZXhwYW5kLmdyaWQoMDoyMCwgYyg1LDEwLDE1LDIwKSkgJT4lCiAgI2ZpbHRlcihWYXIxIDw9IFZhcjIpICU+JQogIG11dGF0ZShwZGYgPSBkYmlub20oeCA9IFZhcjEsIHNpemUgPSBWYXIyLCBwID0gMC42KSwKICAgICAgICAgVmFyMiA9IGZhY3RvcihWYXIyKSkgJT4lCiAgZ2dwbG90KGRhdGEgPSAuLAogICAgICAgICBhZXMoeCA9IFZhcjEsIAogICAgICAgICAgICAgeSA9IHBkZiwKICAgICAgICAgICAgIGNvbG9yID0gVmFyMiwKICAgICAgICAgICAgIGdyb3VwID0gVmFyMikpICsKICBnZW9tX2xpbmUoKSArCiAgZ2VvbV9wb2ludCgpICsKICAjZ2VvbV9jb2woKSArCiAgdGhlbWVfYncoKSArIAogIGxhYnMoeCA9ICJOdW1iZXIgb2Ygc3VjY2Vzc2VzIiwKICAgICAgIHkgPSAiUHJvYmFiaWxpdHkiKSArCiAgc2NhbGVfY29sb3JfYnJld2VyKG5hbWUgID0gIk51bWJlciBvZiB0cmlhbHMiLAogICAgICAgICAgICAgICAgICAgICB0eXBlID0gInF1YWwiLAogICAgICAgICAgICAgICAgICAgICBwYWxldHRlID0gIlNldDEiKQogIApgYGAKCgojIyBFeCA1CgpUaGVyZSBhcmUgZml2ZSB3aGl0ZSBiYWxscyBhbmQgdHdvIGJsYWNrIGJhbGxzLiBXZSBkcmF3IHdpdGggcmV0dXJuaW5nIHRocmVlIHRpbWVzIGEgYmFsbC4gR2l2ZSB0aGUgcHJvYmFiaWxpdHkgZGlzdHJpYnV0aW9uCnRoZSBudW1iZXIgb2YgZHJhd24gd2hpdGUgYmFsbHMgYW5kIGNhbGN1bGF0ZSB0aGUgcGFyYW1ldGVycyBvZiB0aGlzIGRpc3RyaWJ1dGlvbi4KCiMjIEV4IDYKCkluIHRoZSB3aW5kb3cgbWFudWZhY3R1cmluZyBjb21wYW55LCB0aGUgZW1wbG95ZWUgc3VwcG9ydHMgNSBtYWNoaW5lcyB0aGF0IHByb2R1Y2UgYSBjZXJ0YWluIGVsZW1lbnQuIFRoZSBwcm9iYWJpbGl0eSB0aGF0IHRoZSBtYWNoaW5lIHdpbGwgbm90IHJlcXVpcmUgcmVwYWlyIGR1cmluZyB0aGUgZGF5IGlzIDAuOS4gTWFjaGluZXMgd29yayBpbmRlcGVuZGVudGx5IG9mIGVhY2ggb3RoZXIuCgorIENhbGN1bGF0ZSB0aGUgcHJvYmFiaWxpdHkgZGlzdHJpYnV0aW9uIG9mIHRoZSBudW1iZXIgb2YgbWFjaGluZXMgdGhhdCB3aWxsIHJlcXVpcmUgcmVwYWlycyBkdXJpbmcgdGhlaXIgd29ya2luZyBkYXkuCisgTWFrZSBhIGdyYXBoIG9mIHRoZSBwcm9iYWJpbGl0eSBkaXN0cmlidXRpb24gb2YgdGhpcyB2YXJpYWJsZS4KKyBDYWxjdWxhdGUgdGhlIHByb2JhYmlsaXR5IHRoYXQgZXhhY3RseSAyIG1hY2hpbmVzIHdpbGwgcmVxdWlyZSByZXBhaXJzIGR1cmluZyB0aGUgZGF5LgorIENhbGN1bGF0ZSB0aGUgcHJvYmFiaWxpdHkgdGhhdCBhdCBtb3N0IDIgbWFjaGluZXMgd2lsbCByZXF1aXJlIHJlcGFpciBkdXJpbmcgdGhlIGRheS4KKyBDYWxjdWxhdGUgdGhlIHByb2JhYmlsaXR5IHRoYXQgbGVzcyB0aGFuIDIgbWFjaGluZXMgd2lsbCByZXF1aXJlIHJlcGFpcnMgZHVyaW5nIHRoZSBkYXkuCgoKIyMgRXggNwoKSW4gYSBsYXJnZSBjb21wYW55LCA1IHBlb3BsZSB3b3JrIGluIHRoZSBhY2NvdW50aW5nIGRlcGFydG1lbnQuIFRoZSBwcm9iYWJpbGl0eSBvZiBmYWlsdXJlIHRvIHdvcmsgZHVlIHRvIHRoZSBkaXNlYXNlIG9mIGVhY2ggb2YgdGhlbSBpcyAwLjEuIENhbGN1bGF0ZSB0aGUgcHJvYmFiaWxpdHkgdGhhdDoKCisgYWxsIHBlb3BsZSB3aWxsIGNvbWUgdG8gd29yay4KKyB0aHJlZSBwZW9wbGUgd2lsbCBub3QgY29tZSB0byB3b3JrLgorIG1vcmUgdGhhbiB0d28gcGVvcGxlIHdpbGwgbm90IGNvbWUgdG8gd29yay4KCiMjIEV4IDgKCkluIH5hIGxvdCBvZiAxMDAgYnVsYnMgMTAgYXJlIGRlZmVjdGl2ZS4gVGhlIHF1YWxpdHkgY29udHJvbGxlciBnZXRzIGluIGFuIGluZGVwZW5kZW50IHdheSAkbiA9IDgkIGxpZ2h0IGJ1bGJzLgoKKyBGaW5kIHRoZSBkaXN0cmlidXRpb24gb2YgdGhlIHJhbmRvbSB2YXJpYWJsZSAkWCQgdGFraW5nIHRoZSB2YWx1ZSBlcXVhbCB0byB0aGUgbnVtYmVyIG9mIGJyb2tlbiBkZWZlY3RpdmUgYnVsYnMgZHJhd24uCisgQ2FsY3VsYXRlICRQKDIgPFggXCBsZXE1KSQuCisgQ2FsY3VsYXRlICRQKFggPDQpJC4KKyBNYWtlIGEgZ3JhcGggb2YgdGhlIHByb2JhYmlsaXR5IGRpc3RyaWJ1dGlvbiBvZiB0aGlzIHZhcmlhYmxlLgoKIyMgRXggOQoKSXQgaXMga25vd24gdGhhdCBmb3IgYSBjZXJ0YWluIHJhbmRvbSB2YXJpYWJsZSAkWCQKCiQkClBcbGVmdChYPWtccmlnaHQpPXs2IFxjaG9vc2Uga31cY2RvdCBwXntrfVxjZG90IFxsZWZ0KDEtcFxyaWdodCleezYta30sXHF1YWQgaz0wLDEsXGxkb3RzLDYsXHF1YWQgcD0wLjIuCiQkCgpQcmVzZW50IHRoZSBkaXN0cmlidXRpb24gb2YgdGhpcyB2YXJpYWJsZSBncmFwaGljYWxseSwgY2FsY3VsYXRlICRQXGxlZnQoWCBcZ2VxIDNcIHJpZ2h0KSQgYW5kICRQXGxlZnQoWCA9IDIgXHJpZ2h0KSQuIENhbGN1bGF0ZSB0aGUgZXhwZWN0ZWQgdmFsdWUsIHZhcmlhbmNlIGFuZCBzdGFuZGFyZCBkZXZpYXRpb24gb2YgdGhlIHJhbmRvbSB2YXJpYWJsZSAkWCQuCgoKIyMgRXggMTAKCkluIGEgY2VydGFpbiBpbnN1cmFuY2UgY29tcGFueSwgNSUgb2YgYWxsIHJlcG9ydGVkIGRhbWFnZXMgYXJlIGNhciBhY2NpZGVudHMuIFdoYXQgaXMgdGhlIHByb2JhYmlsaXR5IHRoYXQgYW1vbmcgdGhlIHJlcG9ydGVkIDE1IGRhbWFnZXMsIHRoZSBudW1iZXIgb2YgY2FyIGFjY2lkZW50cyB3aWxsIGJlIGdyZWF0ZXIgdGhhbiAzLgoKIyBQb2lzc29uIGRpc3RyaWJ1dGlvbgoKIyMgRXggMQoKQSBjYXIgc2FsZXNtYW4gc2FsZXMgb24gYXZlcmFnZSA1IGNhcnMuIFdoYXQgaXMgdGhlIHByb2JhYmlsaXR5IHRoYXQgdGhpcyBkZWFsZXIgd2lsbCBzYWxlIGF0IG1vc3QgMiBjYXJzPwoKIyMjIFNvbHV0aW9ucyAtLSBSCgpgYGB7cn0KbGFtYmRhID0gNQpwcG9pcyhxID0gMiwgbGFtYmRhID0gNSkKYGBgCgojIyMgU29sdXRpb25zIC0tIFB5dGhvbgoKYGBge3B5dGhvbiwgZW5naW5lLnBhdGggPSAifi9hbmFjb25kYTMvYmluL3B5dGhvbiJ9CmltcG9ydCBzY2lweS5zdGF0cyBhcyBzdGF0cwpsYW0gPSA1CnJlcyA9IHN0YXRzLnBvaXNzb24uY2RmKDIsIGxhbSkKcHJpbnQocmVzKQpgYGAKCiMjIyBTb2x1dGlvbnMgLS0gSnVsaWEKCmBgYHtqdWxpYSwgZW5naW5lLnBhdGggPSAiL0FwcGxpY2F0aW9ucy9KdWxpYS0xLjAuYXBwL0NvbnRlbnRzL1Jlc291cmNlcy9qdWxpYS9iaW4vanVsaWEifQp1c2luZyBEaXN0cmlidXRpb25zCmxhbWJkYSA9IDUKYSA9IGNkZihQb2lzc29uKGxhbWJkYSksIDIpCnByaW50KGEpCmBgYAoKIyMgRXggMgoKQSB5b3VuZyBtYXRoZW1hdGljaWFuIHdyaXRpbmcgaGlzIGFydGljbGVzIGluIHRoZSBMYVRlWCBwcm9ncmFtIHN0YXRlZCB0aGF0IGhlIGNvbW1pdHMgYW4gYXZlcmFnZSBvZiA0IHR5cG9zIHBlciBwYWdlLiBXZSByYW5kb21seSBzZWxlY3Qgb25lIG9mIHRoZSBtYW55IHBhZ2VzIHdyaXR0ZW4gYnkgdGhpcyBtYXRoZW1hdGljaWFuLiBXaGF0IGlzIHRoZSBwcm9iYWJpbGl0eSB0aGF0IHdlIHdpbGwgZmluZCBhdCBtb3N0IDMgZXJyb3JzIG9uIGl0LgoKCiMjIEV4IDMKClRoZSByYW5kb20gdmFyaWFibGUgJFgkIGhhcyBhIFBvaXNzb24gZGlzdHJpYnV0aW9uIHdpdGggfiBleHBlY3RlZCB2YWx1ZSBvZiAzLiBEZXRlcm1pbmUgJFBcbGVmdChYXGxlcSA2IFxyaWdodCkkIGFuZCAkUFxsZWZ0KFggXGdlcSAzIFxyaWdodCkkLgoKIyMgRXggNAoKRm9yIGEgY2VydGFpbiByYW5kb20gdmFyaWFibGUgJFgkIHdpdGggUG9pc3NvbiBkaXN0cmlidXRpb24sIHRoZXJlIGlzIGEgY29uZGl0aW9uICRQXGxlZnQoWCA9IDAgXHJpZ2h0KT0gMC4yJC4gRmluZCB0aGUgZGlzdHJpYnV0aW9uIHBhcmFtZXRlcnMgb2YgdGhpcyB2YXJpYWJsZS4KCiMjIEV4IDUKClRoZSByYW5kb20gdmFyaWFibGUgJFgkIGhhcyBhIGRpc3RyaWJ1dGlvbiBzcGVjaWZpZWQgYnkgdGhlIGZvbGxvd2luZyBmdW5jdGlvbjoKCiQkClBcbGVmdChYPWtccmlnaHQpPVxmcmFje2Veey00fVxjZG90IDRee2t9fXtrIX0sIFxxdWFkIGs9MCwxLFxsZG90cwokJAoKCkRldGVybWluZSB0aGUgZXhwZWN0ZWQgdmFsdWUgYW5kIHRoZSBzdGFuZGFyZCBkZXZpYXRpb24gb2YgdGhlIGRlZmluZWQgcmFuZG9tIHZhcmlhYmxlIGFuZCBkZXRlcm1pbmUgdGhlIHByb2JhYmlsaXR5IHRoYXQgdGhlIHJhbmRvbSB2YXJpYWJsZToKCisgd2lsbCB0YWtlIHRoZSB2YWx1ZSBlcXVhbCB0byAxOworIHdpbGwgdGFrZSBubyBtb3JlIHRoYW4gMzsKKyB3aWxsIHRha2UgYSB2YWx1ZSBhYm92ZSA1LgoKCiMjIEV4IDYKClRoZSBudW1iZXIgb2YgY2FyIGFjY2lkZW50cyBkdXJpbmcgdGhlIGRheSBpbiBhIGNlcnRhaW4gY2l0eSBoYXMgYSBQb2lzc29uIGRpc3RyaWJ1dGlvbiB3aXRoIGFuIGV4cGVjdGVkIHZhbHVlIG9mICRcbGFtYmRhPTIkLiBGaW5kIHRoZSBwcm9iYWJpbGl0eSB0aGF0IG5vIG1vcmUgdGhhbiA0IGNhciBhY2NpZGVudHMgd2lsbCB0YWtlIHBsYWNlIGR1cmluZyB0aGUgZGF5IGluIHRoZSBjaXR5LgoKCiMjIEV4IDcKClJhbmRvbSB2YXJpYWJsZSAkWCQgZm9sbG93cyBQb2lzc29uIGRpc3RyaWJ1dGlvbiB3aXRoICRcbGFtYmRhPTQkLiBDYWxjdWxhdGU6CgorICRQXGxlZnQoWDwzXHJpZ2h0KSQuCisgJFBcbGVmdChYPjVccmlnaHQpJC4KKyAkUFxsZWZ0KFg9MlxyaWdodCkkLgoKIyMgRXggOAoKVGhlIGNvbXBvc2l0aW9uIG9mIGEgY29tcGxpY2F0ZWQgYXBwYXJhdHVzIGluY2x1ZGVzIDE1MCBlbGVtZW50cyBvZiBhIHNwZWNpZmljIHR5cGUuIFRoZSBwcm9iYWJpbGl0eSBvZiBkYW1hZ2UgZHVyaW5nIHRoZSB5ZWFyIG9mIGVhY2ggb2YgdGhlc2UgZWxlbWVudHMgaXMgZXF1YWwgdG8gMC4wMDQgYW5kIGRvZXMgbm90IGRlcGVuZCBvbiB0aGUgY29uZGl0aW9uIG9mIG90aGVyIGVsZW1lbnRzLiBDYWxjdWxhdGUgdGhlIHByb2JhYmlsaXR5IG9mIGRhbWFnZSBkdXJpbmcgdGhlIHllYXIgbm90IGxlc3MgdGhhbiB0d28gZWxlbWVudHMuCgojIyBFeCA5CgpTdXBwb3NlIHRoYXQgYSByYW5kb20gdmFyaWFibGUgJFgkIGhhcyBhIFBvaXNzb24gZGlzdHJpYnV0aW9uIHdpdGggfiBwYXJhbWV0ZXIgJFxsYW1iZGEkLiBNYWtlIGEgZ3JhcGggb2YgdGhlIHByb2JhYmlsaXR5IGRpc3RyaWJ1dGlvbiBvZiB0aGUgcmFuZG9tIHZhcmlhYmxlICRYJCBpbiBkZXBlbmRpbmcgb24gdGhlIHZhbHVlIG9mIHRoZSBwYXJhbWV0ZXIgJFxsYW1iZGEkLiBDaG9vc2UgJFxsYW1iZGEgPSAyLDUsOCwxMCQuCgoK</div>
 
 
 
