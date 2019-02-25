@@ -1,0 +1,126 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r}
+library(tidyverse)
+```
+
+## Distributions
+
+```{r}
+expand.grid(0:20, c(5,10,15,20)) %>%
+  #filter(Var1 <= Var2) %>%
+  mutate(pdf = dbinom(x = Var1, size = Var2, p = 0.6),
+         Var2 = factor(Var2)) %>%
+  ggplot(data = .,
+         aes(x = Var1, 
+             y = pdf,
+             color = Var2,
+             group = Var2)) +
+  geom_line() +
+  geom_point() +
+  #geom_col() +
+  theme_bw() + 
+  labs(x = "Number of successes",
+       y = "Probability") +
+  scale_color_brewer(name  = "Number of trials (p=0.6)",
+                     type = "qual",
+                     palette = "Set1") -> binomial_example
+
+binomial_example
+ggsave(filename = "../lectures/figs/binomial_example.png", 
+       plot = binomial_example,
+       height = 5)
+```
+
+```{r}
+expand.grid(0:20, c(5,10,15,20)) %>%
+  #filter(Var1 <= Var2) %>%
+  mutate(pdf = dnbinom(x = Var1, size = Var2, p = 0.6),
+         Var2 = factor(Var2)) %>%
+  ggplot(data = .,
+         aes(x = Var1, 
+             y = pdf,
+             color = Var2,
+             group = Var2)) +
+  geom_line() +
+  geom_point() +
+  #geom_col() +
+  theme_bw() + 
+  labs(x = "Number of successes",
+       y = "Probability") +
+  scale_color_brewer(name  = "Number of trials (p=0.6)",
+                     type = "qual",
+                     palette = "Set1") -> nbinomial_example
+
+nbinomial_example
+
+ggsave(filename = "../lectures/figs/nbinomial_example.png", 
+       plot = nbinomial_example,
+       height = 5)
+```
+
+```{r}
+expand.grid(0:20, c(0.1,0.2,0.5,0.9)) %>%
+  #filter(Var1 <= Var2) %>%
+  mutate(pdf = dgeom(x = Var1, p = Var2),
+         Var2 = factor(Var2)) %>%
+  ggplot(data = .,
+         aes(x = Var1, 
+             y = pdf,
+             color = Var2,
+             group = Var2)) +
+  geom_line() +
+  geom_point() +
+  #geom_col() +
+  theme_bw() + 
+  labs(x = "Number of trials",
+       y = "Probability") +
+  scale_color_brewer(name  = "Probability of success (p=)",
+                     type = "qual",
+                     palette = "Set1") -> geometric_example
+
+geometric_example
+
+ggsave(filename = "../lectures/figs/geometric_example.png", 
+       plot = geometric_example,
+       height = 5)
+
+```
+
+```{r}
+expand.grid(0:20, c(1,3,5,10)) %>%
+  #filter(Var1 <= Var2) %>%
+  mutate(pdf = dpois(x =Var1, lambda = Var2),
+         Var2 = factor(Var2)) %>%
+  ggplot(data = .,
+         aes(x = Var1, 
+             y = pdf,
+             color = Var2,
+             group = Var2)) +
+  geom_line() +
+  geom_point() +
+  #geom_col() +
+  theme_bw() + 
+  labs(x = "Number of cases",
+       y = "Probability") +
+  scale_color_brewer(name  = expression(lambda),
+                     type = "qual",
+                     palette = "Set1") -> poisson_example
+
+poisson_example
+
+ggsave(filename = "../lectures/figs/poisson_example.png", 
+       plot = poisson_example,
+       height = 5)
+
+```
+
+
+```{r}
+
+```
+
