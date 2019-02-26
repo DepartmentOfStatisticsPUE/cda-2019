@@ -1,0 +1,96 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+We will start with generating random numbers
+
+```{r}
+set.seed(2019)
+var1 <- rbinom(n = 1000, ## numer of obs / length of vector
+               size = 1, ## number of trials
+               prob = 0.2)
+
+head(var1)
+table(var1)
+```
+
+generate numbers for Poisson distribution
+
+
+```{r}
+set.seed(123)
+var2 <- rpois(n = 1000,
+              lambda = 10)
+table(var2)
+barplot(table(var2))
+```
+
+Now, we generate varibles from multinomial distribution
+
+```{r}
+set.seed(2016)
+var3 <- rmultinom(n = 10,
+                  size = 100,
+                  prob = c(0.1,0.3,0.6))
+
+head(var3)
+```
+
+
+During trening basketball player throws 10 times for 3 points. Probability of success in a single shot is 0.4. Let $X$ be random variable denoting number of accurate throw.
+
++ Find the distribution of $X$.
+
+
+```{r}
+ex1a <- dbinom(x = 0:10, size = 10, prob = 0.4)
+
+data.frame(k = 0:10, p = ex1a)
+```
+
++ Create a plot for the distribution of  $X$.
++ Find probability that the player throws exactly 6 times
+
+```{r}
+dbinom(x = 6, size = 10, prob = 0.4)
+```
+
++ Find probability that the player throws at most 3 times
+
+
+```{r}
+pbinom(q = 3, size = 10, prob = 0.4) 
+## dbinom(0,10,0.4)+dbinom(1,10,0.4)+dbinom(2,10,0.4)+dbinom(3,10,0.4)
+```
+
+```{r}
+# F(X>=5) = 1 - F(X <= 4)
+1 - pbinom(q = 4, size = 10, prob = 0.4)
+```
+
+Poisson distribution
+
+A car salesman sales on average 5 cars. What is the probability that this dealer will sale at most 2 cars?
+
+
+Calculate probability of selling 2 cars
+
+```{r}
+dpois(x = 2, lambda = 5)
+```
+
+```{r}
+ppois(q = 2, lambda = 5)
+```
+
+A young mathematician writing his articles in the LaTeX program stated that he commits an average of 4 typos per page. We randomly select one of the many pages written by this mathematician. What is the probability that we will find at most 3 errors on it.
+
+```{r}
+ppois(q = 3, lambda = 4)
+```
+
+```{r}
+1-ppois(q = 4, lambda = 4)
+```
+
