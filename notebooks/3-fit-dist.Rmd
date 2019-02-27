@@ -76,7 +76,11 @@ fit1 <- fitdist(x, distr = "binom", fix.arg = list(size = max(x)), start = list(
 
 ```{r}
 bbgd <- read_sas("../data-raw/baza2005.sas7bdat")
+bbgd
 ```
+
+Let's focus on variable informing how many children under 14 years are in households (variable LOS_LT14)
+
 
 ```{r}
 barplot(table(bbgd$LOS_LT14))
