@@ -1,0 +1,69 @@
+---
+title: "Fitting distributions"
+output: html_notebook
+---
+
+# Packages
+
+```{r}
+library(vcdExtra)
+library(fitdistrplus)
+```
+
+
+Generate variable from Poisson distribution
+
+```{r}
+set.seed(123)
+x <- rpois(10000,10)
+barplot(table(x))
+```
+
+# Fitting distributions using vcdExtra
+
+Verify whether given variable follows binomial, negative binomial or poisson distribution
+
+```{r}
+m1 <- goodfit(x, "binomial", par = list(size = max(x) ))
+m2 <- goodfit(x, "nbinomial", par = list(size = max(x)))
+m3 <- goodfit(x, "poisson")
+summary(m1)
+summary(m2)
+summary(m3)
+plot(m1)
+plot(m2)
+plot(m3)
+```
+
+```{r}
+m1$par
+m2$par
+m3$par
+```
+
+# Fitting distributions using MASS::fitdistr
+
+```{r}
+fitdistr(x, "Poisson")
+```
+
+```{r}
+fitdistr(x, "negative binomial")
+```
+
+# Fitting distributions using fitdistrplus::fitdist
+
+
+```{r}
+res1 <- fitdist(x, distr = "pois")
+summary(res1)
+```
+
+```{r}
+res2 <- fitdist(x, distr = "nbinom", fix.arg = list(size = max(x)))
+```
+
+```{r}
+fit1 <- fitdist(x, distr = "binom", fix.arg = list(size = max(x)), start = list(prob = 0.3))
+```
+
