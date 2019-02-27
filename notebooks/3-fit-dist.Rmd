@@ -1,13 +1,18 @@
 ---
 title: "Fitting distributions"
-output: html_notebook
+output: 
+  html_notebook: 
+    toc: yes
 ---
 
-# Packages
+# Fitting in R
+
+## Packages
 
 ```{r}
 library(vcdExtra)
 library(fitdistrplus)
+library(haven) ## read sas file
 ```
 
 
@@ -19,13 +24,13 @@ x <- rpois(10000,10)
 barplot(table(x))
 ```
 
-# Fitting distributions using vcdExtra
+### Fitting distributions using vcdExtra
 
 Verify whether given variable follows binomial, negative binomial or poisson distribution
 
 ```{r}
-m1 <- goodfit(x, "binomial", par = list(size = max(x) ))
-m2 <- goodfit(x, "nbinomial", par = list(size = max(x)))
+m1 <- goodfit(x, "binomial")
+m2 <- goodfit(x, "nbinomial")
 m3 <- goodfit(x, "poisson")
 summary(m1)
 summary(m2)
@@ -41,7 +46,7 @@ m2$par
 m3$par
 ```
 
-# Fitting distributions using MASS::fitdistr
+### Fitting distributions using MASS::fitdistr
 
 ```{r}
 fitdistr(x, "Poisson")
@@ -51,7 +56,7 @@ fitdistr(x, "Poisson")
 fitdistr(x, "negative binomial")
 ```
 
-# Fitting distributions using fitdistrplus::fitdist
+### Fitting distributions using fitdistrplus::fitdist
 
 
 ```{r}
@@ -60,10 +65,58 @@ summary(res1)
 ```
 
 ```{r}
-res2 <- fitdist(x, distr = "nbinom", fix.arg = list(size = max(x)))
+res2 <- fitdist(x, distr = "nbinom")
 ```
 
 ```{r}
 fit1 <- fitdist(x, distr = "binom", fix.arg = list(size = max(x)), start = list(prob = 0.3))
+```
+
+## Practical example from real data
+
+```{r}
+bbgd <- read_sas("../data-raw/baza2005.sas7bdat")
+```
+
+```{r}
+barplot(table(bbgd$LOS_LT14))
+```
+
+What kind of distribution it is? 
+
+Is it poisson?
+
+```{r}
+dist_po <- goodfit(bbgd$LOS_LT14, "poisson")
+```
+
+```{r}
+plot(dist_po)
+```
+
+```{r}
+summary(dist_po)
+```
+
+Is it negative binomial?
+
+```{r}
+dis_nb <- goodfit(bbgd$LOS_LT14, "nbinom")
+```
+
+```{r}
+summary(dis_nb)
+```
+
+```{r}
+plot(dis_nb)
+```
+
+```{r}
+dis_nb <- goodfit(bbgd$LOS_LT14, "binom")
+```
+
+```{r}
+summary(dis_nb)
 ```
 
