@@ -29,14 +29,26 @@ barplot(table(x))
 
 In case of when vector of parameter contains only one value use stats::optim with method Brent or stats::optimize
 
-Using stats::optim
+Declare log-likelihood function
 
 ```{r}
 pois_ll <- function(par, x) {
   ll <- -length(x) * par + sum(log(factorial(x))) + log(par) * sum(x)
   - 2 * ll
 }
+```
 
+Plot the function
+
+```{r}
+plot(1:20, pois_ll(1:20, x), type = 'l', xlab = "Space of parameters", ylab = "-2*Log-likelihood")
+```
+
+Using stats::optim
+
+
+
+```{r}
 res <- optim(par = 0, fn = pois_ll, method = "Brent", lower = 0, upper = 15, x = x)
 res
 ```
