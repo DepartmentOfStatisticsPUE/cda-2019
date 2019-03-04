@@ -25,6 +25,28 @@ mean(x)
 barplot(table(x))
 ```
 
+### Fitting distributions using maximum likelihood
+
+In case of when vector of parameter contains only one value use stats::optim with method Brent or stats::optimize
+
+Using stats::optim
+
+```{r}
+pois_ll <- function(par, x) {
+  ll <- -length(x) * par + sum(log(factorial(x))) + log(par) * sum(x)
+  - 2 * ll
+}
+
+res <- optim(par = 0, fn = pois_ll, method = "Brent", lower = 0, upper = 15, x = x)
+res
+```
+
+Using stats::optimize
+
+```{r}
+res2 <- optimize(f = pois_ll, interval = c(0,15), x = x)
+res2
+```
 
 ### Fitting distributions using vcdExtra
 

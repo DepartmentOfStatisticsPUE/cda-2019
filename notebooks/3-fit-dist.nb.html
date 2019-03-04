@@ -1764,6 +1764,7 @@ $(document).ready(function () {
 <ul>
 <li><a href="#fitting-in-r">Fitting in R</a><ul>
 <li><a href="#packages">Packages</a><ul>
+<li><a href="#fitting-distributions-using-maximum-likelihood">Fitting distributions using maximum likelihood</a></li>
 <li><a href="#fitting-distributions-using-vcdextra">Fitting distributions using vcdExtra</a></li>
 <li><a href="#fitting-distributions-using-massfitdistr">Fitting distributions using MASS::fitdistr</a></li>
 <li><a href="#fitting-distributions-using-fitdistrplusfitdist">Fitting distributions using fitdistrplus::fitdist</a></li>
@@ -1782,26 +1783,19 @@ $(document).ready(function () {
 <h2>Packages</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh2Y2RFeHRyYSlcbmBgYCJ9 -->
-<pre class="r"><code>library(vcdExtra)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShtYXhMaWspXG5cbmBgYCJ9 -->
+<pre class="r"><code>library(maxLik)
+</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiB2Y2RcbkxvYWRpbmcgcmVxdWlyZWQgcGFja2FnZTogZ3JpZFxuTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBnbm1cbiJ9 -->
-<pre><code>Loading required package: vcd
-Loading required package: grid
-Loading required package: gnm</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBtaXNjVG9vbHNcblxuUGxlYXNlIGNpdGUgdGhlICdtYXhMaWsnIHBhY2thZ2UgYXM6XG5IZW5uaW5nc2VuLCBBcm5lIGFuZCBUb29tZXQsIE90dCAoMjAxMSkuIG1heExpazogQSBwYWNrYWdlIGZvciBtYXhpbXVtIGxpa2VsaWhvb2QgZXN0aW1hdGlvbiBpbiBSLiBDb21wdXRhdGlvbmFsIFN0YXRpc3RpY3MgMjYoMyksIDQ0My00NTguIERPSSAxMC4xMDA3L3MwMDE4MC0wMTAtMDIxNy0xLlxuXG5JZiB5b3UgaGF2ZSBxdWVzdGlvbnMsIHN1Z2dlc3Rpb25zLCBvciBjb21tZW50cyByZWdhcmRpbmcgdGhlICdtYXhMaWsnIHBhY2thZ2UsIHBsZWFzZSB1c2UgYSBmb3J1bSBvciAndHJhY2tlcicgYXQgbWF4TGlrJ3MgUi1Gb3JnZSBzaXRlOlxuaHR0cHM6Ly9yLWZvcmdlLnItcHJvamVjdC5vcmcvcHJvamVjdHMvbWF4bGlrL1xuIn0= -->
+<pre><code>Loading required package: miscTools
+
+Please cite the &#39;maxLik&#39; package as:
+Henningsen, Arne and Toomet, Ott (2011). maxLik: A package for maximum likelihood estimation in R. Computational Statistics 26(3), 443-458. DOI 10.1007/s00180-010-0217-1.
+
+If you have questions, suggestions, or comments regarding the &#39;maxLik&#39; package, please use a forum or &#39;tracker&#39; at maxLik&#39;s R-Forge site:
+https://r-forge.r-project.org/projects/maxlik/</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShmaXRkaXN0cnBsdXMpXG5gYGAifQ== -->
-<pre class="r"><code>library(fitdistrplus)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBNQVNTXG5Mb2FkaW5nIHJlcXVpcmVkIHBhY2thZ2U6IHN1cnZpdmFsXG5Mb2FkaW5nIHJlcXVpcmVkIHBhY2thZ2U6IG5wc3VydlxuTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBsc2VpXG4ifQ== -->
-<pre><code>Loading required package: MASS
-Loading required package: survival
-Loading required package: npsurv
-Loading required package: lsei</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShoYXZlbikgIyMgcmVhZCBzYXMgZmlsZVxuYGBgIn0= -->
-<pre class="r"><code>library(haven) ## read sas file</code></pre>
-<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Generate variable from Poisson distribution</p>
@@ -1823,6 +1817,56 @@ mean(x)</code></pre>
 <!-- rnb-plot-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+<div id="fitting-distributions-using-maximum-likelihood" class="section level3">
+<h3>Fitting distributions using maximum likelihood</h3>
+<p>In case of when vector of parameter contains only one value use stats::optim with method Brent or stats::optimize</p>
+<p>Using stats::optim</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucG9pc19sbCA8LSBmdW5jdGlvbihwYXIsIHgpIHtcbiAgbGwgPC0gLWxlbmd0aCh4KSAqIHBhciArIHN1bShsb2coZmFjdG9yaWFsKHgpKSkgKyBsb2cocGFyKSAqIHN1bSh4KVxuICAtIDIgKiBsbFxufVxucmVzIDwtIG9wdGltKHBhciA9IDAsIGZuID0gcG9pc19sbCwgbWV0aG9kID0gXCJCcmVudFwiLCBsb3dlciA9IDAsIHVwcGVyID0gMTUsIHggPSB4KVxucmVzXG5gYGAifQ== -->
+<pre class="r"><code>pois_ll &lt;- function(par, x) {
+  ll &lt;- -length(x) * par + sum(log(factorial(x))) + log(par) * sum(x)
+  - 2 * ll
+}
+res &lt;- optim(par = 0, fn = pois_ll, method = &quot;Brent&quot;, lower = 0, upper = 15, x = x)
+res</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiJHBhclxuWzFdIDkuOTg2MlxuXG4kdmFsdWVcblsxXSAtNTcwOTkyLjlcblxuJGNvdW50c1xuZnVuY3Rpb24gZ3JhZGllbnQgXG4gICAgICBOQSAgICAgICBOQSBcblxuJGNvbnZlcmdlbmNlXG5bMV0gMFxuXG4kbWVzc2FnZVxuTlVMTFxuIn0= -->
+<pre><code>$par
+[1] 9.9862
+
+$value
+[1] -570992.9
+
+$counts
+function gradient 
+      NA       NA 
+
+$convergence
+[1] 0
+
+$message
+NULL</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Using stats::optimize</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVzMlxuXG5gYGAifQ== -->
+<pre class="r"><code>res2
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiJG1pbmltdW1cblsxXSA5Ljk4NjE5NlxuXG4kb2JqZWN0aXZlXG5bMV0gLTU3MDk5Mi45XG4ifQ== -->
+<pre><code>$minimum
+[1] 9.986196
+
+$objective
+[1] -570992.9</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
 <div id="fitting-distributions-using-vcdextra" class="section level3">
 <h3>Fitting distributions using vcdExtra</h3>
 <p>Verify whether given variable follows binomial, negative binomial or poisson distribution</p>
@@ -2122,7 +2166,7 @@ print(m)</code></pre>
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiRml0dGluZyBkaXN0cmlidXRpb25zIgpvdXRwdXQ6IAogIGh0bWxfbm90ZWJvb2s6IAogICAgdG9jOiB5ZXMKLS0tCgojIEZpdHRpbmcgaW4gUgoKIyMgUGFja2FnZXMKCmBgYHtyfQpsaWJyYXJ5KHZjZEV4dHJhKQpsaWJyYXJ5KGZpdGRpc3RycGx1cykKbGlicmFyeShoYXZlbikgIyMgcmVhZCBzYXMgZmlsZQpgYGAKCgpHZW5lcmF0ZSB2YXJpYWJsZSBmcm9tIFBvaXNzb24gZGlzdHJpYnV0aW9uCgpgYGB7cn0Kc2V0LnNlZWQoMTIzKQp4IDwtIHJwb2lzKDEwMDAwLDEwKQptZWFuKHgpCmJhcnBsb3QodGFibGUoeCkpCmBgYAoKCiMjIyBGaXR0aW5nIGRpc3RyaWJ1dGlvbnMgdXNpbmcgdmNkRXh0cmEKClZlcmlmeSB3aGV0aGVyIGdpdmVuIHZhcmlhYmxlIGZvbGxvd3MgYmlub21pYWwsIG5lZ2F0aXZlIGJpbm9taWFsIG9yIHBvaXNzb24gZGlzdHJpYnV0aW9uCgpgYGB7cn0KbTEgPC0gZ29vZGZpdCh4LCAiYmlub21pYWwiKQptMiA8LSBnb29kZml0KHgsICJuYmlub21pYWwiKQptMyA8LSBnb29kZml0KHgsICJwb2lzc29uIikKc3VtbWFyeShtMSkKc3VtbWFyeShtMikKc3VtbWFyeShtMykKcGxvdChtMSkKcGxvdChtMikKcGxvdChtMykKYGBgCgpgYGB7cn0KbTEkcGFyCm0yJHBhcgptMyRwYXIKYGBgCgojIyMgRml0dGluZyBkaXN0cmlidXRpb25zIHVzaW5nIE1BU1M6OmZpdGRpc3RyCgpgYGB7cn0KZml0ZGlzdHIoeCwgIlBvaXNzb24iKQpgYGAKCmBgYHtyfQpmaXRkaXN0cih4LCAibmVnYXRpdmUgYmlub21pYWwiKQpgYGAKCiMjIyBGaXR0aW5nIGRpc3RyaWJ1dGlvbnMgdXNpbmcgZml0ZGlzdHJwbHVzOjpmaXRkaXN0CgoKYGBge3J9CnJlczEgPC0gZml0ZGlzdCh4LCBkaXN0ciA9ICJwb2lzIikKc3VtbWFyeShyZXMxKQpgYGAKCmBgYHtyfQpyZXMyIDwtIGZpdGRpc3QoeCwgZGlzdHIgPSAibmJpbm9tIikKYGBgCgpgYGB7cn0KZml0MSA8LSBmaXRkaXN0KHgsIGRpc3RyID0gImJpbm9tIiwgZml4LmFyZyA9IGxpc3Qoc2l6ZSA9IG1heCh4KSksIHN0YXJ0ID0gbGlzdChwcm9iID0gMC4zKSkKYGBgCgojIyBQcmFjdGljYWwgZXhhbXBsZSBmcm9tIHJlYWwgZGF0YQoKYGBge3J9CmJiZ2QgPC0gcmVhZF9zYXMoIi4uL2RhdGEtcmF3L2JhemEyMDA1LnNhczdiZGF0IikKYmJnZApgYGAKCkxldCdzIGZvY3VzIG9uIHZhcmlhYmxlIGluZm9ybWluZyBob3cgbWFueSBjaGlsZHJlbiB1bmRlciAxNCB5ZWFycyBhcmUgaW4gaG91c2Vob2xkcyAodmFyaWFibGUgTE9TX0xUMTQpCgoKYGBge3J9CmJhcnBsb3QodGFibGUoYmJnZCRMT1NfTFQxNCkpCmBgYAoKV2hhdCBraW5kIG9mIGRpc3RyaWJ1dGlvbiBpdCBpcz8gCgpJcyBpdCBwb2lzc29uPwoKYGBge3J9CmRpc3RfcG8gPC0gZ29vZGZpdChiYmdkJExPU19MVDE0LCAicG9pc3NvbiIpCmBgYAoKYGBge3J9CnBsb3QoZGlzdF9wbykKYGBgCgpgYGB7cn0Kc3VtbWFyeShkaXN0X3BvKQpgYGAKCklzIGl0IG5lZ2F0aXZlIGJpbm9taWFsPwoKYGBge3J9CmRpc19uYiA8LSBnb29kZml0KGJiZ2QkTE9TX0xUMTQsICJuYmlub20iKQpgYGAKCmBgYHtyfQpzdW1tYXJ5KGRpc19uYikKYGBgCgpgYGB7cn0KcGxvdChkaXNfbmIpCmBgYAoKYGBge3J9CmRpc19uYiA8LSBnb29kZml0KGJiZ2QkTE9TX0xUMTQsICJiaW5vbSIpCmBgYAoKYGBge3J9CnN1bW1hcnkoZGlzX25iKQpgYGAKCiMgRml0dGluZyBpbiBKdWxpYQoKYGBge2p1bGlhLCBlbmdpbmUucGF0aCA9ICIvQXBwbGljYXRpb25zL0p1bGlhLTEuMC5hcHAvQ29udGVudHMvUmVzb3VyY2VzL2p1bGlhL2Jpbi9qdWxpYSJ9CnVzaW5nIERpc3RyaWJ1dGlvbnMgIyMgZm9yIGRpc3RyaWJ1dGlvbnMKdXNpbmcgUmFuZG9tClJhbmRvbS5zZWVkISgxMjMpOwp4ID0gcmFuZChQb2lzc29uKDEwKSwxMDAwMCk7Cm0gPSBmaXRfbWxlKFBvaXNzb24seCk7CnByaW50KG0pCmBgYAoKIyBGaXR0aW5nIGluIFB5dGhvbgoKc2NpUHkgY2FuIG9ubHkgZml0IGNvbnRpbnVvdXMgZGlzdHJpYnV0aW9ucy4gCgo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiRml0dGluZyBkaXN0cmlidXRpb25zIgpvdXRwdXQ6IAogIGh0bWxfbm90ZWJvb2s6IAogICAgdG9jOiB5ZXMKLS0tCgojIEZpdHRpbmcgaW4gUgoKIyMgUGFja2FnZXMKCmBgYHtyfQpsaWJyYXJ5KHZjZEV4dHJhKQpsaWJyYXJ5KGZpdGRpc3RycGx1cykKbGlicmFyeShoYXZlbikgIyMgcmVhZCBzYXMgZmlsZQpgYGAKCgpHZW5lcmF0ZSB2YXJpYWJsZSBmcm9tIFBvaXNzb24gZGlzdHJpYnV0aW9uCgpgYGB7cn0Kc2V0LnNlZWQoMTIzKQp4IDwtIHJwb2lzKDEwMDAwLDEwKQptZWFuKHgpCmJhcnBsb3QodGFibGUoeCkpCmBgYAoKIyMjIEZpdHRpbmcgZGlzdHJpYnV0aW9ucyB1c2luZyBtYXhpbXVtIGxpa2VsaWhvb2QKCkluIGNhc2Ugb2Ygd2hlbiB2ZWN0b3Igb2YgcGFyYW1ldGVyIGNvbnRhaW5zIG9ubHkgb25lIHZhbHVlIHVzZSBzdGF0czo6b3B0aW0gd2l0aCBtZXRob2QgQnJlbnQgb3Igc3RhdHM6Om9wdGltaXplCgpVc2luZyBzdGF0czo6b3B0aW0KCmBgYHtyfQpwb2lzX2xsIDwtIGZ1bmN0aW9uKHBhciwgeCkgewogIGxsIDwtIC1sZW5ndGgoeCkgKiBwYXIgKyBzdW0obG9nKGZhY3RvcmlhbCh4KSkpICsgbG9nKHBhcikgKiBzdW0oeCkKICAtIDIgKiBsbAp9CgpyZXMgPC0gb3B0aW0ocGFyID0gMCwgZm4gPSBwb2lzX2xsLCBtZXRob2QgPSAiQnJlbnQiLCBsb3dlciA9IDAsIHVwcGVyID0gMTUsIHggPSB4KQpyZXMKYGBgCgpVc2luZyBzdGF0czo6b3B0aW1pemUKCmBgYHtyfQpyZXMyIDwtIG9wdGltaXplKGYgPSBwb2lzX2xsLCBpbnRlcnZhbCA9IGMoMCwxNSksIHggPSB4KQpyZXMyCmBgYAoKIyMjIEZpdHRpbmcgZGlzdHJpYnV0aW9ucyB1c2luZyB2Y2RFeHRyYQoKVmVyaWZ5IHdoZXRoZXIgZ2l2ZW4gdmFyaWFibGUgZm9sbG93cyBiaW5vbWlhbCwgbmVnYXRpdmUgYmlub21pYWwgb3IgcG9pc3NvbiBkaXN0cmlidXRpb24KCmBgYHtyfQptMSA8LSBnb29kZml0KHgsICJiaW5vbWlhbCIpCm0yIDwtIGdvb2RmaXQoeCwgIm5iaW5vbWlhbCIpCm0zIDwtIGdvb2RmaXQoeCwgInBvaXNzb24iKQpzdW1tYXJ5KG0xKQpzdW1tYXJ5KG0yKQpzdW1tYXJ5KG0zKQpwbG90KG0xKQpwbG90KG0yKQpwbG90KG0zKQpgYGAKCmBgYHtyfQptMSRwYXIKbTIkcGFyCm0zJHBhcgpgYGAKCiMjIyBGaXR0aW5nIGRpc3RyaWJ1dGlvbnMgdXNpbmcgTUFTUzo6Zml0ZGlzdHIKCmBgYHtyfQpmaXRkaXN0cih4LCAiUG9pc3NvbiIpCmBgYAoKYGBge3J9CmZpdGRpc3RyKHgsICJuZWdhdGl2ZSBiaW5vbWlhbCIpCmBgYAoKIyMjIEZpdHRpbmcgZGlzdHJpYnV0aW9ucyB1c2luZyBmaXRkaXN0cnBsdXM6OmZpdGRpc3QKCgpgYGB7cn0KcmVzMSA8LSBmaXRkaXN0KHgsIGRpc3RyID0gInBvaXMiKQpzdW1tYXJ5KHJlczEpCmBgYAoKYGBge3J9CnJlczIgPC0gZml0ZGlzdCh4LCBkaXN0ciA9ICJuYmlub20iKQpgYGAKCmBgYHtyfQpmaXQxIDwtIGZpdGRpc3QoeCwgZGlzdHIgPSAiYmlub20iLCBmaXguYXJnID0gbGlzdChzaXplID0gbWF4KHgpKSwgc3RhcnQgPSBsaXN0KHByb2IgPSAwLjMpKQpgYGAKCiMjIFByYWN0aWNhbCBleGFtcGxlIGZyb20gcmVhbCBkYXRhCgpgYGB7cn0KYmJnZCA8LSByZWFkX3NhcygiLi4vZGF0YS1yYXcvYmF6YTIwMDUuc2FzN2JkYXQiKQpiYmdkCmBgYAoKTGV0J3MgZm9jdXMgb24gdmFyaWFibGUgaW5mb3JtaW5nIGhvdyBtYW55IGNoaWxkcmVuIHVuZGVyIDE0IHllYXJzIGFyZSBpbiBob3VzZWhvbGRzICh2YXJpYWJsZSBMT1NfTFQxNCkKCgpgYGB7cn0KYmFycGxvdCh0YWJsZShiYmdkJExPU19MVDE0KSkKYGBgCgpXaGF0IGtpbmQgb2YgZGlzdHJpYnV0aW9uIGl0IGlzPyAKCklzIGl0IHBvaXNzb24/CgpgYGB7cn0KZGlzdF9wbyA8LSBnb29kZml0KGJiZ2QkTE9TX0xUMTQsICJwb2lzc29uIikKYGBgCgpgYGB7cn0KcGxvdChkaXN0X3BvKQpgYGAKCmBgYHtyfQpzdW1tYXJ5KGRpc3RfcG8pCmBgYAoKSXMgaXQgbmVnYXRpdmUgYmlub21pYWw/CgpgYGB7cn0KZGlzX25iIDwtIGdvb2RmaXQoYmJnZCRMT1NfTFQxNCwgIm5iaW5vbSIpCmBgYAoKYGBge3J9CnN1bW1hcnkoZGlzX25iKQpgYGAKCmBgYHtyfQpwbG90KGRpc19uYikKYGBgCgpgYGB7cn0KZGlzX25iIDwtIGdvb2RmaXQoYmJnZCRMT1NfTFQxNCwgImJpbm9tIikKYGBgCgpgYGB7cn0Kc3VtbWFyeShkaXNfbmIpCmBgYAoKIyBGaXR0aW5nIGluIEp1bGlhCgpgYGB7anVsaWEsIGVuZ2luZS5wYXRoID0gIi9BcHBsaWNhdGlvbnMvSnVsaWEtMS4wLmFwcC9Db250ZW50cy9SZXNvdXJjZXMvanVsaWEvYmluL2p1bGlhIn0KdXNpbmcgRGlzdHJpYnV0aW9ucyAjIyBmb3IgZGlzdHJpYnV0aW9ucwp1c2luZyBSYW5kb20KUmFuZG9tLnNlZWQhKDEyMyk7CnggPSByYW5kKFBvaXNzb24oMTApLDEwMDAwKTsKbSA9IGZpdF9tbGUoUG9pc3Nvbix4KTsKcHJpbnQobSkKYGBgCgojIEZpdHRpbmcgaW4gUHl0aG9uCgpzY2lQeSBjYW4gb25seSBmaXQgY29udGludW91cyBkaXN0cmlidXRpb25zLiAKCg==</div>
 
 
 
