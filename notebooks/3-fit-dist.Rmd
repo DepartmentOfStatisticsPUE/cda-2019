@@ -21,8 +21,10 @@ Generate variable from Poisson distribution
 ```{r}
 set.seed(123)
 x <- rpois(10000,10)
+mean(x)
 barplot(table(x))
 ```
+
 
 ### Fitting distributions using vcdExtra
 
@@ -123,4 +125,19 @@ dis_nb <- goodfit(bbgd$LOS_LT14, "binom")
 ```{r}
 summary(dis_nb)
 ```
+
+# Fitting in Julia
+
+```{julia, engine.path = "/Applications/Julia-1.0.app/Contents/Resources/julia/bin/julia"}
+using Distributions ## for distributions
+using Random
+Random.seed!(123);
+x = rand(Poisson(10),10000);
+m = fit_mle(Poisson,x);
+print(m)
+```
+
+# Fitting in Python
+
+sciPy can only fit continuous distributions. 
 
