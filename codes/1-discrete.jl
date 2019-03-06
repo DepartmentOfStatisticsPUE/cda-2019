@@ -1,5 +1,6 @@
 using Distributions
 using Random
+using Optim
 
 # zadanie 1
 n=10;
@@ -42,3 +43,28 @@ pis = [pi1 ; pi2 ; pi3] ## use vcat
 res  = rand(Multinomial(n, pis))
 print(res)
 print([n₁; n₂; n₃])
+
+
+## truncated Poisson
+function sample_ztp(lambda)
+  k = 1
+  t = exp(-lambda) / (1 - exp(-lambda)) * lambda
+  s = t
+  u = rand()
+  while s < u
+    k += 1
+    t *= lambda / k
+    s += t
+  end
+  k
+end
+
+function rtpois_ll(x, data)
+    ll = log(x)*sum(data) - length(data)*log(exp(x)-1) - sum(log.(factorial.(data)))
+    -ll
+end
+
+Random.seed!(123);
+data = [sample_ztp(4) for i in 1:1000];
+res = optimize(x -> rtpois_ll(x, data), 0, 20);
+Optim.minimizer(res)
