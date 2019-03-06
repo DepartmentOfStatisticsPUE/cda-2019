@@ -1,4 +1,4 @@
-# cda-2019
+# Categorical Data Analysis 2019
 
 Table of contents
 
