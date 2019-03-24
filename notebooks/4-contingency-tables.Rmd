@@ -7,30 +7,71 @@ output: html_notebook
 
 ## R
 
-Using matrix
+Packages
 
 ```{r}
-
+library(vcdExtra)
+library(gmodels)
 ```
 
-Using xtabs
+Read in the dataset about units that were sampled 
+
+```{r}
+df <- readRDS("../data-raw/data_for_lecture.rds")
+```
+
+```{r}
+glimpse(df)
+```
+
+### create contingency table
+
+
+```{r}
+CrossTable(df$gender,df$status)
+```
+
+```{r}
+xtabs(~gender+status, df)
+```
+
+### odds, log odds, odds ratio and log odds ratio
+
+```{r}
+status_gender <- xtabs(~gender+status, df)
+
+odds(status_gender, log = F)
+odds(status_gender, log = T)
+oddsratio(status_gender, log = F)
+oddsratio(status_gender, log = T)
+```
+
+```{r}
+summary(status_gender)
+```
+
+```{r}
+fisher.test(status_gender)
+```
 
 
 ## Python
 
 ```{python, engine.path = "~/anaconda3/bin/python"}
-import numpy as np
 import pandas as pd
 import statsmodels.api as sm
 
-table = np.asarray([[35, 21], [25, 58]])
-t22 = sm.stats.Table2x2(table.T)
-print(t22)
-print(t22.summary())
-print(t22.test_nominal_association())
+df = pd.read_csv("../data-raw/data_for_lecture.txt")
+table = sm.stats.Table2x2.from_data(df[["gender", "status"]])
+print(table.test_nominal_association()) ## test chi2
+print(table.summary()) ## ods ratios and more
 ```
 
 ## Julia
+
+```{r}
+
+```
 
 # Correlations
 
