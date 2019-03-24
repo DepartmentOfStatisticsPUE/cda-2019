@@ -169,6 +169,7 @@ Random.seed!(123);
 x = rand(Poisson(10),10000);
 m = fit_mle(Poisson,x);
 print(m)
+print(mean(m))
 ```
 
 # Fitting in Python
