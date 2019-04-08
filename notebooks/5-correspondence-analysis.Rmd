@@ -1,0 +1,39 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+# R
+
+## Simple correspondence analysis 
+
+
+```{r}
+library(ca) ## package for conducting correspondence analysis
+library(readxl)
+```
+
+Read data about politics
+
+```{r}
+data <- read_excel("../additional/ca/politycy.xls") 
+df <- as.data.frame(data[,2:5]) ## convert to appropriate format
+rownames(df) <- data$cechy
+
+df
+```
+
+Use function ca and plot the results
+
+```{r}
+politics <- ca(df)
+plot(politics)
+```
+
+Detailed results
+
+```{r}
+summary(politics)
+```
+
