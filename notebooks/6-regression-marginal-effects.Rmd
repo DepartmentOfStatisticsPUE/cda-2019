@@ -1,0 +1,89 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# load packages
+
+```{r}
+library(margins)
+library(ggeffects)
+library(effects)
+library(ggplot2)
+library(haven)
+```
+
+
+# Read data
+```{r}
+df <- data.frame(read_sas("../data-raw/baza2005.sas7bdat"))
+df$KLM <- factor(df$KLM)
+```
+
+
+# Marginal effects
+
+Model 1
+
+```{r}
+m1 <- lm(DOCH ~ KLM, data = df)
+summary(m1)
+```
+
+```{r}
+m1_me <- margins(m1)
+summary(m1_me)
+```
+
+```{r}
+plot(m1_me)
+```
+
+Model 2
+
+```{r}
+m2 <- lm(DOCH ~ KLM*TG, data = df)
+summary(m2)
+```
+```{r}
+supressm2_me <- margins(m2)
+summary(supressm2_me)
+```
+
+```{r}
+plot(supressm2_me)
+```
+
+Model 3
+
+```{r}
+m3 <- lm(DOCH ~ KLM*LOS, data = df)
+summary(m3)
+```
+```{r}
+supressm3_me <- margins(m3)
+summary(supressm3_me)
+```
+
+```{r}
+res <- margins(m3, at = list(KLM = factor(1:6)), variables = "LOS")
+summary(res)
+```
+
+
+
+Calculate by hand for KLM==2
+```{r}
+558.295-175.338
+```
+
+Using 
+```{r}
+m3_ggef <- ggeffect(m3)
+m3_ggef
+```
+
+```{r}
+plot(m3_ggef)
+```
+
