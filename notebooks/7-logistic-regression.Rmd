@@ -1,0 +1,43 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+Load the packages
+
+```{r}
+library(margins)
+library(ggeffects)
+```
+
+Load the data
+
+```{r}
+df <- readRDS("../data-raw/data_for_lecture.rds") 
+df$locality <- as_factor(df$locality)
+df$woj <- as_factor(df$woj)
+df$gender <- as_factor(df$gender)
+```
+
+
+Build a model
+
+```{r}
+m1 <- glm(formula = status ~ gender + age + locality + woj, 
+          data = df, 
+          family = binomial(link = "logit")) ## or family = "binomial"
+summary(m1)
+car::Anova(m1)
+```
+
+```{r}
+m1_marg <- margins(m1)
+plot(m1_marg)
+```
+
+```{r}
+plot(ggeffect(m1))
+```
+
+
+
