@@ -1,0 +1,79 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r}
+library(haven)
+library(MASS)
+library(vcd)
+install.packages("countreg", repos="http://R-Forge.R-project.org")
+library(countreg)
+library(AER)
+library(maxLik)
+df <- read_sas("data-raw/baza2005.sas7bdat")
+
+```
+
+```{r}
+plot(goodfit(df$LOS_LT14, type = "poisson"))
+plot(goodfit(df$LOS_LT14, type = "nbinomial", par = list(size = 0.8)))
+```
+
+```{r}
+mean(df$LOS_LT14)
+var(df$LOS_LT14)
+```
+
+```{r}
+m1 <- lm(LOS_LT14 ~ factor(KLM) + I(DOCH/1000) + factor(WOJ), 
+         data = df)
+summary(m1)
+```
+
+```{r}
+m2 <- glm(LOS_LT14 ~ factor(KLM) + I(DOCH/1000) + factor(WOJ), 
+         data = df,
+         family = poisson())
+summary(m2)
+```
+
+```{r}
+m3 <- glm(LOS_LT14 ~ factor(KLM) + I(DOCH/1000) + factor(WOJ), 
+         data = df,
+         family = quasipoisson())
+summary(m3)
+```
+
+
+```{r}
+m4 <- glm(LOS_LT14 ~ factor(KLM) + I(DOCH/1000) + factor(WOJ), 
+          data = df,
+          family = negative.binomial(0.8))
+summary(m4)
+
+
+```
+
+```{r}
+dispersiontest(m2, trafo = 1) ## quasipoisson / negative-binom1
+dispersiontest(m2, trafo = 2) ## negative-binom 
+```
+
+```{r}
+countreg::rootogram(m2, max = 10)
+countreg::rootogram(m4, max = 10)
+```
+
+```{r}
+lrtest(m2, m4)
+```
+
+
+
+```{r}
+coeftest(m2)
+coeftest(m4)
+```
+
