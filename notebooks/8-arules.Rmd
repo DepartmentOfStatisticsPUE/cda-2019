@@ -1,0 +1,63 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(arules)
+library(arulesViz)
+library(tidyverse)
+library(haven)
+```
+
+```{r}
+bkl_oferty <- readRDS("/Users/maciej/git/nauka/job-offers-bkl/data/bkl-oferty-imputed.rds")
+```
+
+```{r}
+bkl_oferty %>%
+  filter(zrodlo == 1) %>%
+  filter(rok == 2014) %>%
+  select(komp_zawodowe:komp_biurowe) %>%
+  na.omit(komp_zawodowe) %>%
+  rename_all(funs(gsub("komp_","",.))) -> dane_arules
+```
+
+```{r}
+saveRDS(dane_arules, file = "data-raw/data-bkl.rds")
+```
+
+```{r}
+dane_arules_m <- as.matrix(dane_arules)
+n <- as(dane_arules_m, "transactions")
+
+res <- apriori(n)
+
+summary(res)
+inspect(res)
+arulesViz::ruleExplorer(res)
+```
+
+```{r}
+dane <- read_spss("~/Downloads/BKL_lud_2017_-_180628_publ.sav")
+```
+
+```{r}
+sjPlot::view_df(dane, show.values = FALSE)
+```
+
+```{r}
+dane %>%
+  select(s3_01:s3_09) %>%
+  na.omit()  %>%
+  set_names(c("odpowiadanie", "internet", "wlasne", "bezp_kont", "rodzina_znaj", "urzad","targi","agencja","uczelnia")) %>%
+  as.matrix() %>%
+  as(., "transactions") -> poszuk
+```
+
+```{r}
+res <- apriori(poszuk)
+
+inspect(res)
+```
+
