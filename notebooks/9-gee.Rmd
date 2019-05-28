@@ -1,0 +1,64 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r}
+library(readxl)
+library(geepack)
+library(gee)
+library(lubridate)
+library(MuMIn)
+```
+
+```{r}
+piwa <- read_excel("data-raw/piwa.xlsx") %>%
+  mutate(weekd = wday(ymd(data),week_start = 1))
+```
+
+```{r}
+piwa %>%
+  count(data = ymd(data), wt = sztuki) %>%
+  ggplot(data = ., aes(x = data, y = n)) +
+  #geom_point() +
+  geom_line()
+```
+
+```{r}
+m0 <- glm(formula = sztuki ~ wielkosc_gosp + factor(weekd) + klm + factor(miesiac) + sklepy + wyksztalcenie + wojewodztwo,  
+             data = piwa,
+             family  = poisson())
+
+m1 <- geeglm(formula = sztuki ~ wielkosc_gosp + factor(weekd)+ klm + factor(miesiac) + sklepy + wyksztalcenie  + wojewodztwo, 
+             data = piwa,
+             family  = poisson(),
+             id = id, scale.fix = TRUE)
+
+m2 <- geeglm(formula = sztuki ~ wielkosc_gosp + factor(weekd) + klm + factor(miesiac) + sklepy + wyksztalcenie + wojewodztwo,, 
+             data = piwa,
+             family  = poisson(),
+             corstr = "exchangeable",
+             id = id,
+             scale.fix = TRUE)
+```
+
+
+```{r}
+as.data.frame(head(coef(summary(m0)), n = 10))
+head(coef(summary(m2)), n = 10)
+
+plot(coef(m0), coef(m2))
+abline(a=0,b=1,col="red")
+
+m2
+```
+
+Source: https://stats.stackexchange.com/questions/21771/how-to-perform-model-selection-in-gee-in-r
+
+
+
+```{r}
+model.sel(m1,m2, rank = QIC)
+```
+
