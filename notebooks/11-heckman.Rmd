@@ -1,0 +1,54 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r}
+library(data.table)
+library(tidyverse)
+library(sampleSelection)
+library(SemiParSampleSel)
+```
+
+
+### women wages
+
+```
+proc qlim data=mroz;
+      model inlf = nwifeinc educ exper expersq
+                   age kidslt6 kidsge6 /discrete;
+      model lwage = educ exper expersq / select(inlf=1);
+   run;
+```
+
+```{r}
+mroz <- fread("../data-raw/mroz-data.txt", na.strings = ".")
+mroz
+```
+
+```{r}
+m1 <- SemiParSampleSel(
+  formula = list(inlf ~ nwifeinc + educ + exper + expersq + age + kidslt6 + kidsge6,
+                 lwage ~ educ + exper + expersq),
+  data = mroz,
+  margin = c("probit", "N")
+)
+summary(m1)
+```
+
+```
+lwage.Intercept	1	-0.552716	0.260371	-2.12	0.0338
+lwage.educ	1	0.108351	0.014861	7.29	<.0001
+lwage.exper	1	0.042837	0.014878	2.88	0.0040
+lwage.expersq	1	-0.000837	0.000417	-2.01	0.0449
+```
+
+```{r}
+m2 <- heckit(inlf ~ nwifeinc + educ + exper + expersq + age + kidslt6 + kidsge6,
+                 lwage ~ educ + exper + expersq, 
+             data = mroz,
+             method = "ml")
+summary(m2)
+```
+
