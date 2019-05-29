@@ -9,46 +9,57 @@ library(data.table)
 library(tidyverse)
 library(sampleSelection)
 library(SemiParSampleSel)
+library(haven)
+library(lmtest)
+library(sandwich)
 ```
-
 
 ### women wages
 
+```{r}
+women <- read_stata("../data-raw/womenwk.dta") 
+women$selection <- !is.na(women$wage)
+summary(women)
 ```
-proc qlim data=mroz;
-      model inlf = nwifeinc educ exper expersq
-                   age kidslt6 kidsge6 /discrete;
-      model lwage = educ exper expersq / select(inlf=1);
-   run;
+
+
+```{r}
+m0 <- glm(wage ~  education + age, 
+             data = women,
+           subset = selection)
+summary(m0)
 ```
 
 ```{r}
-mroz <- fread("../data-raw/mroz-data.txt", na.strings = ".")
-mroz
-```
-
-```{r}
-m1 <- SemiParSampleSel(
-  formula = list(inlf ~ nwifeinc + educ + exper + expersq + age + kidslt6 + kidsge6,
-                 lwage ~ educ + exper + expersq),
-  data = mroz,
-  margin = c("probit", "N")
-)
+m1 <- heckit(selection ~ married + children+ education +age,
+             wage ~  education + age, 
+             data = women)
 summary(m1)
 ```
 
-```
-lwage.Intercept	1	-0.552716	0.260371	-2.12	0.0338
-lwage.educ	1	0.108351	0.014861	7.29	<.0001
-lwage.exper	1	0.042837	0.014878	2.88	0.0040
-lwage.expersq	1	-0.000837	0.000417	-2.01	0.0449
-```
-
 ```{r}
-m2 <- heckit(inlf ~ nwifeinc + educ + exper + expersq + age + kidslt6 + kidsge6,
-                 lwage ~ educ + exper + expersq, 
-             data = mroz,
+m2 <- heckit(selection ~ married + children+ education +age,
+             wage ~  education + age, 
+             data = women,
              method = "ml")
 summary(m2)
 ```
+
+```{r}
+m3 <- SemiParSampleSel(
+  formula = list(selection ~ married + children+ education +age,
+             wage ~  education + age),
+  data = women,
+  margin = c("probit", "N")
+)
+summary(m3)
+```
+
+We can also account for the correlation within county using `lmtest` and `sandwich` estimator.
+
+```{r}
+coeftest(m2, vcov = vcovCL(m2, cluster = women$county))
+```
+
+
 
