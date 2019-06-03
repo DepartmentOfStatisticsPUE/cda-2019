@@ -9,11 +9,12 @@ library(readxl)
 library(geepack)
 library(gee)
 library(lubridate)
+library(tidyverse)
 library(MuMIn)
 ```
 
 ```{r}
-piwa <- read_excel("data-raw/piwa.xlsx") %>%
+piwa <- read_excel("../data-raw/piwa.xlsx") %>%
   mutate(weekd = wday(ymd(data),week_start = 1))
 ```
 
@@ -35,7 +36,7 @@ m1 <- geeglm(formula = sztuki ~ wielkosc_gosp + factor(weekd)+ klm + factor(mies
              family  = poisson(),
              id = id, scale.fix = TRUE)
 
-m2 <- geeglm(formula = sztuki ~ wielkosc_gosp + factor(weekd) + klm + factor(miesiac) + sklepy + wyksztalcenie + wojewodztwo,, 
+m2 <- geeglm(formula = sztuki ~ wielkosc_gosp + factor(weekd) + klm + factor(miesiac) + sklepy + wyksztalcenie + wojewodztwo, 
              data = piwa,
              family  = poisson(),
              corstr = "exchangeable",
@@ -61,4 +62,6 @@ Source: https://stats.stackexchange.com/questions/21771/how-to-perform-model-sel
 ```{r}
 model.sel(m1,m2, rank = QIC)
 ```
+
+
 
