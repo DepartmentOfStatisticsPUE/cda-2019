@@ -69,7 +69,7 @@ Source: https://www.stata.com/manuals13/rheckman.pdf
 
 
 ```{r}
-ll_heckman_stata <- function(params, xs, xo, y) {
+ll_heckman <- function(params, xs, xo, sel, y) {
   ncol_xs <- ncol(xs)
   ncol_xo <- ncol(xo)
   
@@ -78,10 +78,10 @@ ll_heckman_stata <- function(params, xs, xo, y) {
   rho <- params[(ncol_xs+ncol_xo+1)]
   sigma <- params[ncol_xs+ncol_xo+2]
   
-  ll_s <- log(pnorm( -xs[y == 0,] %*% beta_s))
+  ll_s <- log(pnorm( -xs[!sel,] %*% beta_s))
   
-  ll_o <- log( pnorm( (xs[y != 0,] %*% beta_s + rho/sigma*(y[y!=0] - xo %*% beta_o)) / (sqrt(1-rho^2)) ) ) - 
-    1/2*( (y[y!=0] - xo %*% beta_o)/sigma )^2 - log(sqrt(2*pi)*sigma)
+  ll_o <- log( pnorm( (xs[sel,] %*% beta_s + rho/sigma*(y - xo %*% beta_o)) / (sqrt(1-rho^2)) ) ) - 
+    1/2*( (y - xo %*% beta_o)/sigma )^2 - log(sqrt(2*pi)*sigma)
   l <- sum(ll_s) + sum(ll_o)
   l
 }
@@ -104,17 +104,19 @@ m2 <- glm(wage ~education + age,
 params <- c(coef(m1), coef(m2), rho = 0.5, sigma = sd(m2$y))
 xs <- model.matrix(m1)
 xo <- model.matrix(m2)
-y <- women$wage
+sel <- women$wage > 0
+y <- m2$y
 
-ll_heckman_stata(params, xs, xo, y)
-ll_heckman(params, xs, xo, y)
+ll_heckman(params, xs, xo, sel, y)
 
 ```
 
 ```{r}
-ml <- maxLik(logLik = ll_heckman_stata, start = params, xs = xs, xo = xo,  y= y, method = "BFGS")
+ml <- maxLik(logLik = ll_heckman, start = params, xs = xs, xo = xo,  sel = sel, y= y, 
+             method = "NR")
 summary(ml)
 ```
+
 
 Comparison with SampleSelection
 
