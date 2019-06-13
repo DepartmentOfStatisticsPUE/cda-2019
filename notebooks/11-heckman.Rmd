@@ -112,8 +112,7 @@ ll_heckman(params, xs, xo, sel, y)
 ```
 
 ```{r}
-ml <- maxLik(logLik = ll_heckman, start = params, xs = xs, xo = xo,  sel = sel, y= y, 
-             method = "NR")
+ml <- maxLik(logLik = ll_heckman, start = params, xs = xs, xo = xo,  sel = sel, y= y, method = "NR")
 summary(ml)
 ```
 
@@ -138,4 +137,7 @@ age          0.21313    0.02060  10.345   <2e-16 ***
 sigma  6.00479    0.16572   36.23   <2e-16 ***
 rho    0.70350    0.05123   13.73   <2e-16 ***
 ```
+
+
+
 
