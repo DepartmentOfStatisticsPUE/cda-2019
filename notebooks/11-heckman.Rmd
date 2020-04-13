@@ -1,0 +1,143 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r}
+library(data.table)
+library(tidyverse)
+library(sampleSelection)
+library(SemiParSampleSel)
+library(haven)
+library(lmtest)
+library(sandwich)
+library(maxLik)
+```
+
+### women wages
+
+```{r}
+women <- read_stata("../data-raw/womenwk.dta") 
+women$selection <- !is.na(women$wage)
+summary(women)
+```
+
+
+```{r}
+m0 <- glm(wage ~  education + age, 
+             data = women,
+           subset = selection)
+summary(m0)
+```
+
+```{r}
+m1 <- heckit(selection ~ married + children+ education +age,
+             wage ~  education + age, 
+             data = women)
+summary(m1)
+```
+
+```{r}
+m2 <- heckit(selection ~ married + children+ education +age,
+             wage ~  education + age, 
+             data = women,
+             method = "ml")
+summary(m2)
+```
+
+```{r}
+m3 <- SemiParSampleSel(
+  formula = list(selection ~ married + children+ education +age,
+             wage ~  education + age),
+  data = women,
+  margin = c("probit", "N")
+)
+summary(m3)
+```
+
+We can also account for the correlation within county using `lmtest` and `sandwich` estimator.
+
+```{r}
+coeftest(m2, vcov = vcovCL(m2, cluster = women$county))
+```
+
+
+## Heckman' -- using ML
+
+Source: https://www.stata.com/manuals13/rheckman.pdf
+
+
+```{r}
+ll_heckman <- function(params, xs, xo, sel, y) {
+  ncol_xs <- ncol(xs)
+  ncol_xo <- ncol(xo)
+  
+  beta_s <- params[1:ncol_xs]
+  beta_o <- params[(ncol_xs+1):(ncol_xs+ncol_xo)]
+  rho <- params[(ncol_xs+ncol_xo+1)]
+  sigma <- params[ncol_xs+ncol_xo+2]
+  
+  ll_s <- log(pnorm( -xs[!sel,] %*% beta_s))
+  
+  ll_o <- log( pnorm( (xs[sel,] %*% beta_s + rho/sigma*(y - xo %*% beta_o)) / (sqrt(1-rho^2)) ) ) - 
+    1/2*( (y - xo %*% beta_o)/sigma )^2 - log(sqrt(2*pi)*sigma)
+  l <- sum(ll_s) + sum(ll_o)
+  l
+}
+
+
+```
+
+
+```{r}
+women$wage <- ifelse(is.na(women$wage), 0, women$wage)
+
+m1 <- glm(selection ~ married + children + education +age,
+          data = women,
+          family = binomial("probit"))
+
+m2 <- glm(wage ~education + age,
+          data = women,
+          subset = selection)
+
+params <- c(coef(m1), coef(m2), rho = 0.5, sigma = sd(m2$y))
+xs <- model.matrix(m1)
+xo <- model.matrix(m2)
+sel <- women$wage > 0
+y <- m2$y
+
+ll_heckman(params, xs, xo, sel, y)
+
+```
+
+```{r}
+ml <- maxLik(logLik = ll_heckman, start = params, xs = xs, xo = xo,  sel = sel, y= y, method = "NR")
+summary(ml)
+```
+
+
+Comparison with SampleSelection
+
+```
+Probit selection equation:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -2.491015   0.189340 -13.156  < 2e-16 ***
+married      0.445171   0.067395   6.605 5.07e-11 ***
+children     0.438707   0.027783  15.791  < 2e-16 ***
+education    0.055732   0.010735   5.192 2.30e-07 ***
+age          0.036510   0.004153   8.790  < 2e-16 ***
+Outcome equation:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  0.48579    1.07704   0.451    0.652    
+education    0.98995    0.05326  18.588   <2e-16 ***
+age          0.21313    0.02060  10.345   <2e-16 ***
+   Error terms:
+      Estimate Std. Error t value Pr(>|t|)    
+sigma  6.00479    0.16572   36.23   <2e-16 ***
+rho    0.70350    0.05123   13.73   <2e-16 ***
+```
+
+
+
+
